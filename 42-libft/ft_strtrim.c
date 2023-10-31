@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 15:40:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 21:11:03 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/10/31 23:02:30 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/10/31 23:03:25 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned char	*p;
-
-	p = s;
-	p[n] = '\0';
-	while (n--)
-		p[n] = (unsigned char)c;
-	return (s);
+    
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	array[8];
-
-// 	printf("%s\n", array);
-// 	ft_memset(array, '3', 3);
-// 	printf("%s\n", array);
-// 	memset(array, '4', 8);
-// 	printf("%s\n", array);
-// }

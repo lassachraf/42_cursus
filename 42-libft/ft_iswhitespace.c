@@ -6,8 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:48:48 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 19:49:01 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:17:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_iswhitespace()
+int	ft_iswhitespace(int c)
+{
+	return ((c == 32 || (c >= 9 && c <= 13)));
+}

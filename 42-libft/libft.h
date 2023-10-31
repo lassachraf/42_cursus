@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:11:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 09:28:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:20:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 
-// Mandatory PART2 :)
+// Mandatory PART2 :
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+
+// Additional functions :
+int		ft_iswhitespace(int c);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

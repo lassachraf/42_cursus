@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 15:40:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 21:11:03 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/10/31 22:00:24 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/10/31 22:13:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*p;
+	char	*sub;
+	int		i;
 
-	p = s;
-	p[n] = '\0';
-	while (n--)
-		p[n] = (unsigned char)c;
-	return (s);
+	i = -1;
+	sub = (char *)malloc(len + 1);
+	if (!s || !sub)
+		return (NULL);
+	while (++i < len)
+		sub[i] = s[start++];
+	sub[i] = '\0';
+	return (sub);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char	array[8];
-
-// 	printf("%s\n", array);
-// 	ft_memset(array, '3', 3);
-// 	printf("%s\n", array);
-// 	memset(array, '4', 8);
-// 	printf("%s\n", array);
-// }

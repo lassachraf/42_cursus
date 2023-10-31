@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:49:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 17:11:25 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:17:26 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // 	char	*tmp;
 
 // 	tmp = strdup(string);
-// 	printf("- depl. %d caracteres de \"%s\" de position %d à %d. Attendu = \"%s\"\n", n, string, s, d, expected);
+// 	printf("- depl. %d caracteres de 
+//	\"%s\" de position %d à %d. Attendu = \"%s\"\n", n, string, s, d, expected);
 // 	ft_memmove(tmp + d, tmp + s, n);
 // 	if (strcmp(tmp, expected) != 0)
 // 		printf("ECHEC, resultat obtenu = %s\n", tmp);
@@ -62,24 +63,25 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // 	printf("# Done\n");
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main() {
-    char buffer[] = "Hello, World!";
-    char *source = buffer;
-    char *destination = buffer + 6; // Overlap by moving "World!" within the same string
+// int main() {
+//     char buffer[] = "Hello, World!";
+//     char *source = buffer;
+//     char *destination = buffer + 6; 
+// Overlap by moving "World!" within the same string
 
-    printf("Original: %s\n", buffer);
-    printf("Source:   %s\n", source);
-    printf("Dest:     %s\n", destination);
+//     printf("Original: %s\n", buffer);
+//     printf("Source:   %s\n", source);
+//     printf("Dest:     %s\n", destination);
 
-    size_t n = 6; // Number of characters to move
+//     size_t n = 6; // Number of characters to move
 
-    ft_memmove(destination, source, n);
+//     ft_memmove(destination, source, n);
 
-    printf("After memmove:\n");
-    printf("Source:   %s\n", source);
-    printf("Dest:     %s\n", destination);
+//     printf("After memmove:\n");
+//     printf("Source:   %s\n", source);
+//     printf("Dest:     %s\n", destination);
 
-    return 0;
-}
+//     return 0;
+// }

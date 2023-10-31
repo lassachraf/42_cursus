@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:10:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/30 18:15:56 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:18:59 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,12 @@ char	*ft_strrchr(const char *s, int c)
 	else
 		return (NULL);
 }
+
+// #include <stdio.h>
+
+// int main()
+// {
+// 	const char *p = "achraf";
+// 	char *p1 = ft_strrchr(p, 'a');
+// 	printf("%s\n", p);
+// }

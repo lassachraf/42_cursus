@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:37:43 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 19:47:37 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 22:14:26 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 
 	res = 0;
 	sign = 1;
-	while (*str && (*str == ' ' || (*str >= 9 && *str <= 13)))
+	while (*str && (ft_iswhitespace(*str)))
 		str++;
 	if (*str == '-' || *str == '+')
 	{

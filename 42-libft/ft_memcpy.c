@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:47:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 12:17:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/10/31 20:52:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t num)
 		return (NULL);
 	s1 = (char *)dest;
 	s2 = (char *)src;
-	i = 0;
-	while (i < num)
-	{
+	i = -1;
+	while (++i < num)
 		s1[i] = s2[i];
-		i++;
-	}
 	s1[num] = '\0';
 	return (dest);
 }
