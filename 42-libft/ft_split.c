@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/01 14:37:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/01 20:04:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,33 @@ static int	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-static void	ft_copy_word(char const *s, char *ret, char c)
+// void	ft_copy_word(char const *s, char *ret, char c)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	j = 0;
+// 	while (s[i] && s[i] != c)
+// 	{
+// 		ret[j++] = s[i];
+// 		i++;
+// 		write(1, "cc\n", 4);
+// 	}
+// 	ret[j] = '\0';
+// }
+
+void	ft_copy_word(char const *src, char *dest, char charset)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (s[i] && s[i] != c)
-		ret[j++] = s[i++];
-	ret[j] = '\0';
+	while (src[i] && src[i] != charset)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 }
 
 char	**ft_split(char const *s, char c)
@@ -51,7 +68,7 @@ char	**ft_split(char const *s, char c)
 	int		j;
 
 	count = ft_count_words(s, c);
-	ret = (char **)malloc((sizeof(char *) * count));
+	ret = (char **)malloc((sizeof(char *) * (count + 1)));
 	if (!ret)
 		return (NULL);
 	i = -1;
@@ -60,21 +77,23 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		while (s[i] && s[i++] != c)
-			j++;
-		ret[i] = (char *)malloc(sizeof(char) * j + 1);
+		j = i;
+		while (s[i] && s[i] != c)
+			i++;
+		ret[i] = (char *)malloc(sizeof(char) * (i - j + 1));
 		if (!ret[i])
 			return (NULL);
 		ft_copy_word(s, ret[i], c);
 	}
+	ret[i] = 0;
 	return (ret);
 }
+
 #include <stdio.h>
+
 int	main(void)
 {
-	char const	*s = "abcabcdecbfhcjklmnc po";
-	// char		**p = ft_split(s, 'c');
-	char		**d = ft_split(s, 'b');
-	while (*d++)
-		printf("\'%s\'\n", *d);
+	char const	*s = "ab abc c ab1 c ";
+	char		*t;
+
 }

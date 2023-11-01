@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:11:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/01 09:38:50 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:23:08 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 
 // Bonus PART :)
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst);
 
 // Additional functions :
 int		ft_iswhitespace(int c);
