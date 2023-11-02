@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/02 18:44:34 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/02 15:29:08 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/02 15:34:58 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	count;
-	int	i;
+	char			*str;
+	unsigned int	i;
 
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	count = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] && s[i++] != c)
-			count++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (count);
-}
-
-void	ft_copy_word(char const *src, char *dest, char c)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] && src[i] != charset)
-	{
-		dest[i] = src[i];
+		str[i] = f(i, s[i]);
 		i++;
 	}
-	dest[i] = '\0';
+	str[i] = '\0';
+	return (str);
 }
-
-char	**ft_split(char const *s, char c);

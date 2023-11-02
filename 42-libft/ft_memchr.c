@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:45:55 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 20:51:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:31:33 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	if (!s)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:49:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/01 15:11:25 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:28:19 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,24 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 // 	printf("# Done\n");
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main() {
-    char buffer[] = "Hello, World!";
-    char *source = buffer;
-    char *destination = buffer + 6;
+// int main() {
+//     char buffer[] = "Hello, World!";
+//     char *source = buffer;
+//     char *destination = buffer + 6;
 
-    printf("Original: %s\n", buffer);
-    printf("Source:   %s\n", source);
-    printf("Dest:     %s\n", destination);
+//     printf("Original: %s\n", buffer);
+//     printf("Source:   %s\n", source);
+//     printf("Dest:     %s\n", destination);
 
-    size_t n = 6; // Number of characters to move
+//     size_t n = 6; // Number of characters to move
 
-    ft_memmove(destination, source, n);
+//     ft_memmove(destination, source, n);
 
-    printf("After memmove:\n");
-    printf("Source:   %s\n", source);
-    printf("Dest:     %s\n", destination);
+//     printf("After memmove:\n");
+//     printf("Source:   %s\n", source);
+//     printf("Dest:     %s\n", destination);
 
-    return 0;
-}
+//     return 0;
+// }
