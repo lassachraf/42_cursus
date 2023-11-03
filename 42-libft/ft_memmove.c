@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:49:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/02 15:28:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:44:12 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	s1 = (char *)src;
 	s2 = (char *)dest;
 	i = 0;
-	s2[n] = '\0';
 	if (s2 > s1)
 		while (n-- > 0)
 			s2[n] = s1[n];
 	else
 	{
-		while (i++ < n)
+		while (i < n)
+		{
 			s2[i] = s1[i];
+			i++;
+		}
 	}
 	return (dest);
 }

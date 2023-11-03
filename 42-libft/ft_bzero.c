@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:46:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 15:09:08 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:31:09 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
+	if (!s)
+		return ;
 	ft_memset(s, 0, n);
 }

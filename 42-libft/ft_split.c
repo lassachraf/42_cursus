@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/03 08:41:04 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:38:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	**ft_split(char const *s, char c)
 	size_t	count;
 	size_t	i;
 	size_t	j;
+	size_t	k;
 
 	strs = (char **)malloc(sizeof(char *) * count + 1);
 	if (!strs)
@@ -45,6 +46,7 @@ char	**ft_split(char const *s, char c)
 	str = (char *)s;
 	count = ft_count_words(s, c);
 	i = 0;
+	k = 0;
 	while (k < count)
 	{
 		j = 0;
@@ -58,7 +60,6 @@ char	**ft_split(char const *s, char c)
 	strs[count] = NULL;
 	return (strs);
 }
-
 
 // void	ft_copy_word(char const *src, char *dest, char c)
 // {

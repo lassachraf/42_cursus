@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:52:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/30 18:15:44 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:37:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	if (!dst || !src)
-		return (i);
+		return (0);
 	if (size > 0)
 	{
-		while (src[i] && size--)
+		while (src[i] && size-- > 1)
 		{
 			dst[i] = src[i];
 			i++;

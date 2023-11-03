@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:10:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 22:18:59 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:03:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	i = ft_strlen(s) - 1;
 	if (c == 0)
 		return ((char *)(s + i + 1));
-	while (i >= 0 && s[i] != c)
+	while (i > 0 && s[i] != c)
 		i--;
 	if (s[i] == c)
 		return ((char *)(s + i));
-	else
-		return (NULL);
+	return (NULL);
 }
 
 // #include <stdio.h>

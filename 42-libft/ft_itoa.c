@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:36:11 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/02 18:46:12 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:49:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_count_digits(int n)
 	int		i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	while (n)
 	{
 		n /= 10;

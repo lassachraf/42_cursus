@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2023/11/02 18:47:10 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/03 17:46:33 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 
 # sources :
-
 
 # part 1
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c
@@ -32,9 +31,6 @@ SRCS += ft_substr.c ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri
 SRCS += ft_iswhitespace.c
 
 OBJS = $(SRCS:.c=.o)
-
-norm:
-	@norminette $(SRCS)
 
 HEADER = libft.h
 
@@ -55,4 +51,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re norm
+.PHONY: clean all fclean re

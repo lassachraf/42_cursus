@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:36:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/30 15:38:18 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 15:22:55 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,10 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	printf("%zu", ft_strlen("\n\n\f\r\t"));
+// }

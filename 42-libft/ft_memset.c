@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:40:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 21:11:03 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:56:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	unsigned char	*p;
 
 	p = s;
-	p[n] = '\0';
 	while (n--)
 		p[n] = (unsigned char)c;
 	return (s);
@@ -27,11 +26,16 @@ void	*ft_memset(void *s, int c, size_t n)
 
 // int	main(void)
 // {
-// 	char	array[8];
-
-// 	printf("%s\n", array);
-// 	ft_memset(array, '3', 3);
-// 	printf("%s\n", array);
-// 	memset(array, '4', 8);
-// 	printf("%s\n", array);
+// 	int	array[8];
+// 	for (int i = 0; i < 8; i++)
+// 	{
+// 		printf("%d\n", array[i]);
+// 	}
+// 	ft_memset(array, '2', 8);
+// 	for (int i = 0; i < 8; i++)
+// 	{
+// 		printf("%d\n", array[i]);
+// 	}
+// 	// memset(array, '4', 8);
+// 	// printf("%d\n", array);
 // }
