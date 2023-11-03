@@ -6,42 +6,73 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/02 18:44:34 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/03 08:41:04 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(char const *s, char c)
+static size_t	ft_count_words(char const *s, char c)
 {
-	int	count;
-	int	i;
+	size_t	words;
 
-	i = 0;
-	count = 0;
-	while (s[i])
+	words = 0;
+	while (*s)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] && s[i++] != c)
-			count++;
-		while (s[i] && s[i] != c)
-			i++;
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			words++;
+			while (*s && *s != c)
+				s++;
+		}
 	}
-	return (count);
+	return (words);
 }
 
-void	ft_copy_word(char const *src, char *dest, char c)
+char	**ft_split(char const *s, char c)
 {
-	int	i;
+	char	*str;
+	char	**strs;
+	size_t	count;
+	size_t	i;
+	size_t	j;
 
+	strs = (char **)malloc(sizeof(char *) * count + 1);
+	if (!strs)
+		return (NULL);
+	str = (char *)s;
+	count = ft_count_words(s, c);
 	i = 0;
-	while (src[i] && src[i] != charset)
+	while (k < count)
 	{
-		dest[i] = src[i];
-		i++;
+		j = 0;
+		while (str[i] == c)
+			i++;
+		while (str[i] != c && str[i] != '\0')
+			strs[k][j++] = str[i];
+		strs[k][j] = '\0';
+		k++;
 	}
-	dest[i] = '\0';
+	strs[count] = NULL;
+	return (strs);
 }
 
-char	**ft_split(char const *s, char c);
+
+// void	ft_copy_word(char const *src, char *dest, char c)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (src[i] && src[i] != charset)
+// 	{
+// 		dest[i] = src[i];
+// 		i++;
+// 	}
+// 	dest[i] = '\0';
+// }
+
+// char	**ft_split(char const *s, char c)
+// {
+// }
