@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/03 15:38:56 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/04 11:49:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,49 +31,47 @@ static size_t	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_custom_copy(char **strs, char *str, size_t count, char c)
 {
-	char	*str;
-	char	**strs;
-	size_t	count;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	size_t		i;
+	size_t		len;
+	const char	*start;
 
-	strs = (char **)malloc(sizeof(char *) * count + 1);
-	if (!strs)
-		return (NULL);
-	str = (char *)s;
-	count = ft_count_words(s, c);
 	i = 0;
-	k = 0;
-	while (k < count)
+	len = 0;
+	while (i < count)
 	{
-		j = 0;
-		while (str[i] == c)
-			i++;
-		while (str[i] != c && str[i] != '\0')
-			strs[k][j++] = str[i];
-		strs[k][j] = '\0';
-		k++;
+		len = 0;
+		while (*str == c)
+			str++;
+		start = str;
+		while (*str && *str != c)
+		{
+			str++;
+			len++;
+		}
+		strs[i] = (char *)malloc(len + 1);
+		if (!strs[i])
+			return (NULL);
+		ft_strlcpy(strs[i], start, len + 1);
+		strs[i][len] = '\0';
+		i++;
 	}
-	strs[count] = NULL;
 	return (strs);
 }
 
-// void	ft_copy_word(char const *src, char *dest, char c)
-// {
-// 	int	i;
+char	**ft_split(char const *s, char c)
+{
+	char	**strs;
+	char	*str;
+	size_t	count;
 
-// 	i = 0;
-// 	while (src[i] && src[i] != charset)
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	dest[i] = '\0';
-// }
-
-// char	**ft_split(char const *s, char c)
-// {
-// }
+	str = (char *)s;
+	count = ft_count_words(s, c);
+	strs = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!strs)
+		return (0);
+	strs = ft_custom_copy(strs, str, count, c);
+	strs[count] = 0;
+	return (strs);
+}
