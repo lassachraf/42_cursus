@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:11:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/03 16:20:15 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/04 10:01:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-// Mandatory PART1 :)
+// Mandatory PART :)
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -45,7 +45,7 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 
-// Mandatory PART2 :)
+// Additional PART :)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -70,11 +70,11 @@ typedef struct s_list
 }				t_list;
 
 t_list	*ft_lstnew(void *content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
+// void	ft_lstadd_front(t_list **lst, t_list *new);
+// int		ft_lstsize(t_list *lst);
+// t_list	*ft_lstlast(t_list *lst);
 
-// My additional functions :
+// My additional functions :)
 
 int		ft_iswhitespace(int c);
 

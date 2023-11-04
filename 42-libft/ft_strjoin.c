@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:20:37 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 22:56:07 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:34:03 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*s2)
 		*start++ = *s2++;
 	*start = '\0';
-	return (str);
+	return ((char *)str);
 }
 
 // #include <stdio.h>

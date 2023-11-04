@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 11:49:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:13:02 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static char	**ft_custom_copy(char **strs, char *str, size_t count, char c)
 	const char	*start;
 
 	i = 0;
-	len = 0;
 	while (i < count)
 	{
 		len = 0;

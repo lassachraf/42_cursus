@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:47:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/03 16:09:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:36:01 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*s2;
 	size_t			i;
 
-	if (!src && !dest)
-		return (NULL);
 	s1 = (unsigned char *)dest;
 	s2 = (unsigned char *)src;
 	i = 0;
