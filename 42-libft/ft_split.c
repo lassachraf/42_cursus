@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:13:02 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/07 18:58:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static char	**ft_custom_copy(char **strs, char *str, size_t count, char c)
 		if (!strs[i])
 			return (NULL);
 		ft_strlcpy(strs[i], start, len + 1);
-		strs[i][len] = '\0';
 		i++;
 	}
 	return (strs);
@@ -65,6 +64,8 @@ char	**ft_split(char const *s, char c)
 	char	*str;
 	size_t	count;
 
+	if (!s)
+		return (NULL);
 	str = (char *)s;
 	count = ft_count_words(s, c);
 	strs = (char **)malloc(sizeof(char *) * (count + 1));

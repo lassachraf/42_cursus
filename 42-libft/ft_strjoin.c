@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:20:37 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:34:03 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:48:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	int		total_len;
 
+	if (!s1 || !s2)
+		return (NULL);
 	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *)malloc(sizeof(char *) * total_len);
+	str = (char *)malloc(sizeof(char) * total_len);
 	if (!str)
 		return (NULL);
 	start = str;

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 23:02:30 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:42:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:38:20 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,56 @@
 
 static int	ft_is_char_in_set(char c, char const *set)
 {
-	while (*set)
+	size_t	i;
+
+	i = 0;
+	while (set[i])
 	{
-		if (c == *set)
+		if (c == set[i])
 			return (1);
-		set++;
+		i++;
 	}
 	return (0);
 }
 
-static int	ft_first_char(char const *s, char const *set)
+static char	*ft_malloc(char *res, char *s, int len)
 {
 	int	i;
 
 	i = 0;
-	while (*s && ft_is_char_in_set(*s++, set))
+	while (i < len)
+	{
+		res[i] = s[i];
 		i++;
-	return (i);
-}
-
-static int	ft_last_char(char const *s, char const *set)
-{
-	int	i;
-
-	i = ft_strlen(s) - 1;
-	while (s[i] && ft_is_char_in_set(s[i], set))
-		i--;
-	return (i);
+	}
+	res[i] = '\0';
+	return (res);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
-	char	*ret;
+	char	*s;
+	int		i;
 	int		len;
 
-	if (!s1 || !set)
+	s = (char *)s1;
+	if (!s)
 		return (NULL);
-	len = ft_last_char(s1, set) - ft_first_char(s1, set) + 1;
+	if (!set || !set[0])
+		return (ft_strdup(s1));
+	while (*s && ft_is_char_in_set(*s, set))
+		s++;
+	i = 0;
+	if (!s[i])
+		return (ft_strdup(s));
+	len = ft_strlen(s) - 1;
+	while (ft_is_char_in_set(s[len], set))
+		len--;
+	len++;
 	res = (char *)malloc(sizeof(char) * (len + 1));
-	ret = res;
-	while (*s1 && ft_is_char_in_set(*s1, set))
-		s1++;
-	while (len--)
-		*res++ = *s1++;
-	*res = '\0';
-	return (ret);
+	if (res == NULL)
+		return (NULL);
+	res = ft_malloc(res, s, len);
+	return (res);
 }

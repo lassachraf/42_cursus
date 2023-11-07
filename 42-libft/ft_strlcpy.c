@@ -6,12 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:52:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 13:11:58 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:57:54 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -31,10 +30,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return (i);
 }
-
-// int main ()
-// {
-// 	printf ("   : %lu\n", strlcpy ("lala", ((void *)0), 5));
-// 	printf ("ft : %lu\n", ft_strlcpy ("lala", ((void *)0), 5));
-// 	return 0;
-// }

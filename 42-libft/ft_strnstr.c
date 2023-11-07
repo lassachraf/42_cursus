@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:26:55 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/30 18:31:39 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:48:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
+	if (!haystack && !len)
+		return (NULL);
 	if (needle[0] == '\0')
 		return ((char *)haystack);
 	while (haystack[i])

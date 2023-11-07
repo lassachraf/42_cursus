@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 18:23:26 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/01 18:23:46 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/07 20:22:40 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/07 20:22:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,11 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	while (lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
 }

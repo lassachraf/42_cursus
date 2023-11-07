@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:24:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 22:18:33 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:46:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+			return ((char *)s);
 		s++;
-	if (*s == c)
+	}
+	if (*s == (unsigned char)c)
 		return ((char *)s);
-	else
-		return (NULL);
+	return (NULL);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	const char *s = "Bader";
-// 	char *p = ft_strchr(s, '\0');
-// 	printf("%s\n", p);
-// }

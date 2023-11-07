@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:44:24 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/10/31 09:26:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/05 17:53:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(const char *s1)
 
 	i = 0;
 	len = ft_strlen(s1);
-	copy = malloc(sizeof(char) * len + 1);
+	copy = malloc(sizeof(char) * (len + 1));
 	if (!copy)
 		return (NULL);
 	while (s1[i])

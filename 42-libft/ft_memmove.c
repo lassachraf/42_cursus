@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:49:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:31:56 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:59:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char	*s2;
 	size_t			i;
 
+	if (!dest && !src)
+		return (NULL);
 	s1 = (unsigned char *)src;
 	s2 = (unsigned char *)dest;
 	i = 0;

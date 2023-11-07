@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 18:20:01 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 18:28:38 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/07 20:57:37 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/07 20:57:37 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,10 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	if (lst)
+	{
+		if (*lst)
+			new->next = *lst;
+		*lst = new;
+	}
 }

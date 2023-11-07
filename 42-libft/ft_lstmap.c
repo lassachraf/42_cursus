@@ -1,29 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 17:45:55 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/06 18:09:46 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/07 19:06:01 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/07 21:28:43 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
-
-void	*ft_memchr(const void *s, int c, size_t n)
-{
-	unsigned char	*p;
-	size_t			i;
-
-	p = (unsigned char *)s;
-	i = 0;
-	while (i < n)
-	{
-		if (p[i] == (unsigned char)c)
-			return ((void *)(s + i));
-		i++;
-	}
-	return (NULL);
-}

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:00:24 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/04 21:44:18 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/05 18:13:12 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,46 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char		*sub;
-	size_t		i;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	if (!s || start >= ft_strlen(s) || len > (ft_strlen(s) - start))
+	if (!s)
 		return (NULL);
-	sub = (char *)malloc(sizeof(char) * (len + 1));
-	if (!sub)
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > (ft_strlen(s) - start))
+		len = ft_strlen(s) - start;
+	str = (char *)malloc((len + 1));
+	if (!str)
 		return (NULL);
-	while (i < len)
-		sub[i++] = s[start++];
-	sub[i] = '\0';
-	return (sub);
+	i = start;
+	j = 0;
+	while (s[i] && j < len)
+	{
+		str[j] = s[i];
+		j++;
+		i++;
+	}
+	str[j] = '\0';
+	return (str);
 }
+
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	char		*sub;
+// 	size_t		i;
+
+// 	i = 0;
+// 	if (start >= ft_strlen(s))
+// 		return (ft_strdup(""));
+// 	if (!s || len > (ft_strlen(s) - start))
+// 		return (NULL);
+// 	sub = (char *)malloc(sizeof(char) * (len + 1));
+// 	if (!sub)
+// 		return (NULL);
+// 	while (i < len)
+// 		sub[i++] = s[start++];
+// 	sub[i] = '\0';
+// 	return (sub);
+// }
