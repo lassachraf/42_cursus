@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:20:37 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/06 12:48:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:34:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*s2)
 		*start++ = *s2++;
 	*start = '\0';
-	return ((char *)str);
+	return (str);
 }
-
-// #include <stdio.h>
-
-// int main() {
-//     const char *s1 = "Hello, ";
-//     const char *s2 = "world!";
-
-//     char *result = ft_strjoin(s1, s2);
-
-//     if (result) {
-//         printf("Concatenated string: %s\n", result);
-//         free(result);
-//     } else {
-//         printf("Memory allocation failed.\n");
-//     }
-
-//     return 0;
-// }

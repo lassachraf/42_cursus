@@ -6,13 +6,16 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2023/11/08 12:07:56 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/08 18:41:54 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+HEADER = libft.h
+RM = rm -f
+LIB = ar -rc
 
 # Mandatory part
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c
@@ -25,30 +28,25 @@ SRCS += ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c 
 # Bonus Part
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c 
 
-# My Additional Part
-SRCS += ft_iswhitespace.c
-
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(BONUS:.c=.o)
 
-HEADER = libft.h
-
-.c.o:
+.c.o: 
 	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 $(NAME): $(OBJS)
-	@ar -rc $(NAME) $(OBJS)
+	@$(LIB) $(NAME) $(OBJS)
 
 all: $(NAME)
 
 bonus: $(OBJS_B)
-	@ar -rc $(NAME) $(OBJS_B)
+	@$(LIB) $(NAME) $(OBJS_B)
 
 clean:
-	@rm -f $(OBJS) $(OBJS_B)
+	@$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
-	@rm -f $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

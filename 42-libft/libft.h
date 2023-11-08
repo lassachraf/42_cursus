@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:11:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/08 11:10:29 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:10:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
-# include <stdio.h>
-// # define SIZE_MAX 
 
 // Mandatory PART :)
 
@@ -80,9 +78,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void*));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-// My additional functions :)
-
-int		ft_iswhitespace(int c);
 
 #endif

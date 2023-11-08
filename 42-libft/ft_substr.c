@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:00:24 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/05 18:13:12 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 17:23:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[j] = '\0';
 	return (str);
 }
-
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
-// {
-// 	char		*sub;
-// 	size_t		i;
-
-// 	i = 0;
-// 	if (start >= ft_strlen(s))
-// 		return (ft_strdup(""));
-// 	if (!s || len > (ft_strlen(s) - start))
-// 		return (NULL);
-// 	sub = (char *)malloc(sizeof(char) * (len + 1));
-// 	if (!sub)
-// 		return (NULL);
-// 	while (i < len)
-// 		sub[i++] = s[start++];
-// 	sub[i] = '\0';
-// 	return (sub);
-// }

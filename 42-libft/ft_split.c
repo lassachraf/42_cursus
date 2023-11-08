@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/07 18:58:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 20:29:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static size_t	ft_count_words(char const *s, char c)
 
 static char	**ft_custom_copy(char **strs, char *str, size_t count, char c)
 {
-	size_t		i;
-	size_t		len;
-	const char	*start;
+	size_t	i;
+	size_t	len;
+	char	*start;
 
 	i = 0;
 	while (i < count)

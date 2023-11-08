@@ -6,11 +6,9 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:37:33 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/02 15:40:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 21:26:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
