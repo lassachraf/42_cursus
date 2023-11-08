@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:36:11 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/03 15:49:45 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:16:03 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,10 @@ char	*ft_itoa(int n)
 		i *= -1;
 	}
 	digits = ft_count_digits(i) + sign;
-	str = (char *)malloc(digits * sizeof(char) + 1);
+	str = (char *)malloc(digits + 1);
 	if (!str)
 		return (NULL);
 	str[digits] = '\0';
 	ft_convert(str, i, sign, digits);
 	return (str);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	printf("%s\n", ft_itoa(-2147483647));
-// }

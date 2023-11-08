@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:40:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/05 12:51:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:45:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned char	*p;
 
-	p = s;
+	p = (unsigned char *)s;
 	while (n--)
 		p[n] = (unsigned char)c;
 	return (s);

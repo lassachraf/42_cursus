@@ -6,15 +6,13 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2023/11/07 21:28:05 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/08 12:07:56 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 NAME = libft.a
-
-# sources :
 
 # Mandatory part
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c
@@ -47,7 +45,7 @@ bonus: $(OBJS_B)
 	@ar -rc $(NAME) $(OBJS_B)
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(OBJS_B)
 
 fclean: clean
 	@rm -f $(NAME)
