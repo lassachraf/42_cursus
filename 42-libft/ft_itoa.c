@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:36:11 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/08 14:26:50 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:42:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_count_digits(int n)
 	return (i);
 }
 
-static void	ft_convert(char *str, long long i, int sign, int digits)
+static void	ft_convert(char *str, long i, int sign, int digits)
 {
 	if (sign)
 		str[0] = '-';
@@ -40,12 +40,12 @@ static void	ft_convert(char *str, long long i, int sign, int digits)
 
 char	*ft_itoa(int n)
 {
-	int			digits;
-	int			sign;
-	char		*str;
-	long long	i;
+	int		digits;
+	int		sign;
+	char	*str;
+	long	i;
 
-	i = n;
+	i = (long)n;
 	sign = 0;
 	if (i < 0)
 	{

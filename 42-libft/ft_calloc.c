@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:44:12 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/08 19:32:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:38:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,13 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*ptr;
 
 	if (count == 0 || size == 0)
-		return (malloc(0));
-	if (size > INT_MAX / count)
+	{
+		ptr = malloc(1);
+		if (!ptr)
+			return (NULL);
+		return (ptr);
+	}
+	if (size > SIZE_MAX / count || size == SIZE_MAX || count == SIZE_MAX)
 		return (NULL);
 	ptr = (void *)malloc(count * size);
 	if (!ptr)

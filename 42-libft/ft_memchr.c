@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:45:55 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/08 19:30:51 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/11 22:47:44 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	while (i < n)
 	{
 		if (p[i] == (unsigned char)c)
-			return ((void *)(s + i));
+			return ((void *)(p + i));
 		i++;
 	}
 	return (NULL);
