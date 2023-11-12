@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/11 21:45:14 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/12 09:48:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static size_t	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-static void ft_get_next_word(char *next_word, size_t *next_word_len, char c)
+static void	ft_get_next_word(char *next_word, size_t *next_word_len, char c)
 {
 	size_t	i;
-	
+
 	i = 0;
 	*next_word += *next_word_len;
 	*next_word_len = 0;
@@ -57,7 +57,7 @@ static void ft_get_next_word(char *next_word, size_t *next_word_len, char c)
 	while (next_word[i])
 	{
 		if (next_word[i] == c)
-			return;
+			return ;
 		(*next_word_len)++;
 		i++;
 	}
@@ -89,10 +89,4 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[i] = NULL;
 	return (tab);
-}
-
-int main ()
-{
-	
-	return (0);
 }
