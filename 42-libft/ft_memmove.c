@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:49:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/12 11:16:05 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:24:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+// int	main(void)
+// {
+// 	char	src[10] = "ABCDEF";
+
+// 	ft_memmove(src + 2, src, 4);
+// 	printf("%s\n", src);
+// 	return (0);
+// }

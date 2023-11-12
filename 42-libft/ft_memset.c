@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:40:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/12 11:16:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:13:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,11 @@ void	*ft_memset(void *s, int c, size_t n)
 		p[n] = (unsigned char)c;
 	return (s);
 }
+
+// int main()
+// {
+// 	int s[] = {4,3,8};
+// 	// 111 11010000
+// 	ft_memset(&s[0],43,1);
+// 	printf("%d\n",s[0]);
+// }
