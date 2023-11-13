@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:44:12 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/12 11:10:08 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:47:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 	{
-		ptr = malloc(1);
+		ptr = malloc(0);
 		if (!ptr)
 			return (NULL);
 		return (ptr);

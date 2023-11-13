@@ -6,12 +6,12 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2023/11/12 14:27:01 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/13 20:46:42 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 HEADER = libft.h
 RM = rm -f
@@ -26,12 +26,12 @@ SRCS += ft_calloc.c ft_strdup.c
 SRCS += ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 # Bonus Part
-BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(BONUS:.c=.o)
 
-.c.o: 
+.o:	.c
 	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 $(NAME): $(OBJS)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:52:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/12 15:01:55 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:27:26 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,3 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
-
-// int	main(void)
-// {
-// 	int	c = 5122002;
-// 	t_list *p = ft_lstnew(&c);
-// 	printf("%d\n", *(int *)p->content);
-// 	return (0);
-// }

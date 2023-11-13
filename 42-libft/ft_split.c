@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/13 09:31:02 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:08:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,4 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[i] = NULL;
 	return (tab);
-}
-
-int	main(void)
-{
-	char const	*s = "1337 FUTURE IS LOADING!!";
-	char		**r;
-	int			i;
-
-	r = ft_split(s, ' ');
-	if (!r)
-		return (1);
-	i = 0;
-	while (r[i])
-	{
-		printf("%s\n", r[i]);
-		i++;
-	}
-	return (0);
 }

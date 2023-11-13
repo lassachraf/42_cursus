@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:23:32 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/12 21:39:33 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:07:44 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// int	main(void)
-// {
-// 	char	*s;
-// 	char	*d;
-
-// 	d = malloc(5);
-// 	s = "ABCDEF";
-// 	printf("%s\n", ft_memcpy(d, s, 3));
-// }
