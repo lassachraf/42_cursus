@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 23:02:30 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/13 20:59:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:36:18 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_is_char_in_set(char c, char const *set)
 	return (0);
 }
 
-static char	*ft_malloc(char *res, char *s, int len)
+static char	*ft_copy(char *res, char *s, int len)
 {
 	int	i;
 
@@ -57,13 +57,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!*s)
 		return (ft_strdup(s));
 	i = 0;
-	len = ft_strlen(s) - 1;
+	len = ft_strlen(s);
 	while (ft_is_char_in_set(s[len], set))
 		len--;
-	len++;
 	res = (char *)malloc(sizeof(char) * (len + 1));
-	if (res == NULL)
+	if (!res)
 		return (NULL);
-	res = ft_malloc(res, s, len);
+	res = ft_copy(res, s, len);
 	return (res);
 }
