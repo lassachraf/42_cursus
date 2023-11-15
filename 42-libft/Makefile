@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2023/11/14 09:59:15 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/15 11:02:37 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,6 @@ BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(BONUS:.c=.o)
-
-.o: .c
-	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 $(NAME): $(OBJS)
 	@$(LIB) $(NAME) $(OBJS)

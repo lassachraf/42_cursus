@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 23:02:30 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/14 10:36:18 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:06:50 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!*s)
 		return (ft_strdup(s));
 	i = 0;
-	len = ft_strlen(s);
+	len = ft_strlen(s) - 1;
 	while (ft_is_char_in_set(s[len], set))
 		len--;
+	len++;
 	res = (char *)malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);

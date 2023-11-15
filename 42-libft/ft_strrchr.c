@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:10:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/13 21:00:01 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:25:20 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)(s + i));
 	while (i >= 0)
 	{
-		if (s[i] == (unsigned char)c)
+		if (s[i] == (char)c)
 			return ((char *)(s + i));
 		i--;
 	}	

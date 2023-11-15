@@ -6,24 +6,24 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/13 12:08:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:27:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_malloc_error(char **tab)
+static int	ft_malloc_error(char **tab, size_t i)
 {
-	size_t	i;
+	size_t	j;
 
-	i = 0;
-	while (tab[i])
+	j = 0;
+	while (j <= i)
 	{
-		free(tab[i]);
-		i++;
+		free(tab[j]);
+		j++;
 	}
 	free(tab);
-	return (NULL);
+	return (1);
 }
 
 static size_t	ft_count_words(char const *s, char c)
@@ -83,8 +83,8 @@ char	**ft_split(char const *s, char c)
 	{
 		next_word = ft_get_next_word(next_word, &next_word_len, c);
 		tab[i] = (char *)malloc(sizeof(char) * (next_word_len + 1));
-		if (!tab[i])
-			return (ft_malloc_error(tab));
+		if (!tab[i] && ft_malloc_error(tab, i))
+			return (NULL);
 		ft_strlcpy(tab[i], next_word, next_word_len + 1);
 		i++;
 	}
