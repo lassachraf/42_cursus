@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *get_next_line(int fd)
-{
+#include "get_next_line.h"
 
+char	*get_next_line(int fd)
+{
+	
 }
