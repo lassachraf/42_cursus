@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:02:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/15 13:02:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/21 17:30:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
 
 char	*get_next_line(int fd);
 
