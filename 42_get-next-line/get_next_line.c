@@ -6,11 +6,15 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:02:18 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/21 18:12:37 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:25:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#endif
 
 char	*ft_join_free(char *buffer, char *buf)
 {
@@ -106,4 +110,3 @@ char	*get_next_line(int fd)
 	buffer = ft_next(buffer);
 	return (line);
 }
-
