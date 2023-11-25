@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:00:12 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/23 20:41:51 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:49:09 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_PRINTF_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 int	ft_putchar(char c);
 int	ft_putstr(char *s);

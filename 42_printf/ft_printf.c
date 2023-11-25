@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:24:45 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/23 21:36:45 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:25:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_format(va_list ap, const char *s)
 		count += ft_print_hexa_up(va_arg(ap, unsigned int));
 	else if (*s == '%')
 		count += ft_putchar('%');
+	else
+		count += ft_putchar(*s);
 	return (count);
 }
 
@@ -59,14 +61,14 @@ int	ft_printf(const char *s, ...)
 
 	va_start(ap, s);
 	count = 0;
-	if (ft_perc_in_s(s, '%') == 1)
+	if (ft_perc_in_s(s, '%'))
 	{
 		while (*s)
 		{
 			if (*s == '%')
 			{
 				s++;
-				if (!*s)
+				if (!s)
 					break ;
 				count += ft_format(ap, s);
 			}
@@ -80,8 +82,3 @@ int	ft_printf(const char *s, ...)
 	va_end(ap);
 	return (count);
 }
-// int main()
-// {
-// 	printf("%d\n", ft_printf("          abcdef      %"));
-// 	printf("%d\n", printf("          abcdef      %"));
-// }
