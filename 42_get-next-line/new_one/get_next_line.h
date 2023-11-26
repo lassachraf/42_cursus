@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:02:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/26 11:19:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/26 14:41:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@
 # endif
 
 # include <stdlib.h>
-# include <unistd.h>
 # include <fcntl.h>
-# include <stdio.h>
+# include <unistd.h>
+
+typedef struct	s_list
+{
+	char			*content;
+	struct s_list	*next;
+}				t_list;
 
 char	*get_next_line(int fd);
-
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
-size_t	ft_strlen(const char *s);
 
 #endif
