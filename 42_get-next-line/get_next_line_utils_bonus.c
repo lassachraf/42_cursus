@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:26:29 by moel-asr          #+#    #+#             */
-/*   Updated: 2023/11/27 20:02:35 by alassiqu         ###   ########.fr       */
+/*   Created: 2022/11/01 14:57:25 by moel-asr          #+#    #+#             */
+/*   Updated: 2022/11/01 15:33:31 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -25,35 +25,38 @@ size_t	ft_strlen(const char *str)
 char	*ft_strdup(const char *str)
 {
 	int		i;
-	char	*copy;
+	char	*cp;
 
 	i = 0;
-	copy = (char *)malloc ((ft_strlen(str) * sizeof(char)) + 1);
-	if (!copy)
+	cp = (char *)malloc ((ft_strlen(str) * sizeof(char)) + 1);
+	if (!cp)
 		return (NULL);
 	while (str[i])
 	{
-		copy[i] = str[i];
+		cp[i] = str[i];
 		i++;
 	}
-	copy[i] = '\0';
-	return (copy);
+	cp[i] = '\0';
+	return (cp);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*s1;
-	unsigned char	*s2;
 	size_t			i;
+	unsigned char	*s;
+	unsigned char	*d;
 
+	i = 0;
 	if (!dest && !src)
 		return (NULL);
-	s1 = (unsigned char *)dest;
-	s2 = (unsigned char *)src;
-	i = 0;
-	while (i++ < n)
-		*s1++ = *s2++;
-	return (dest);
+	s = (unsigned char *) src;
+	d = (unsigned char *) dest;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (d);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

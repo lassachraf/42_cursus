@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moel-asr <moel-asr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:26:01 by moel-asr          #+#    #+#             */
-/*   Updated: 2023/11/27 21:20:28 by alassiqu         ###   ########.fr       */
+/*   Created: 2022/11/01 14:57:03 by moel-asr          #+#    #+#             */
+/*   Updated: 2022/11/01 18:28:21 by moel-asr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-char	*ft_free(char *str, char *buff)
+char	*ft_free(char *s1, char *s2)
 {
-	free(buff);
-	return (str);
+	free(s2);
+	return (s1);
 }
 
-char	*ft_read(int fd, char *buff)
+char	*ft_read(int fd, char *result)
 {
-	char		*str;
-	ssize_t		byte_readed;
+	char	*str;
+	int		i;
 
 	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	byte_readed = 1;
-	while (byte_readed > 0)
+	i = 1;
+	while (i > 0)
 	{
-		byte_readed = read(fd, str, BUFFER_SIZE);
-		if (byte_readed == -1)
+		i = read(fd, str, BUFFER_SIZE);
+		if (i == (-1))
 		{
 			free(str);
 			return (NULL);
 		}
-		str[byte_readed] = '\0';
-		buff = ft_free(ft_strjoin(buff, str), buff);
+		str[i] = '\0';
+		result = ft_free(ft_strjoin(result, str), result);
 		if (ft_strchr(str, '\n'))
 			break ;
 	}
 	free(str);
-	return (buff);
+	return (result);
 }
 
 char	*ft_get_line(char *str)
@@ -53,8 +53,6 @@ char	*ft_get_line(char *str)
 	while (str[i] != '\0' && str[i] != '\n')
 		i++;
 	line = malloc(sizeof(char) * i + 2);
-	if (!line)
-		return (NULL);
 	i = 0;
 	while (str[i] != '\0' && str[i] != '\n')
 	{
@@ -97,26 +95,15 @@ char	*ft_get_next_line(char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
+	static char	*str[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buff = ft_read(fd, buff);
-	if (!buff)
+	str[fd] = ft_read(fd, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = ft_get_line(buff);
-	buff = ft_get_next_line(buff);
+	line = ft_get_line(str[fd]);
+	str[fd] = ft_get_next_line(str[fd]);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("achraf.test", O_RDWR, 0777);
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// }
