@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:41:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/28 08:41:21 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:57:34 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,38 +25,35 @@ size_t	ft_strlen(const char *str)
 char	*ft_strdup(const char *str)
 {
 	int		i;
-	char	*cp;
+	char	*copy;
 
 	i = 0;
-	cp = (char *)malloc ((ft_strlen(str) * sizeof(char)) + 1);
-	if (!cp)
+	copy = (char *)malloc ((ft_strlen(str) * sizeof(char)) + 1);
+	if (!copy)
 		return (NULL);
 	while (str[i])
 	{
-		cp[i] = str[i];
+		copy[i] = str[i];
 		i++;
 	}
-	cp[i] = '\0';
-	return (cp);
+	copy[i] = '\0';
+	return (copy);
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
+	unsigned char	*s1;
+	unsigned char	*s2;
 	size_t			i;
-	unsigned char	*s;
-	unsigned char	*d;
 
-	i = 0;
 	if (!dest && !src)
 		return (NULL);
-	s = (unsigned char *) src;
-	d = (unsigned char *) dest;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (d);
+	s1 = (unsigned char *)dest;
+	s2 = (unsigned char *)src;
+	i = 0;
+	while (i++ < n)
+		*s1++ = *s2++;
+	return (dest);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -67,7 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 
 	if (!s1 && !s2)
-		return (ft_strdup(""));
+		return (NULL);
 	if (!s1 && s2)
 		return (ft_strdup(s2));
 	if (!s2 && s1)
@@ -88,17 +85,15 @@ char	*ft_strchr(const char *str, int c)
 {
 	size_t			i;
 	unsigned char	*s;
-	unsigned char	k;
-	size_t			size;
+	size_t			len;
 
 	i = 0;
-	size = ft_strlen(str);
+	len = ft_strlen(str);
 	s = (unsigned char *)str;
-	k = (unsigned char)c;
-	while (i <= size)
+	while (i <= len)
 	{
-		if (s[i] == k)
-			return ((char *)s + i);
+		if (s[i] == (unsigned char)c)
+			return ((char *)(s + i));
 		i++;
 	}
 	return (NULL);
