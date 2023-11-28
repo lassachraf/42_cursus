@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:26:01 by moel-asr          #+#    #+#             */
-/*   Updated: 2023/11/27 21:20:28 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/28 09:14:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,32 @@ char	*ft_read(int fd, char *buff)
 	return (buff);
 }
 
-char	*ft_get_line(char *str)
+char	*ft_get_line(char *buff)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	if (str[0] == '\0')
+	if (buff[0] == '\0')
 		return (NULL);
-	while (str[i] != '\0' && str[i] != '\n')
+	while (buff[i] != '\0' && buff[i] != '\n')
 		i++;
 	line = malloc(sizeof(char) * i + 2);
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (str[i] != '\0' && str[i] != '\n')
+	while (buff[i] != '\0' && buff[i] != '\n')
 	{
-		line[i] = str[i];
+		line[i] = buff[i];
 		i++;
 	}
-	if (str[i] != '\0' && str[i] == '\n')
+	if (buff[i] != '\0' && buff[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-char	*ft_get_next_line(char *str)
+char	*ft_get_next_line(char *buff)
 {
 	char	*line;
 	int		i;
@@ -75,23 +75,23 @@ char	*ft_get_next_line(char *str)
 
 	i = 0;
 	j = 0;
-	while (str[i] != '\0' && str[i] != '\n')
+	while (buff[i] != '\0' && buff[i] != '\n')
 		i++;
-	if (str[i] == '\0')
+	if (buff[i] == '\0')
 	{
-		free(str);
+		free(buff);
 		return (NULL);
 	}
-	line = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
+	line = malloc(sizeof(char) * (ft_strlen(buff) - i + 1));
 	i++;
-	while (str[i] != '\0')
+	while (buff[i] != '\0')
 	{
-		line[j] = str[i];
+		line[j] = buff[i];
 		i++;
 		j++;
 	}
 	line[j] = '\0';
-	free(str);
+	free(buff);
 	return (line);
 }
 

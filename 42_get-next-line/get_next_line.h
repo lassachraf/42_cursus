@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:25:57 by moel-asr          #+#    #+#             */
-/*   Updated: 2023/11/27 20:50:03 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:57 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/28 08:44:21 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+// Delete this 2 libraries before pushing the project !
 # include <fcntl.h>
 # include <stdio.h>
 

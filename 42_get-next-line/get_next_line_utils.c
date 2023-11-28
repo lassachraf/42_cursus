@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 16:26:29 by moel-asr          #+#    #+#             */
-/*   Updated: 2023/11/27 20:02:35 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:41 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/28 09:10:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,15 @@ char	*ft_strchr(const char *str, int c)
 {
 	size_t			i;
 	unsigned char	*s;
-	unsigned char	k;
-	size_t			size;
+	size_t			len;
 
 	i = 0;
-	size = ft_strlen(str);
+	len = ft_strlen(str);
 	s = (unsigned char *)str;
-	k = (unsigned char)c;
-	while (i <= size)
+	while (i <= len)
 	{
-		if (s[i] == k)
-			return ((char *)s + i);
+		if (s[i] == (unsigned char)c)
+			return ((char *)(s + i));
 		i++;
 	}
 	return (NULL);
