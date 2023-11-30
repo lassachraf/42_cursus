@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/30 20:15:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/30 20:58:55 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,3 @@ char	*get_next_line(int fd)
 	buff[fd] = ft_remainder(buff[fd]);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("achraf", O_RDWR, 0777);
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// }
