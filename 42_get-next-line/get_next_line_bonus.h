@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 08:41:28 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/28 13:58:07 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:57 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/30 20:05:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdlib.h>
 # include <limits.h>
 
+// Delete this 2 libraries before pushing the project !
+# include <fcntl.h>
+# include <stdio.h>
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
@@ -26,9 +30,7 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memmove(void *dest, const void *src, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strchr(const char *str, int c);
+int		ft_strchr(const char *str, int c);
 
 #endif

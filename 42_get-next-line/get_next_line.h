@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:57 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/28 08:44:21 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:14:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *str, int c);
+int		ft_strchr(const char *str, int c);
 
 #endif

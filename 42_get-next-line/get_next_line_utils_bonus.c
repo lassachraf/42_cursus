@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 08:41:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/28 13:57:34 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:41 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/30 16:14:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*ft_strchr(const char *str, int c)
+int	ft_strchr(const char *str, int c)
 {
 	size_t			i;
 	unsigned char	*s;
@@ -93,8 +93,8 @@ char	*ft_strchr(const char *str, int c)
 	while (i <= len)
 	{
 		if (s[i] == (unsigned char)c)
-			return ((char *)(s + i));
+			return (i);
 		i++;
 	}
-	return (NULL);
+	return (-1);
 }

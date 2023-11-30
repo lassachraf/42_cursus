@@ -5,67 +5,76 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 08:41:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/28 08:41:41 by alassiqu         ###   ########.fr       */
+/*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
+/*   Updated: 2023/11/30 20:15:11 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_free(char *s1, char *s2)
+char	*ft_free(char *str, char *buff)
 {
-	free(s2);
-	return (s1);
+	if (buff)
+		free(buff);
+	return (str);
 }
 
-char	*ft_read(int fd, char *result)
+char	*ft_read(int fd, char *buff)
 {
-	char	*str;
-	int		i;
+	char		*str;
+	ssize_t		byte_readed;
 
 	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
-	i = 1;
-	while (i > 0)
+	if (!str)
+		return (ft_free(NULL, buff));
+	byte_readed = 1;
+	while (byte_readed > 0)
 	{
-		i = read(fd, str, BUFFER_SIZE);
-		if (i == (-1))
+		byte_readed = read(fd, str, BUFFER_SIZE);
+		if (byte_readed == -1)
 		{
 			free(str);
-			return (NULL);
+			return (ft_free(NULL, buff));
 		}
-		str[i] = '\0';
-		result = ft_free(ft_strjoin(result, str), result);
-		if (ft_strchr(str, '\n'))
+		str[byte_readed] = '\0';
+		buff = ft_free(ft_strjoin(buff, str), buff);
+		if (ft_strchr(str, '\n') >= 0)
 			break ;
 	}
 	free(str);
-	return (result);
+	return (buff);
 }
 
-char	*ft_get_line(char *str)
+char	*ft_get_line(char *buff)
 {
 	char	*line;
 	int		i;
+	int		check;
 
+	check = 2;
 	i = 0;
-	if (str[0] == '\0')
+	if (buff[0] == '\0')
 		return (NULL);
-	while (str[i] != '\0' && str[i] != '\n')
+	while (buff[i] != '\0' && buff[i] != '\n')
 		i++;
-	line = malloc(sizeof(char) * i + 2);
+	if (buff[i] == '\0')
+		check = 1;
+	line = malloc(sizeof(char) * i + check);
+	if (!line)
+		return (ft_free(NULL, buff));
 	i = 0;
-	while (str[i] != '\0' && str[i] != '\n')
+	while (buff[i] != '\0' && buff[i] != '\n')
 	{
-		line[i] = str[i];
+		line[i] = buff[i];
 		i++;
 	}
-	if (str[i] != '\0' && str[i] == '\n')
+	if (buff[i] != '\0' && buff[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-char	*ft_get_next_line(char *str)
+char	*ft_remainder(char *buff)
 {
 	char	*line;
 	int		i;
@@ -73,37 +82,54 @@ char	*ft_get_next_line(char *str)
 
 	i = 0;
 	j = 0;
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	if (str[i] == '\0')
-	{
-		free(str);
+	if (!buff)
 		return (NULL);
-	}
-	line = malloc(sizeof(char) * (ft_strlen(str) - i + 1));
-	i++;
-	while (str[i] != '\0')
-	{
-		line[j] = str[i];
+	if (buff[0] == '\0')
+		return (ft_free(NULL, buff));
+	while (buff[i] != '\0' && buff[i] != '\n')
 		i++;
-		j++;
-	}
+	if (buff[i] == '\0')
+		return (ft_free(NULL, buff));
+	line = malloc(sizeof(char) * (ft_strlen(buff) - i + 1));
+	if (!line)
+		return (free(buff), NULL);
+	i++;
+	while (buff[i] != '\0')
+		line[j++] = buff[i++];
 	line[j] = '\0';
-	free(str);
+	free(buff);
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*str[OPEN_MAX];
+	static char	*buff[OPEN_MAX];
 	char		*line;
 
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (ft_free(NULL, buff[fd]));
+	buff[fd] = ft_read(fd, buff[fd]);
+	if (!buff[fd])
 		return (NULL);
-	str[fd] = ft_read(fd, str[fd]);
-	if (!str[fd])
-		return (NULL);
-	line = ft_get_line(str[fd]);
-	str[fd] = ft_get_next_line(str[fd]);
+	line = ft_get_line(buff[fd]);
+	buff[fd] = ft_remainder(buff[fd]);
 	return (line);
 }
+
+// int	main(void)
+// {
+// 	int	fd;
+
+// 	fd = open("achraf", O_RDWR, 0777);
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// 	printf("%s\n", get_next_line(fd));
+// }
