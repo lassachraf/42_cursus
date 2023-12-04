@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/30 20:58:55 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:18:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ char	*ft_get_line(char *buff)
 
 	check = 2;
 	i = 0;
-	if (buff[0] == '\0')
+	if ((!buff) || buff[0] == '\0')
 		return (NULL);
-	while (buff[i] != '\0' && buff[i] != '\n')
+	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
 	if (buff[i] == '\0')
 		check = 1;
@@ -63,7 +63,7 @@ char	*ft_get_line(char *buff)
 	if (!line)
 		return (ft_free(NULL, buff));
 	i = 0;
-	while (buff[i] != '\0' && buff[i] != '\n')
+	while (buff[i] != '\n' && buff[i] != '\0')
 	{
 		line[i] = buff[i];
 		i++;
@@ -107,7 +107,7 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free(NULL, buff[fd]));
 	buff[fd] = ft_read(fd, buff[fd]);
 	if (!buff[fd])

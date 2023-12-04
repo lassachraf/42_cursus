@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/30 21:16:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:18:11 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_read(int fd, char *buff)
 	char		*str;
 	ssize_t		byte_readed;
 
-	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!str)
 		return (ft_free(NULL, buff));
 	byte_readed = 1;
@@ -32,10 +32,7 @@ char	*ft_read(int fd, char *buff)
 	{
 		byte_readed = read(fd, str, BUFFER_SIZE);
 		if (byte_readed == -1)
-		{
-			free(str);
-			return (ft_free(NULL, buff));
-		}
+			return (free(str), ft_free(NULL, buff));
 		str[byte_readed] = '\0';
 		buff = ft_free(ft_strjoin(buff, str), buff);
 		if (ft_strchr(str, '\n') >= 0)
@@ -55,7 +52,7 @@ char	*ft_get_line(char *buff)
 	i = 0;
 	if (buff[0] == '\0')
 		return (NULL);
-	while (buff[i] != '\0' && buff[i] != '\n')
+	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
 	if (buff[i] == '\0')
 		check = 1;
@@ -63,7 +60,7 @@ char	*ft_get_line(char *buff)
 	if (!line)
 		return (ft_free(NULL, buff));
 	i = 0;
-	while (buff[i] != '\0' && buff[i] != '\n')
+	while (buff[i] != '\n' && buff[i] != '\0')
 	{
 		line[i] = buff[i];
 		i++;
@@ -86,7 +83,7 @@ char	*ft_remainder(char *buff)
 		return (NULL);
 	if (buff[0] == '\0')
 		return (ft_free(NULL, buff));
-	while (buff[i] != '\0' && buff[i] != '\n')
+	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
 	if (buff[i] == '\0')
 		return (ft_free(NULL, buff));
@@ -107,7 +104,7 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free(NULL, buff));
 	buff = ft_read(fd, buff);
 	if (!buff)
@@ -116,20 +113,3 @@ char	*get_next_line(int fd)
 	buff = ft_remainder(buff);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int	fd;
-
-// 	fd = open("achraf", O_RDWR, 0777);
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// 	printf("%s\n", get_next_line(fd));
-// }

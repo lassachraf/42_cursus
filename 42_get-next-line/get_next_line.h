@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:57 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/11/30 21:16:50 by alassiqu         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:08:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-// Delete this 2 libraries before pushing the project !
-# include <fcntl.h>
-# include <stdio.h>
-
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 char	*get_next_line(int fd);
