@@ -6,7 +6,7 @@ arch=$(uname -a)
 #CPU (Physical/ Virtual)
 pcpu=$(grep "physical id" /proc/cpuinfo | uniq | wc -l)
 vcpu=$(grep "^processor" /proc/cpuinfo | wc -l)
-lcpu=$(top -bn1 | grep '^%Cpu' | cut -c 9- | xargs | awk '{printf("%.1f%%", $1 + $3)}')
+lcpu=$(mpstat | grep all | awk '{print 100 - $NF}')
 
 #Memory
 umem=$(free -m | awk '$1 == "Mem:" {print $3}')
@@ -44,7 +44,7 @@ wall "
 	#vCPU            : $vcpu
 	#Memory Usage    : $umem/$tmem MB ($pmem%)
 	#Disk Usage      : $udsk/$tdsk Gb ($pdsk%)
-	#CPU load        : $lcpu
+	#CPU load        : $lcpu%
 	#Last boot       : $lboot
 	#LVM use         : $ulvm
 	#Connections TCP : $ctcp ESTABLISHED
