@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:01:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 17:17:51 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 17:18:55 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	ft_path_error(char **env)
         }
 		ft_putstr_fd("Error: Unset PATH!\n", 2);
 		ft_putstr_fd("Change terminal than come back!\n", 2);
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 }
