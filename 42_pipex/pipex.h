@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:50:28 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/05 11:29:37 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 14:07:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <errno.h>
 # include "42_libft/libft.h"
 
+// Mandatory functions :
+
 char	*search_for_path(char *cmd, char **env);
-void	execute(char *argv, char **env);
-void	error(char *s);
+void	ft_execute(char *argv, char **env);
+void	ft_error(char *s);
+void	ft_free_paths(char **all_paths);
+void	ft_path_error(char *env);
+
+// Added ones for bonus part :
+
+// void	ft_arg_error(void);
 
 #endif

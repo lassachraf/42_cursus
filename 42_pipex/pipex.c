@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:52:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/05 23:29:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 14:01:33 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	child_process(char **argv, char **env, int *fd)
 
 	infile = open(argv[1], O_RDONLY, 0777);
 	if (infile == -1)
-		error("inputfile error");
+		ft_error("Inputfile");
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(infile, STDIN_FILENO);
 	close(fd[0]);
-	execute(argv[2], env);
+	ft_execute(argv[2], env);
 }
 
 void	parent_process(char **argv, char **env, int *fd)
@@ -31,11 +31,11 @@ void	parent_process(char **argv, char **env, int *fd)
 
 	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (outfile == -1)
-		error("outputfile error");
+		ft_error("Outputfile");
 	dup2(fd[0], STDIN_FILENO);
 	dup2(outfile, STDOUT_FILENO);
 	close(fd[1]);
-	execute(argv[3], env);
+	ft_execute(argv[3], env);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -46,13 +46,13 @@ int	main(int argc, char **argv, char **env)
 	if (argc == 5)
 	{
 		if (pipe(fd) == -1)
-			error("pipe error");
+			ft_error("pipe");
 		pid = fork();
 		if (pid == -1)
-			error("fork error");
+			ft_error("fork");
 		if (pid == 0)
 			child_process(argv, env, fd);
-		waitpid(pid, NULL, 0);
+		wait(NULL);
 		parent_process(argv, env, fd);
 	}
 	else
