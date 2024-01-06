@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:52:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 14:01:33 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 16:25:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc == 5)
 	{
+		ft_path_error(env);
 		if (pipe(fd) == -1)
 			ft_error("pipe");
 		pid = fork();

@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 09:16:33 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/06 14:02:59 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/01/06 15:23:25 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME_B	= pipex_bonus
 HEADER	= pipex.h
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
@@ -25,14 +25,14 @@ BONUS	= pipex_bonus.c pipex_bonus_utils.c
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(BONUS:.c=.o)
 
-$(NAME): $(SRCS) $(OBJS)
-	@make re -C 42_libft/
+$(NAME): $(SRCS) $(OBJS) $(HEADER)
+	@make -C 42_libft/
 	@$(CC) $(CFLAGS) $(OBJS) -L42_libft -lft -o $(NAME)
 
 all: $(NAME)
 
 bonus: $(BONUS) $(OBJS_B)
-	@make re -C 42_libft/
+	@make -C 42_libft/
 	@$(CC) $(CFLAGS) $(OBJS) -L42_libft -lft -o $(NAME_B)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:01:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 14:01:25 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 17:09:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*search_for_path(char *cmd, char **env)
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
 		i++;
-	ft_path_error(env[i]);
 	all_paths = ft_split(env[i] + 5, ':');
 	i = 0;
 	while (all_paths[i])
@@ -79,11 +78,27 @@ void	ft_free_paths(char	**all_paths)
 	free(all_paths);
 }
 
-void	ft_path_error(char *env)
+void	ft_path_error(char **env)
 {
-	if (ft_strnstr(env, "PATH", 4) == NULL)
+	int	i;
+
+	i = 0;
+	if (!env || !env[0])
 	{
-		ft_putstr_fd("Error: Unset PATH\n", 2);
-		ft_error("Command not found");
+		ft_putstr_fd("Error: Unset env!\n", 2);
+		ft_putstr_fd("Change terminal than come back!\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	if (1)
+	{
+		while (env[i] != NULL)
+		{
+			if (ft_strnstr(env[i], "PATH=", 5) != NULL)
+                return;
+            i++;
+        }
+		ft_putstr_fd("Error: Unset PATH!\n", 2);
+		ft_putstr_fd("Change terminal than come back!\n", 2);
+		exit(1);
 	}
 }
