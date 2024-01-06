@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:50:28 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 15:36:58 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 20:58:19 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_path_error(char **env);
 
 // Added ones for bonus part :
 
-// void	ft_arg_error(void);
+void	ft_arg_error(void);
+int		open_file(char *argv, int i);
 
 #endif

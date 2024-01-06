@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:52:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 16:25:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 21:29:17 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv, char **env)
 	}
 	else
 	{
-		ft_putstr_fd("Error: Bad arguments\n", 2);
+		ft_putstr_fd("Error: Bad arguments.\n", 2);
 		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 1);
 	}
 	return (0);

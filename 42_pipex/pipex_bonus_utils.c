@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:07:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 20:45:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/06 21:29:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_arg_error(void)
 {
-	ft_putstr_fd("Error: Bad argument\n", 2);
+	ft_putstr_fd("Error: Bad arguments!\n", 2);
 	ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
-	ft_putstr_fd("    ./pipex \"here_doc\" <LIMITER> \
-    <cmd> <cmd1> <...> <file>\n", 1);
+	ft_putstr_fd("    ./pipex \"here_doc\" <LIMITER> <cmd> <cmd1> <...> <file>\n", 1);
 	exit(EXIT_SUCCESS);
 }
 

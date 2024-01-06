@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 09:16:33 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/06 15:23:25 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/01/06 21:27:59 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,20 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
 SRCS	= pipex.c pipex_utils.c
-BONUS	= pipex_bonus.c pipex_bonus_utils.c
+BONUS	= pipex_bonus.c pipex_bonus_utils.c pipex_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(BONUS:.c=.o)
 
-$(NAME): $(SRCS) $(OBJS) $(HEADER)
+$(NAME): $(OBJS) $(HEADER)
 	@make -C 42_libft/
 	@$(CC) $(CFLAGS) $(OBJS) -L42_libft -lft -o $(NAME)
 
 all: $(NAME)
 
-bonus: $(BONUS) $(OBJS_B)
+bonus: $(OBJS_B)
 	@make -C 42_libft/
-	@$(CC) $(CFLAGS) $(OBJS) -L42_libft -lft -o $(NAME_B)
+	@$(CC) $(CFLAGS) $(OBJS_B) -L42_libft -lft -o $(NAME_B)
 
 clean:
 	@make clean -C 42_libft/
@@ -41,7 +41,7 @@ clean:
 
 fclean: clean
 	@make fclean -C 42_libft/
-	@$(RM) $(NAME) $(BONUS)
+	@$(RM) $(NAME) $(NAME_B)
 
 re: fclean all
 
