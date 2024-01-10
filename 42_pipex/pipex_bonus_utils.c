@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:07:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 09:57:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:02:15 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	open_file(char *argv, int i)
 	else if (i == 2)
 		fd = open(argv, O_RDONLY, 0777);
 	if (fd == -1)
-		ft_error("Open file");
+		ft_error("Opening file");
 	return (fd);
 }
 
@@ -43,4 +43,10 @@ void	ft_error(char *s)
 		s = "ERROR";
 	perror(s);
 	exit(errno);
+}
+
+void	safe_dup2(int oldfd, int newfd)
+{
+	if (dup2(oldfd, newfd) == -1)
+		ft_error("dup2");
 }

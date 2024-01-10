@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:02:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 09:59:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:06:39 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@ void	child_process(char *argv, char **env, int outfile, int flag)
 		if (flag == 1)
 		{
 			close(fd[1]);
-			dup2(outfile, STDOUT_FILENO);
+			safe_dup2(outfile, STDOUT_FILENO);
 		}
 		else
-			dup2(fd[1], STDOUT_FILENO);
+			safe_dup2(fd[1], STDOUT_FILENO);
 		ft_execute(argv, env);
 	}
 	else
 	{
 		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
+		safe_dup2(fd[0], STDIN_FILENO);
 	}
 }
 
@@ -92,13 +92,15 @@ void	here_doc(char *limiter, int argc)
 	else
 	{
 		close(fd[1]);
-		dup2(fd[0], STDIN_FILENO);
+		safe_dup2(fd[0], STDIN_FILENO);
 		wait(NULL);
 	}
 }
 
-void	parent_process(char **argv, int argc, char **env, int outfile)
+void	processes(char **argv, int argc, char **env, int outfile, int i)
 {
+	while (i < argc - 2)
+			child_process(argv[i++], env, outfile, 0);
 	child_process(argv[argc - 2], env, outfile, 1);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
@@ -124,11 +126,10 @@ int	main(int argc, char **argv, char **env)
 			i = 2;
 			outfile = open_file(argv[argc - 1], 1);
 			infile = open_file(argv[1], 2);
-			dup2(infile, STDIN_FILENO);
+			safe_dup2(infile, STDIN_FILENO);
 		}
-		while (i < argc - 2)
-			child_process(argv[i++], env, outfile, 0);
-		return (parent_process(argv, argc, env, outfile), 0);
+		processes(argv, argc, env, outfile, i);
+		return (0);
 	}
 	ft_arg_error();
 }
