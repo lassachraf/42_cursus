@@ -6,60 +6,66 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:52:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 21:29:17 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:54:04 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	child_process(char **argv, char **env, int *fd)
+void	ft_error(char *s)
 {
-	int		infile;
-
-	infile = open(argv[1], O_RDONLY, 0777);
-	if (infile == -1)
-		ft_error("Inputfile");
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(infile, STDIN_FILENO);
-	close(fd[0]);
-	ft_execute(argv[2], env);
+	if (!*s)
+		s = "ERROR";
+	perror(s);
+	exit(errno);
 }
 
-void	parent_process(char **argv, char **env, int *fd)
+void	child_process(char *argv, char **env, int outfile, int flag)
 {
-	int		outfile;
+	pid_t	pid;
+	int		fd[2];
 
-	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (outfile == -1)
-		ft_error("Outputfile");
-	dup2(fd[0], STDIN_FILENO);
-	dup2(outfile, STDOUT_FILENO);
-	close(fd[1]);
-	ft_execute(argv[3], env);
+	if (pipe(fd) == -1)
+		ft_error("Pipe");
+	pid = fork();
+	if (pid == -1)
+		ft_error("Fork");
+	if (pid == 0)
+	{
+		close(fd[0]);
+		if (flag == 1)
+		{
+			close(fd[1]);
+			dup2(outfile, STDOUT_FILENO);
+		}
+		else
+			dup2(fd[1], STDOUT_FILENO);
+		ft_execute(argv, env);
+	}
+	else
+	{
+		close(fd[1]);
+		dup2(fd[0], STDIN_FILENO);
+	}
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	int		fd[2];
-	pid_t	pid;
+	int	infile;
+	int	outfile;
 
 	if (argc == 5)
 	{
 		ft_path_error(env);
-		if (pipe(fd) == -1)
-			ft_error("pipe");
-		pid = fork();
-		if (pid == -1)
-			ft_error("fork");
-		if (pid == 0)
-			child_process(argv, env, fd);
-		wait(NULL);
-		parent_process(argv, env, fd);
+		infile = open_file(argv[1], 2);
+		outfile = open_file(argv[argc - 1], 1);
+		dup2(infile, STDIN_FILENO);
+		child_process(argv[2], env, outfile, 0);
+		child_process(argv[3], env, outfile, 1);
+		while (waitpid(-1, NULL, 0) != -1)
+			;
 	}
 	else
-	{
-		ft_putstr_fd("Error: Bad arguments.\n", 2);
-		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 1);
-	}
+		ft_arg_error();
 	return (0);
 }

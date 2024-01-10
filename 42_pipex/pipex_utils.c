@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:01:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 17:19:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:54:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*search_for_path(char *cmd, char **env)
 	char	*full_path;
 	int		i;
 
-	if (cmd[0] == '/')
+	if (ft_cmd_check(cmd))
 		return (cmd);
 	i = 0;
 	while (ft_strnstr(env[i], "PATH", 4) == NULL)
@@ -31,7 +31,7 @@ char	*search_for_path(char *cmd, char **env)
 		first_part = ft_strjoin(all_paths[i], "/");
 		full_path = ft_strjoin(first_part, cmd);
 		free(first_part);
-		if (access(full_path, F_OK) == 0)
+		if (access(full_path, F_OK | X_OK) == 0)
 			return (ft_free_paths(all_paths), full_path);
 		free(full_path);
 		i++;
@@ -49,7 +49,7 @@ void	ft_execute(char *argv, char **env)
 	i = -1;
 	cmd = ft_split(argv, ' ');
 	path = search_for_path(cmd[0], env);
-	if (path == NULL)
+	if (!path)
 	{
 		while (cmd[++i])
 			free(cmd[i]);
@@ -58,14 +58,6 @@ void	ft_execute(char *argv, char **env)
 	}
 	if (execve(path, cmd, env) == -1)
 		ft_error("Execution");
-}
-
-void	ft_error(char *s)
-{
-	if (!*s)
-		s = "ERROR";
-	perror(s);
-	exit(errno);
 }
 
 void	ft_free_paths(char	**all_paths)
@@ -89,16 +81,22 @@ void	ft_path_error(char **env)
 		ft_putstr_fd("Change terminal than come back!\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	if (1)
+	while (env[i] != NULL)
 	{
-		while (env[i] != NULL)
-		{
-			if (ft_strnstr(env[i], "PATH=", 5) != NULL)
-                return;
-            i++;
-        }
-		ft_putstr_fd("Error: Unset PATH!\n", 2);
-		ft_putstr_fd("Change terminal than come back!\n", 2);
-		exit(EXIT_FAILURE);
+		if (ft_strnstr(env[i], "PATH=", 5) != NULL)
+			return ;
+		i++;
 	}
+	ft_putstr_fd("Error: Unset PATH!\n", 2);
+	ft_putstr_fd("Change terminal than come back!\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+char	*ft_cmd_check(char *cmd)
+{
+	if (cmd[0] == '/' && access(cmd, F_OK | X_OK) == 0)
+		return (cmd);
+	else if (cmd[0] == '/')
+		ft_error("Command not found");
+	return (NULL);
 }

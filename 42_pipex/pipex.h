@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:50:28 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 20:58:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:38:03 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_execute(char *argv, char **env);
 void	ft_error(char *s);
 void	ft_free_paths(char **all_paths);
 void	ft_path_error(char **env);
+char	*ft_cmd_check(char *cmd);
 
 // Added ones for bonus part :
 

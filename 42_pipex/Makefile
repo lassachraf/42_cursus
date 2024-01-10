@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/02 09:16:33 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/06 21:27:59 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/01/10 08:35:35 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
-SRCS	= pipex.c pipex_utils.c
+SRCS	= pipex.c pipex_utils.c pipex_bonus_utils.c
 BONUS	= pipex_bonus.c pipex_bonus_utils.c pipex_utils.c
 
 OBJS	= $(SRCS:.c=.o)
@@ -45,34 +45,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean all fclean re bonus
+bonus_re: fclean bonus
 
-# NAME	= pipex
-# HEADER	= pipex.h
-
-# CC		= cc
-# CFLAGS	= -Wall -Wextra -Werror
-
-# RM		= rm -f
-
-# SRCS	= pipex.c pipex_utils.c
-
-# OBJS	= $(SRCS:.c=.o)
-
-# $(NAME): $(SRCS) $(OBJS) $(HEADER)
-# 	@make re -C 42_libft/
-# 	@$(CC) $(CFLAGS) $(OBJS) -L42_libft -lft -o $(NAME)
-
-# all: $(NAME)
-
-# clean:
-# 	@make clean -C 42_libft/
-# 	@$(RM) $(OBJS)
-
-# fclean: clean
-# 	@make fclean -C 42_libft/
-# 	@$(RM) $(NAME)
-
-# re: fclean all
-
-# .PHONY: clean all fclean re
+.PHONY: clean all fclean re bonus bonus_re

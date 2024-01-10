@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:02:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/06 20:45:29 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 09:59:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	custom_gnl(char **line)
 	return (r);
 }
 
-void	child_process(char *argv, char **envp)
+void	child_process(char *argv, char **env, int outfile, int flag)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -52,14 +52,19 @@ void	child_process(char *argv, char **envp)
 	if (pid == 0)
 	{
 		close(fd[0]);
-		dup2(fd[1], STDOUT_FILENO);
-		ft_execute(argv, envp);
+		if (flag == 1)
+		{
+			close(fd[1]);
+			dup2(outfile, STDOUT_FILENO);
+		}
+		else
+			dup2(fd[1], STDOUT_FILENO);
+		ft_execute(argv, env);
 	}
 	else
 	{
 		close(fd[1]);
 		dup2(fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
 	}
 }
 
@@ -92,6 +97,13 @@ void	here_doc(char *limiter, int argc)
 	}
 }
 
+void	parent_process(char **argv, int argc, char **env, int outfile)
+{
+	child_process(argv[argc - 2], env, outfile, 1);
+	while (waitpid(-1, NULL, 0) != -1)
+		;
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	int	i;
@@ -100,6 +112,7 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc >= 5)
 	{
+		ft_path_error(env);
 		if (ft_strncmp(argv[1], "here_doc", 8) == 0)
 		{
 			i = 3;
@@ -114,9 +127,8 @@ int	main(int argc, char **argv, char **env)
 			dup2(infile, STDIN_FILENO);
 		}
 		while (i < argc - 2)
-			child_process(argv[i++], env);
-		dup2(outfile, STDOUT_FILENO);
-		ft_execute(argv[argc - 2], env);
+			child_process(argv[i++], env, outfile, 0);
+		return (parent_process(argv, argc, env, outfile), 0);
 	}
 	ft_arg_error();
 }
