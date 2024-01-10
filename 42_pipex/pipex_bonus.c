@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:02:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 12:06:39 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 13:30:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,8 @@ void	here_doc(char *limiter, int argc)
 	}
 }
 
-void	processes(char **argv, int argc, char **env, int outfile, int i)
+void	processes(char **argv, int argc, char **env, int outfile)
 {
-	while (i < argc - 2)
-			child_process(argv[i++], env, outfile, 0);
 	child_process(argv[argc - 2], env, outfile, 1);
 	while (waitpid(-1, NULL, 0) != -1)
 		;
@@ -128,8 +126,9 @@ int	main(int argc, char **argv, char **env)
 			infile = open_file(argv[1], 2);
 			safe_dup2(infile, STDIN_FILENO);
 		}
-		processes(argv, argc, env, outfile, i);
-		return (0);
+		while (i < argc - 2)
+			child_process(argv[i++], env, outfile, 0);
+		return (processes(argv, argc, env, outfile)0);
 	}
 	ft_arg_error();
 }
