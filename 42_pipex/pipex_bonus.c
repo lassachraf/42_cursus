@@ -6,37 +6,19 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:02:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 13:30:35 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 16:54:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	custom_gnl(char **line)
+void	ft_arg_error(void)
 {
-	char	*buffer;
-	int		i;
-	int		r;
-	char	c;
-
-	i = 0;
-	r = 0;
-	buffer = (char *)malloc(10000);
-	if (!buffer)
-		return (-1);
-	r = read(0, &c, 1);
-	while (r && c != '\n' && c != '\0')
-	{
-		if (c != '\n' && c != '\0')
-			buffer[i] = c;
-		i++;
-		r = read(0, &c, 1);
-	}
-	buffer[i] = '\n';
-	buffer[++i] = '\0';
-	*line = buffer;
-	free(buffer);
-	return (r);
+	ft_putstr_fd("Error: Bad arguments!\n", 2);
+	ft_putstr_fd("Ex: ./pipex_bonus <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
+	ft_putstr_fd("    ./pipex_bonus \"here_doc\" <LIMITER> \
+	<cmd> <cmd1> <...> <file>\n", 1);
+	exit(EXIT_SUCCESS);
 }
 
 void	child_process(char *argv, char **env, int outfile, int flag)
@@ -72,7 +54,6 @@ void	here_doc(char *limiter, int argc)
 {
 	pid_t	pid;
 	int		fd[2];
-	char	*line;
 
 	if (argc < 6)
 		ft_arg_error();
@@ -82,12 +63,7 @@ void	here_doc(char *limiter, int argc)
 	if (pid == 0)
 	{
 		close(fd[0]);
-		while (custom_gnl(&line))
-		{
-			if (ft_strncmp(line, limiter, ft_strlen(limiter)) == 0)
-				exit(EXIT_SUCCESS);
-			write(fd[1], line, ft_strlen(line));
-		}
+		get_heredoc_input(argc, limiter, fd);
 	}
 	else
 	{
@@ -97,7 +73,7 @@ void	here_doc(char *limiter, int argc)
 	}
 }
 
-void	processes(char **argv, int argc, char **env, int outfile)
+void	parent_process(char **argv, int argc, char **env, int outfile)
 {
 	child_process(argv[argc - 2], env, outfile, 1);
 	while (waitpid(-1, NULL, 0) != -1)
@@ -112,8 +88,8 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc >= 5)
 	{
-		ft_path_error(env);
-		if (ft_strncmp(argv[1], "here_doc", 8) == 0)
+		// ft_path_error(env);
+		if (ft_strncmp(argv[1], "here_doc", 9) == 0)
 		{
 			i = 3;
 			outfile = open_file(argv[argc - 1], 0);
@@ -128,7 +104,7 @@ int	main(int argc, char **argv, char **env)
 		}
 		while (i < argc - 2)
 			child_process(argv[i++], env, outfile, 0);
-		return (processes(argv, argc, env, outfile)0);
+		return (parent_process(argv, argc, env, outfile), 0);
 	}
 	ft_arg_error();
 }

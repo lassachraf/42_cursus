@@ -6,19 +6,37 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 20:07:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 13:26:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:03:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_arg_error(void)
+int	custom_gnl(char **line)
 {
-	ft_putstr_fd("Error: Bad arguments!\n", 2);
-	ft_putstr_fd("Ex: ./pipex_bonus <file1> <cmd1> <cmd2> <...> <file2>\n", 1);
-	ft_putstr_fd("    ./pipex_bonus \"here_doc\" <LIMITER> \
-	<cmd> <cmd1> <...> <file>\n", 1);
-	exit(EXIT_SUCCESS);
+	char	*buffer;
+	int		i;
+	int		r;
+	char	c;
+
+	i = 0;
+	r = 0;
+	buffer = (char *)malloc(10000);
+	if (!buffer)
+		return (-1);
+	r = read(0, &c, 1);
+	while (r && c != '\n' && c != '\0')
+	{
+		if (c != '\n' && c != '\0')
+			buffer[i] = c;
+		i++;
+		r = read(0, &c, 1);
+	}
+	buffer[i] = '\n';
+	buffer[++i] = '\0';
+	*line = buffer;
+	free(buffer);
+	return (r);
 }
 
 int	open_file(char *argv, int i)
@@ -49,4 +67,27 @@ void	safe_dup2(int oldfd, int newfd)
 {
 	if (dup2(oldfd, newfd) == -1)
 		ft_error("dup2");
+	close(oldfd);
+}
+
+void	get_heredoc_input(int argc, char *limiter, int *fd)
+{
+	char	*line;
+	int		i;
+
+	while (1)
+	{
+		i = 5;
+		while (argc - i > 0)
+		{
+			ft_putstr_fd("pipe ", 1);
+			i++;
+		}
+		ft_putstr_fd("heredoc> ", 1);
+		custom_gnl(&line);
+		if (ft_strncmp(line, limiter, ft_strlen(limiter)) == 0)
+			exit(EXIT_SUCCESS);
+		write(fd[1], line, ft_strlen(line));
+		free(line);
+	}
 }

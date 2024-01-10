@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:01:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 13:26:04 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 17:11:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	ft_execute(char *argv, char **env)
 
 	i = -1;
 	cmd = ft_split(argv, ' ');
+	if (!cmd[0])
+		ft_error("Command not found");
 	path = search_for_path(cmd[0], env);
 	if (!path)
 	{
@@ -94,6 +96,8 @@ void	ft_path_error(char **env)
 
 char	*ft_cmd_check(char *cmd)
 {
+	if (!cmd)
+		ft_error("Command not found");
 	if (cmd[0] == '/' && access(cmd, F_OK | X_OK) == 0)
 		return (cmd);
 	else if (cmd[0] == '/')

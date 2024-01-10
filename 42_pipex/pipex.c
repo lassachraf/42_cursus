@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:52:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/10 12:02:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/10 15:25:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int	main(int argc, char **argv, char **env)
 			;
 	}
 	else
-		ft_arg_error();
+	{
+		ft_putstr_fd("E", 2);
+		ft_putstr_fd("E", 2);
+	}
 	return (0);
 }
