@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 10:19:30 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/04 19:36:05 by alassiqu         ###   ########.fr        #
+#    Updated: 2023/11/27 21:53:12 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJS) $(HEADER)
 
 all: $(NAME)
 
-bonus: $(OBJS_B) $(HEADER)
+bonus: $(OBJS_B)
 	@$(LIB) $(NAME) $(OBJS_B)
 
 clean:
