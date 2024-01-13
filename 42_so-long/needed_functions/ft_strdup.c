@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/30 18:44:24 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/01/13 17:27:55 by alassiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/so_long.h"
+
+char	*ft_strdup(const char *s1)
+{
+	char	*copy;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(s1);
+	copy = malloc(sizeof(char) * (len + 1));
+	if (!copy)
+		return (NULL);
+	while (s1[i])
+	{
+		copy[i] = s1[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
+}
