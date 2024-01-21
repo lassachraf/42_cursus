@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:24:00 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/19 13:24:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/20 10:24:02 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rotate(t_stack **stack)
 	int		len;
 
 	len = stack_len(*stack);
-	if (NULL == stack || NULL == *stack || 1 == len)
+	if (!stack || !*stack || len == 1)
 		return ;
 	last_node = find_last_node(*stack);
 	last_node->next = *stack;
