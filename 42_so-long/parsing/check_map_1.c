@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:05:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/21 10:15:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/26 10:47:46 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ char	**ft_get_map(char *s)
 	int		fd;
 
 	all_lines = NULL;
+	splited = NULL;
 	fd = open(s, O_RDONLY);
 	if (fd == -1)
 		ft_errors("Opening map file error");
@@ -81,6 +82,8 @@ char	**ft_get_map(char *s)
 		all_lines = ft_free_2(ft_strjoin(all_lines, line), all_lines);
 		free(line);
 	}
+	if (!all_lines)
+		ft_map_error_1("Empty map file error !");
 	check_for_lines(all_lines);
 	splited = ft_split(all_lines, '\n');
 	return (free(all_lines), splited);

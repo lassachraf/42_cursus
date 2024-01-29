@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   so_long_utils_0.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 14:34:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/21 21:17:12 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/01/10 14:34:21 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/01/25 21:54:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,21 @@ void	moving_up(t_so_long *game)
 			* 60, game->p_pos_y * 60);
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, (game->p_pos_y - 1) * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			game->p_pos_x * 60, (game->p_pos_y - 1) * 60);
+		check_for_up_and_down(game, game->p_pos_x, game->p_pos_y - 1);
+		game->p_pos_y--;
 		game->t_coins--;
 	}
-	else if (game->map[game->p_pos_y - 1][game->p_pos_x] == 'E'
-		&& game->t_coins == 0)
-		ft_win_exit(game);
+	else if (game->map[game->p_pos_y - 1][game->p_pos_x] == 'E')
+		check_exit(game, game->p_pos_y - 1, game->p_pos_x);
 	else if (game->map[game->p_pos_y - 1][game->p_pos_x] == 'N')
-	{
-		printf("You lose !!");
-		exit(1);
-	}
-	else
+		ft_lose_exit(game);
+	else if (game->map[game->p_pos_y - 1][game->p_pos_x] != 'E')
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			game->p_pos_x * 60, (game->p_pos_y - 1) * 60);
+		check_for_up_and_down(game, game->p_pos_x, game->p_pos_y - 1);
+		game->p_pos_y--;
 	}
-	game->p_pos_y--;
 	game->moves++;
 }
 
@@ -53,31 +48,27 @@ void	moving_down(t_so_long *game)
 			* 60, game->p_pos_y * 60);
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, (game->p_pos_y + 1) * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			game->p_pos_x * 60, (game->p_pos_y + 1) * 60);
+		check_for_up_and_down(game, game->p_pos_x, game->p_pos_y + 1);
+		game->p_pos_y++;
 		game->t_coins--;
 	}
-	else if (game->map[game->p_pos_y + 1][game->p_pos_x] == 'E'
-		&& game->t_coins == 0)
-		ft_win_exit(game);
+	else if (game->map[game->p_pos_y + 1][game->p_pos_x] == 'E')
+		check_exit(game, game->p_pos_y + 1, game->p_pos_x);
 	else if (game->map[game->p_pos_y + 1][game->p_pos_x] == 'N')
-	{
-		printf("You lose !!");
-		exit(1);
-	}
-	else
+		ft_lose_exit(game);
+	else if (game->map[game->p_pos_y + 1][game->p_pos_x] != 'E')
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			game->p_pos_x * 60, (game->p_pos_y + 1) * 60);
+		check_for_up_and_down(game, game->p_pos_x, game->p_pos_y + 1);
+		game->p_pos_y++;
 	}
-	game->p_pos_y++;
 	game->moves++;
 }
 
 void	moving_right(t_so_long *game)
 {
+	game->naruto_flag = 0;
 	if (game->map[game->p_pos_y][game->p_pos_x + 1] == 'C')
 	{
 		game->map[game->p_pos_y][game->p_pos_x + 1] = '0';
@@ -85,31 +76,27 @@ void	moving_right(t_so_long *game)
 			* 60, game->p_pos_y * 60);
 		mlx_put_image_to_window(game->mlx, game->win, game->floor,
 			(game->p_pos_x + 1) * 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			(game->p_pos_x + 1) * 60, game->p_pos_y * 60);
+		check_for_up_and_down(game, game->p_pos_x + 1, game->p_pos_y);
+		game->p_pos_x++;
 		game->t_coins--;
 	}
-	else if (game->map[game->p_pos_y][game->p_pos_x + 1] == 'E'
-		&& game->t_coins == 0)
-		ft_win_exit(game);
+	else if (game->map[game->p_pos_y][game->p_pos_x + 1] == 'E')
+		check_exit(game, game->p_pos_y, game->p_pos_x + 1);
 	else if (game->map[game->p_pos_y][game->p_pos_x + 1] == 'N')
-	{
-		printf("You lose !!");
-		exit(1);
-	}
-	else
+		ft_lose_exit(game);
+	else if (game->map[game->p_pos_y][game->p_pos_x + 1] != 'E')
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			(game->p_pos_x + 1) * 60, game->p_pos_y * 60);
+		check_for_up_and_down(game, game->p_pos_x + 1, game->p_pos_y);
+		game->p_pos_x++;
 	}
-	game->p_pos_x++;
 	game->moves++;
 }
 
 void	moving_left(t_so_long *game)
 {
+	game->naruto_flag = 1;
 	if (game->map[game->p_pos_y][game->p_pos_x - 1] == 'C')
 	{
 		game->map[game->p_pos_y][game->p_pos_x - 1] = '0';
@@ -117,50 +104,33 @@ void	moving_left(t_so_long *game)
 			* 60, game->p_pos_y * 60);
 		mlx_put_image_to_window(game->mlx, game->win, game->floor,
 			(game->p_pos_x - 1) * 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			(game->p_pos_x - 1) * 60, game->p_pos_y * 60);
+		check_for_up_and_down(game, game->p_pos_x - 1, game->p_pos_y);
+		game->p_pos_x--;
 		game->t_coins--;
 	}
-	else if (game->map[game->p_pos_y][game->p_pos_x - 1] == 'E'
-		&& game->t_coins == 0)
-		ft_win_exit(game);
+	else if (game->map[game->p_pos_y][game->p_pos_x - 1] == 'E')
+		check_exit(game, game->p_pos_y, game->p_pos_x - 1);
 	else if (game->map[game->p_pos_y][game->p_pos_x - 1] == 'N')
-	{
-		printf("You lose !!");
-		ft_exit(game);
-	}
-	else
+		ft_lose_exit(game);
+	else if (game->map[game->p_pos_y][game->p_pos_x - 1] != 'E')
 	{
 		mlx_put_image_to_window(game->mlx, game->win, game->floor, game->p_pos_x
 			* 60, game->p_pos_y * 60);
-		mlx_put_image_to_window(game->mlx, game->win, game->naruto,
-			(game->p_pos_x - 1) * 60, game->p_pos_y * 60);
+		check_for_up_and_down(game, game->p_pos_x - 1, game->p_pos_y);
+		game->p_pos_x--;
 	}
-	game->p_pos_x--;
 	game->moves++;
-}
-
-void	ft_print_moves(t_so_long *game)
-{
-	char	*moves;
-	char	*rem_coins;
-
-	moves = ft_itoa(game->moves);
-	rem_coins = ft_itoa(game->t_coins);
-	mlx_put_image_to_window(game->mlx, game->win, game->wall,
-			3 * 60, 0 * 60);
-	mlx_string_put(game->mlx, game->win, 200, 4, 0x000000, moves);
-	mlx_string_put(game->mlx, game->win, 200, 20, 0x000000, rem_coins);
-	free(moves);
-	free(rem_coins);
 }
 
 int	ft_moving(int keycode, t_so_long *game)
 {
+	int	i;
+
+	i = 1;
 	if (keycode == 53)
 		ft_exit(game);
-	else if ((keycode == W_KEY || keycode == UP_KEY) && game->map[game->p_pos_y
-		- 1][game->p_pos_x] != '1')
+	else if ((keycode == W_KEY || keycode == UP_KEY)
+		&& game->map[game->p_pos_y - 1][game->p_pos_x] != '1')
 		moving_up(game);
 	else if ((keycode == A_KEY || keycode == LEFT_KEY)
 		&& game->map[game->p_pos_y][game->p_pos_x - 1] != '1')
@@ -171,6 +141,9 @@ int	ft_moving(int keycode, t_so_long *game)
 	else if ((keycode == S_KEY || keycode == DOWN_KEY)
 		&& game->map[game->p_pos_y + 1][game->p_pos_x] != '1')
 		moving_down(game);
-	ft_print_moves(game);
+	else
+		i = 0;
+	if (i == 1)
+		ft_printing(game);
 	return (0);
 }

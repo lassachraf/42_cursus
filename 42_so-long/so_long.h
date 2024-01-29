@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 13:34:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/21 21:15:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:44:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_so_long
 	void	*img;
 	void	*floor;
 	void	*naruto;
+	void	*naruto_left;
+	void	*naruto_right;
+	int		naruto_flag;
 	void	*wall;
 	void	*ramen;
 	void	*exit;
@@ -45,13 +48,18 @@ typedef struct s_so_long
 	void	*losing;
 
 	char	**map;
-	int		v_map;
 	int		map_h;
 	int		map_w;
+	char	**flood_map;
+	int		flood_map_h;
+	int		flood_map_w;
+	int		flood_c_flag;
+	int		flood_e_flag;
+	int		clear;
 	int		img_h;
 	int		img_w;
 	int		t_coins;
-	int		moves;
+	size_t	moves;
 
 	int		p_pos_x;
 	int		p_pos_y;
@@ -65,14 +73,11 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strchr_2(const char *s, int c);
 size_t	ft_strlen_2(const char *s);
 char	*ft_strjoin_2(char const *s1, char const *s2);
-char	*ft_itoa(int n);
+char	*ft_itoa(size_t n);
 
-// Ber extension check !
+// Parsing functions ! 
 
 int		ft_ber_extension(char *argv);
-
-// Map parsing functions ! 
-
 char	**ft_get_map(char *s);
 void	ft_check_map_edges(t_so_long *game);
 void	ft_check_map_elements(t_so_long *game);
@@ -86,16 +91,26 @@ int		ft_count_height(t_so_long *game);
 
 void	ft_errors(char *s);
 void	ft_arg_error(void);
+int		ft_exit(t_so_long *game);
+void	ft_win_exit(t_so_long *game);
+void	ft_lose_exit(t_so_long *game);
 void	ft_map_error_1(char *s);
 void	ft_map_error_2(char c);
 
-// Moving functions !
+// So_long utils !
 
 int		ft_moving(int keycode, t_so_long *game);
-int		ft_exit(t_so_long *game);
-void	ft_free_map(t_so_long *game);
+void	check_exit(t_so_long *game, int y, int x);
+void	check_enemy(t_so_long *game, int y, int x);
+void	initializing_images(t_so_long *game);
 void	puting_images(t_so_long *game);
-void	ft_print_moves(t_so_long *game);
-void	ft_win_exit(t_so_long *game);
+void	ft_printing(t_so_long *game);
+int		ft_clear(t_so_long *game);
+void	check_flood_fill(t_so_long *game);
+void	check_coin_exit(t_so_long *game);
+void	ft_check_whole_map(t_so_long *game);
+void	ft_initializer(t_so_long *game, char **av);
+void	check_for_up_and_down(t_so_long *game, int x, int y);
+int		door_animation(t_so_long *game);
 
 #endif

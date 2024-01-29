@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 09:27:49 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/20 13:49:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/23 10:29:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!tab)
-		return (NULL);
+		return (ft_errors("Allocation fails !\n"), NULL);
 	i = 0;
 	next_word = (char *)s;
 	next_word_len = 0;
