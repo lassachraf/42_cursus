@@ -6,18 +6,24 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/27 18:34:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:51:37 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_int(char *s)
+void	check_int(char **s)
 {
-	int	n;
+	int	i;
+	int	arr[INT];
 
-	n = ft_atoi(s);
-	if (n < -2147483648 || n > 2147483647)
+	i = 0;
+	while (s[i])
+	{
+		if (atol(s[i]) > 2147483647 || atol(s[i]) < -2147483648)
+			ft_error();
+		i++;
+	}
 }
 
 void	check_args(int ac, char **av)
@@ -32,6 +38,7 @@ void	check_args(int ac, char **av)
 	{
 		j = 0;
 		s = ft_split(av[i], ' ');
+		check_int(s);
 		while (s[j])
 		{
 			k = 0;
@@ -47,6 +54,11 @@ void	check_args(int ac, char **av)
 		}
 		i++;
 	}
+}
+
+void	check_doubles()
+{
+	
 }
 
 void	ft_error(void)

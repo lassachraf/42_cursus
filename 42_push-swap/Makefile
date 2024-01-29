@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/27 16:15:49 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/01/29 11:34:51 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ HEADER	= push_swap.h
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+
+LIB		= 42_libft/libft.a
 
 SRCS	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
 SRCS	+= stack_utils_0.c stack_utils_1.c
@@ -28,8 +30,11 @@ OBJS_B	= $(SRCS_B:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -I $(HEADER) -o $(NAME)
+$(LIB):
+	@make -C 42_libft/ --quiet
+
+$(NAME): $(OBJS) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
 
 bonus: $(BONUS)
 

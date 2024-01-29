@@ -6,11 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:27:48 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/19 13:27:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:33:00 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	push(t_stack **dest, t_stack **src)
 {

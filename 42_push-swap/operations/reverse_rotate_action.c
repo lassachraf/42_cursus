@@ -6,11 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:43:32 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/19 15:43:32 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:32:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	reverse_rotate(t_stack **stack)
 {
