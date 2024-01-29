@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 10:47:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/27 20:41:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:15:12 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	door_animation(t_so_long *game)
 {
 	static int	count;
 
-	count = 0;
-	if (game->t_coins == 0)
+	while (count < 200)
 	{
+		printf("count => %d\n", count);
 		if (count < 20)
 			game->exit = mlx_xpm_file_to_image(game->mlx,
 				"assets/exit/doors-1.xpm", &game->img_w, &game->img_h);
@@ -39,8 +39,9 @@ int	door_animation(t_so_long *game)
 				"assets/exit/doors-6.xpm", &game->img_w, &game->img_h);
 		else if (count < 140)
 			game->exit = mlx_xpm_file_to_image(game->mlx,
-				"assets/exit/doors-6.xpm", &game->img_w, &game->img_h);
+				"assets/exit/doors-7.xpm", &game->img_w, &game->img_h);
 		count++;
+		puting_images(game);
 	}
-    return (1);
+	return (1);
 }
