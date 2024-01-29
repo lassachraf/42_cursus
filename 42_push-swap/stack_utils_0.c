@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:54 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/19 19:33:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/27 14:28:11 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*find_last_node(t_stack *head)
 {
 	if (!head)
 		return (NULL);
-	while (head->next)
+	while (head)
 		head = head->next;
 	return (head);
 }
