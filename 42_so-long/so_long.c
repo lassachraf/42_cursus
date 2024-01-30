@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:52:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/29 17:18:55 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:56:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ void	put_objects_on_map(t_so_long *game, int i, int j)
 	else if (game->map[j][i] == 'C')
 		put_image_at_coordinates(game, i, j, game->ramen);
 	else if (game->map[j][i] == 'E')
+	{
+		game->doors_x = j;
+		game->doors_y = i;
 		put_image_at_coordinates(game, i, j, game->exit);
+	}
 	else if (game->map[j][i] == 'N')
 		put_image_at_coordinates(game, i, j, game->enemy);
 }
@@ -69,6 +73,7 @@ void	ft_initializer(t_so_long *game, char **av)
 	game->flood_map_h = game->map_h;
 	game->flood_map_w = game->map_w;
 	game->moves = 0;
+	game->stop = 0;
 	game->naruto_flag = 0;
 	game->clear = 0;
 	ft_check_whole_map(game);
@@ -80,9 +85,10 @@ void	ft_initializer(t_so_long *game, char **av)
 	mlx_string_put(game->mlx, game->win, 8, 4, 0x000000, "Number of moves : ");
 	mlx_string_put(game->mlx, game->win, 8, 20, 0x000000, "Remaining ramen : ");
 	mlx_hook(game->win, 2, 1L << 0, ft_moving, game);
-	mlx_loop_hook(game->mlx, door_animation, game);
 	mlx_hook(game->win, 17, 0, ft_exit, game);
-	mlx_loop_hook(game->mlx, ft_clear, game);
+	// if (game->t_coins == 0)
+	mlx_loop_hook(game->mlx, door_animation, game);
+	// mlx_loop_hook(game->mlx, ft_clear, game);
 	mlx_loop(game->mlx);
 }
 

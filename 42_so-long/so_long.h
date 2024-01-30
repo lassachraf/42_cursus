@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 13:34:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/27 20:44:56 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:56:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct s_so_long
 	int		flood_map_w;
 	int		flood_c_flag;
 	int		flood_e_flag;
+	int		doors_x;
+	int		doors_y;
+	int		stop;
 	int		clear;
 	int		img_h;
 	int		img_w;
@@ -104,6 +107,7 @@ void	check_exit(t_so_long *game, int y, int x);
 void	check_enemy(t_so_long *game, int y, int x);
 void	initializing_images(t_so_long *game);
 void	puting_images(t_so_long *game);
+void	put_image_at_coordinates(t_so_long *game, int i, int j, void *image);
 void	ft_printing(t_so_long *game);
 int		ft_clear(t_so_long *game);
 void	check_flood_fill(t_so_long *game);
