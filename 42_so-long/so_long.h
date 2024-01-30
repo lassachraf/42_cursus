@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 13:34:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 15:56:31 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:14:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_so_long
 	int		doors_x;
 	int		doors_y;
 	int		stop;
-	int		clear;
 	int		img_h;
 	int		img_w;
 	int		t_coins;
@@ -115,6 +114,9 @@ void	check_coin_exit(t_so_long *game);
 void	ft_check_whole_map(t_so_long *game);
 void	ft_initializer(t_so_long *game, char **av);
 void	check_for_up_and_down(t_so_long *game, int x, int y);
-int		door_animation(t_so_long *game);
+
+// Animation part !
+
+int		animation(t_so_long *game);
 
 #endif

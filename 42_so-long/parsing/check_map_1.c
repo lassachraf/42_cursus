@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:05:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/26 10:47:46 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:51:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	check_for_lines(char *s)
 	while (s[i])
 	{
 		if (s[i] == '\n' && (s[i + 1] == '\n' || s[i + 1] == '\0'))
-			ft_errors("Map isn't valid !\n");
+			ft_errors("Map isn't valid ! 78\n");
 		i++;
 	}
 }

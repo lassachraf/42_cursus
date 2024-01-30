@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:02:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/26 10:36:27 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:38:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill(t_so_long *game, int y, int x)
 	}
 	if (y < 0 || x < 0 || y >= game->flood_map_h || x >= game->flood_map_w
 		|| (game->flood_map[y][x] != '0' && game->flood_map[y][x] != 'C'
-			&& game->flood_map[y][x] != 'N' && game->flood_map[y][x] != 'P'))
+			&& game->flood_map[y][x] != 'P'))
 		return ;
 	game->flood_map[y][x] = 'F';
 	fill(game, y - 1, x);
@@ -41,7 +41,7 @@ void	check_flood_fill(t_so_long *game)
 	check_coin_exit(game);
 	if (game->flood_e_flag == 1 && game->flood_c_flag == 1)
 	{
-		write(1, "Invalid path, can't reach either all 'C' and 'E' !\n", 51);
+		write(1, "Invalid path, can't reach either all 'C' or 'E' !\n", 51);
 		ft_exit(game);
 	}
 	else if (game->flood_e_flag == 1)

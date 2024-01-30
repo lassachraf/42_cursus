@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:25:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/29 17:25:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:03:37 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ void	checking_images(t_so_long *game)
 		ft_errors("Exit image problem !\n");
 	else if (!game->enemy)
 		ft_errors("Enemy image problem !\n");
-	else if (!game->wining)
-		ft_errors("Wining image problem !\n");
-	else if (!game->losing)
-		ft_errors("Losing image problem !\n");
 }
 
 void	initializing_images(t_so_long *game)
@@ -47,11 +43,7 @@ void	initializing_images(t_so_long *game)
 	game->exit = mlx_xpm_file_to_image(game->mlx,
 			"assets/exit/doors.xpm", &game->img_w, &game->img_h);
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
-			"assets/sasuke/sasuke-0.xpm", &game->img_w, &game->img_h);
-	game->losing = mlx_xpm_file_to_image(game->mlx,
-			"assets/finish/madara-win.xpm", &game->img_w, &game->img_h);
-	game->wining = mlx_xpm_file_to_image(game->mlx,
-			"assets/finish/naruto-win.xpm", &game->img_w, &game->img_h);
+			"assets/enemy/itachi-0.xpm", &game->img_w, &game->img_h);
 	checking_images(game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:52:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 15:56:40 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:23:33 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	ft_initializer(t_so_long *game, char **av)
 	game->moves = 0;
 	game->stop = 0;
 	game->naruto_flag = 0;
-	game->clear = 0;
 	ft_check_whole_map(game);
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, 60 * game->map_w, 60 * game->map_h,
@@ -84,11 +83,11 @@ void	ft_initializer(t_so_long *game, char **av)
 	check_flood_fill(game);
 	mlx_string_put(game->mlx, game->win, 8, 4, 0x000000, "Number of moves : ");
 	mlx_string_put(game->mlx, game->win, 8, 20, 0x000000, "Remaining ramen : ");
+	mlx_string_put(game->mlx, game->win, 200, 4, 0x000000, "0");
+	mlx_string_put(game->mlx, game->win, 200, 20, 0x000000, ft_itoa(game->t_coins));
 	mlx_hook(game->win, 2, 1L << 0, ft_moving, game);
 	mlx_hook(game->win, 17, 0, ft_exit, game);
-	// if (game->t_coins == 0)
-	mlx_loop_hook(game->mlx, door_animation, game);
-	// mlx_loop_hook(game->mlx, ft_clear, game);
+	mlx_loop_hook(game->mlx, animation, game);
 	mlx_loop(game->mlx);
 }
 
@@ -98,7 +97,7 @@ int	main(int ac, char **av)
 
 	game = (t_so_long *)malloc(sizeof(t_so_long));
 	if (!game)
-		return (1);
+		return (0);
 	if (ac == 2)
 		ft_initializer(game, av);
 	else
