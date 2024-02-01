@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/27 17:40:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:22:11 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		ft_error();
 	check_args(argc, argv);
-	// stack_init(&a, argv + 1, argc);
+	stack_init(&a, argv + 1, argc);
 	// if (!stack_sorted(a))
 	// {
 	// 	if (stack_len(a) == 2)

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/29 11:51:51 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:21:21 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <limits.h>
 # include <unistd.h>
 # include "42_libft/libft.h"
-
-# define INT 4
 
 typedef struct s_stack
 {

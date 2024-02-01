@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 16:57:04 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:20:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ void	check_args(int ac, char **av)
 				k = 1;
 			while (s[j][k])
 			{
-				if (!ft_isdigit(s[j][k]))
+				if (!ft_isdigit(s[j][k++]))
 					ft_error();
-				k++;
 			}
 			j++;
 		}
@@ -55,10 +54,10 @@ void	check_args(int ac, char **av)
 	}
 }
 
-void	check_doubles()
-{
+// void	check_doubles()
+// {
 	
-}
+// }
 
 void	ft_error(void)
 {
