@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:25:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 18:03:37 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:03:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ void	checking_images(t_so_long *game)
 void	initializing_images(t_so_long *game)
 {
 	game->naruto_right = mlx_xpm_file_to_image(game->mlx,
-			"assets/naruto/naruto_right.xpm", &game->img_w, &game->img_h);
+			"textures/naruto/naruto_right.xpm", &game->img_w, &game->img_h);
 	game->naruto_left = mlx_xpm_file_to_image(game->mlx,
-			"assets/naruto/naruto_left.xpm", &game->img_w, &game->img_h);
+			"textures/naruto/naruto_left.xpm", &game->img_w, &game->img_h);
 	game->wall = mlx_xpm_file_to_image(game->mlx,
-			"assets/wall/wall.xpm", &game->img_w, &game->img_h);
+			"textures/wall/wall.xpm", &game->img_w, &game->img_h);
 	game->ramen = mlx_xpm_file_to_image(game->mlx,
-			"assets/collect/ramen.xpm", &game->img_w, &game->img_h);
+			"textures/collect/ramen.xpm", &game->img_w, &game->img_h);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
-			"assets/floor/floor.xpm", &game->img_w, &game->img_h);
+			"textures/floor/floor.xpm", &game->img_w, &game->img_h);
 	game->exit = mlx_xpm_file_to_image(game->mlx,
-			"assets/exit/doors.xpm", &game->img_w, &game->img_h);
+			"textures/exit/doors.xpm", &game->img_w, &game->img_h);
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
-			"assets/enemy/itachi-0.xpm", &game->img_w, &game->img_h);
+			"textures/enemy/itachi-0.xpm", &game->img_w, &game->img_h);
 	checking_images(game);
 }
 
@@ -60,8 +60,8 @@ void	ft_printing(t_so_long *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->wall, 3 * 60, 0 * 60);
 	mlx_put_image_to_window(game->mlx, game->win, game->wall, 4 * 60, 0 * 60);
 	mlx_put_image_to_window(game->mlx, game->win, game->wall, 5 * 60, 0 * 60);
-	mlx_string_put(game->mlx, game->win, 200, 4, 0x000000, moves);
-	mlx_string_put(game->mlx, game->win, 200, 20, 0x000000, rem_coins);
+	mlx_string_put(game->mlx, game->win, 200, 4, 0, moves);
+	mlx_string_put(game->mlx, game->win, 200, 20, 0, rem_coins);
 	free(moves);
 	free(rem_coins);
 }

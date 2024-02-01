@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:05:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 18:51:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:30:16 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	check_for_lines(char *s)
 	while (s[i])
 	{
 		if (s[i] == '\n' && (s[i + 1] == '\n' || s[i + 1] == '\0'))
-			ft_errors("Map isn't valid ! 78\n");
+			ft_errors("Map isn't valid !\n");
 		i++;
 	}
 }
@@ -71,7 +71,7 @@ char	**ft_get_map(char *s)
 	splited = NULL;
 	fd = open(s, O_RDONLY);
 	if (fd == -1)
-		ft_errors("Opening map file error");
+		ft_errors("Opening map file error !");
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -83,7 +83,7 @@ char	**ft_get_map(char *s)
 		free(line);
 	}
 	if (!all_lines)
-		ft_map_error_1("Empty map file error !");
+		ft_map_error_1("Empty map file error !\n");
 	check_for_lines(all_lines);
 	splited = ft_split(all_lines, '\n');
 	return (free(all_lines), splited);

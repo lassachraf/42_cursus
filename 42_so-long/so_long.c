@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:52:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 23:23:33 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:05:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ void	ft_initializer(t_so_long *game, char **av)
 			"Naruto so_long !");
 	puting_images(game);
 	check_flood_fill(game);
-	mlx_string_put(game->mlx, game->win, 8, 4, 0x000000, "Number of moves : ");
-	mlx_string_put(game->mlx, game->win, 8, 20, 0x000000, "Remaining ramen : ");
-	mlx_string_put(game->mlx, game->win, 200, 4, 0x000000, "0");
-	mlx_string_put(game->mlx, game->win, 200, 20, 0x000000, ft_itoa(game->t_coins));
+	mlx_string_put(game->mlx, game->win, 8, 4, 0, "Number of moves : ");
+	mlx_string_put(game->mlx, game->win, 8, 20, 0, "Remaining ramen : ");
 	mlx_hook(game->win, 2, 1L << 0, ft_moving, game);
 	mlx_hook(game->win, 17, 0, ft_exit, game);
 	mlx_loop_hook(game->mlx, animation, game);
@@ -95,12 +93,12 @@ int	main(int ac, char **av)
 {
 	t_so_long	*game;
 
+	if (ac < 2 || ac > 2)
+		ft_arg_error();
 	game = (t_so_long *)malloc(sizeof(t_so_long));
 	if (!game)
 		return (0);
 	if (ac == 2)
 		ft_initializer(game, av);
-	else
-		ft_arg_error();
 	return (0);
 }

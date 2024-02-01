@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:25:39 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/29 17:25:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:28:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ void	check_for_up_and_down(t_so_long *game, int x, int y)
 
 void	ft_check_whole_map(t_so_long *game)
 {
-	ft_is_rectangular(game);
-	ft_check_map_edges(game);
-	ft_check_map_elements(game);
-	ft_check_map_coins(game);
-	ft_check_map_player(game);
-	ft_check_map_exit(game);
 	ft_is_rectangular(game);
 	ft_check_map_edges(game);
 	ft_check_map_elements(game);

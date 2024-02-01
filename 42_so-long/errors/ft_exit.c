@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 08:40:29 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 18:00:08 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:09:07 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,3 @@ void	ft_lose_exit(t_so_long *game)
 	write(1, "You lose !\n", 12);
 	ft_exit(game);
 }
-

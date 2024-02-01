@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:14:48 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/22 10:44:32 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:22:59 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ft_errors(char *s)
 {
-	if (!*s)
-		s = "ERROR";
-	perror(s);
+	write(1, s, ft_strlen(s));
 	exit(1);
 }
 
