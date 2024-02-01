@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/29 11:51:37 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/01/30 16:57:04 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	check_int(char **s)
 {
 	int	i;
-	int	arr[INT];
 
 	i = 0;
 	while (s[i])

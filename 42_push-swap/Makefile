@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/29 11:34:51 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/01/31 20:55:26 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,24 +34,24 @@ $(LIB):
 	@make -C 42_libft/ --quiet
 
 $(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
 
 bonus: $(BONUS)
 
 $(BONUS): $(OBJS_B)
-	$(CC) $(CFLAGS) $(OBJS_B) -o $(BONUS)
+	@$(CC) $(CFLAGS) $(OBJS_B) -o $(BONUS)
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 clean_bonus:
-	$(RM) $(OBJS_B)
+	@$(RM) $(OBJS_B)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 fclean_bonus: clean_bonus
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
