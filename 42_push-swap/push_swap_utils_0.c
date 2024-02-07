@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/01 20:20:38 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:46:23 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,24 @@ void	check_args(int ac, char **av)
 	}
 }
 
-// void	check_doubles()
-// {
-	
-// }
-
-void	ft_error(void)
+void	check_doubles(t_stack *a)
 {
-	ft_putstr_fd("Error \n", 2);
-	exit(1);
-}
+	t_stack *tmp;
+	int	n;
 
+	tmp = a;
+	n = 0;
+	while (a)
+	{
+		n = a->value;
+		a = a->next;
+		while (a)
+		{
+			if (n == a->value)
+				ft_error();
+			a = a->next;
+		}
+		tmp = tmp->next;
+		a = tmp;
+	}
+}

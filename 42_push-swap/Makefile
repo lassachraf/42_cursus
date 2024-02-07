@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/01/31 20:55:26 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/07 16:05:55 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ BONUS	= checker
 HEADER	= push_swap.h
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address
 
 LIB		= 42_libft/libft.a
 
 SRCS	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
-SRCS	+= stack_utils_0.c stack_utils_1.c
-SRCS	+= push_swap.c push_swap_utils_0.c
+SRCS	+= stack_utils.c stack_utils_5.c stack_utils_100.c node_utils.c
+SRCS	+= push_swap_utils_0.c
+SRCS	+= error_utils.c
 # SRCS	+= 
 OBJS	= $(SRCS:.c=.o)
 
@@ -34,7 +35,7 @@ $(LIB):
 	@make -C 42_libft/ --quiet
 
 $(NAME): $(OBJS) 
-	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) push_swap.c -o $(NAME)
 
 bonus: $(BONUS)
 

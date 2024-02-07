@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils_0.c                                    :+:      :+:    :+:   */
+/*   node_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:54 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/27 14:28:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:28:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 t_stack	*find_last_node(t_stack *head)
 {
-	if (!head)
-		return (NULL);
 	while (head)
+	{
+		if (!head->next)
+			return (head);
 		head = head->next;
+	}
 	return (head);
 }
 
