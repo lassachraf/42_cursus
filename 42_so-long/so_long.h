@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 13:34:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/30 18:14:40 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:27:07 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void	ft_win_exit(t_so_long *game);
 void	ft_lose_exit(t_so_long *game);
 void	ft_map_error_1(char *s);
 void	ft_map_error_2(char c);
+void	ft_free_maps(t_so_long *game);
 
 // So_long utils !
 
