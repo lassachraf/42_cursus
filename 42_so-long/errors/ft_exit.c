@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 08:40:29 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/07 18:28:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:17:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	ft_exit(t_so_long *game)
 	mlx_destroy_image(game->mlx, game->enemy);
 	ft_free_maps(game);
 	mlx_destroy_window(game->mlx, game->win);
-	free(game);
-	system("leaks so_long");
 	exit(0);
 	return (0);
 }

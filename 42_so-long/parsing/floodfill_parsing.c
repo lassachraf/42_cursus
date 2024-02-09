@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 19:02:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/05 13:28:53 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:18:00 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,18 @@ void	check_flood_fill(t_so_long *game)
 	{
 		write(1, "Invalid path, can't reach either all 'C' or 'E' !\n", 51);
 		ft_free_maps(game);
-		system("leaks so_long");
 		exit(1);
 	}
 	else if (game->flood_e_flag == 1)
 	{
 		write(1, "Invalid path, can't reach 'E' !\n", 33);
 		ft_free_maps(game);
-		system("leaks so_long");
 		exit(1);
 	}
 	else if (game->flood_c_flag == 1)
 	{
 		write(1, "Invalid path, can't reach 'C' !\n", 33);
 		ft_free_maps(game);
-		system("leaks so_long");
 		exit(1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:05:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/01/31 22:30:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:17:50 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_is_rectangular(t_so_long *game)
 	{
 		if (ft_strlen(game->map[0]) != ft_strlen(game->map[i]))
 		{
+			ft_free_maps(game);
 			write(1, "The map isn't rectangular !\n", 29);
 			exit(1);
 		}
@@ -38,11 +39,12 @@ int	ft_count_height(t_so_long *game)
 	return (i);
 }
 
-static void	check_for_lines(char *s)
+static void	check_for_lines(char *s, int fd)
 {
 	int	i;
 	int	j;
 
+	close(fd);
 	i = 0;
 	j = 0;
 	while (s[i])
@@ -84,7 +86,7 @@ char	**ft_get_map(char *s)
 	}
 	if (!all_lines)
 		ft_map_error_1("Empty map file error !\n");
-	check_for_lines(all_lines);
+	check_for_lines(all_lines, fd);
 	splited = ft_split(all_lines, '\n');
 	return (free(all_lines), splited);
 }

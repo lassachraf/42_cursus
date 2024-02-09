@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:52:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/01 16:05:14 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:14:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,11 @@ void	ft_initializer(t_so_long *game, char **av)
 
 int	main(int ac, char **av)
 {
-	t_so_long	*game;
+	t_so_long	game;
 
-	if (ac < 2 || ac > 2)
+	if (ac != 2)
 		ft_arg_error();
-	game = (t_so_long *)malloc(sizeof(t_so_long));
-	if (!game)
-		return (0);
 	if (ac == 2)
-		ft_initializer(game, av);
+		ft_initializer(&game, av);
 	return (0);
 }

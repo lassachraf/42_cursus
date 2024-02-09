@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 14:14:48 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/07 19:53:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:17:35 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_errors(char *s)
 {
 	write(1, s, ft_strlen(s));
-	system("leaks so_long");
 	exit(1);
 }
 
