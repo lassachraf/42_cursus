@@ -6,16 +6,22 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/10 19:00:27 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/11 12:00:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *a)
+void	print_stack(t_stack *a, char c)
 {
-	t_stack *s;
+	t_stack	*s;
 
+	printf("*------------%c------------*\n", c);
+	if (!a)
+	{
+		printf("NULL\n");
+		return ;
+	}
 	s = a;
 	while (a)
 	{
@@ -46,11 +52,13 @@ int	main(int argc, char **argv)
 		else if (stack_len(a) == 5)
 			sort_five(&a, &b);
 		// else
-		// 	push_swap(&a, &b); 
+		// 	push_swap(&a, &b);
 	}
-	print_stack(a);
-	print_stack(b);
+	print_stack(a, 'A');
+	print_stack(b, 'B');
 	free_stack(&a, &b);
-	// system("leaks push_swap");
+	print_stack(a, 'A');
+	print_stack(b, 'B');
+	system("leaks push_swap");
 	return (0);
 }

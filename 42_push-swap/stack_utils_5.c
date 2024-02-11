@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/09 14:32:26 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/11 11:40:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	push_min(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-	int temp;
-	int	nb;
-	int	i;
+	t_stack	*tmp;
+	int		temp;
+	int		nb;
+	int		i;
 
 	tmp = *a;
 	i = 1;
@@ -32,7 +32,7 @@ void	push_min(t_stack **a, t_stack **b)
 			temp = i;
 		}
 		i++;
-		tmp = (tmp)->next;
+		tmp = tmp->next;
 	}
 	min_util(a, temp);
 	pb(b, a);
@@ -40,10 +40,10 @@ void	push_min(t_stack **a, t_stack **b)
 
 void	push_max(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-	int temp;
-	int	nb;
-	int	i;
+	t_stack	*tmp;
+	int		temp;
+	int		nb;
+	int		i;
 
 	tmp = *a;
 	i = 1;
@@ -98,7 +98,7 @@ void	max_util(t_stack **a, int temp)
 		else
 		{
 			rra(a);
-			rra(a);	
+			rra(a);
 		}
 	}
 }
