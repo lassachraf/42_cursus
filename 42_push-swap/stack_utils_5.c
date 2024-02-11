@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 11:40:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/11 21:40:34 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,26 @@ void	push_max(t_stack **a, t_stack **b)
 
 void	min_util(t_stack **a, int temp)
 {
-	if (temp <= 2)
+	if (temp != 0)
 	{
-		if (temp == 2)
-			ra(a);
-		ra(a);
-	}
-	else if (temp > 2)
-	{
-		if (temp == 4)
-			rra(a);
-		else
+		if (temp <= 2)
 		{
-			rra(a);
-			rra(a);
+			if (temp == 2)
+				ra(a);
+			ra(a);
+		}
+		else if (temp > 2)
+		{
+			if (temp == 4)
+				rra(a);
+			else
+			{
+				rra(a);
+				rra(a);
+			}
 		}
 	}
+	
 }
 
 void	max_util(t_stack **a, int temp)

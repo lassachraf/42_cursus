@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 11:43:04 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/11 20:44:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,9 @@ void	check_args(int ac, char **av)
 			if (s[j][k] == '-')
 				k = 1;
 			while (s[j][k])
-			{
 				if (!ft_isdigit(s[j][k++]))
 					ft_error();
-			}
-			free(s[j]);
-			j++;
+			free(s[j++]);
 		}
 		free(s);
 		i++;
