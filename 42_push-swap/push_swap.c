@@ -6,11 +6,24 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/07 15:33:27 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:00:27 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	print_stack(t_stack *a)
+{
+	t_stack *s;
+
+	s = a;
+	while (a)
+	{
+		printf("-> %d\n", a->value);
+		a = a->next;
+	}
+	a = s;
+}
 
 int	main(int argc, char **argv)
 {
@@ -32,19 +45,11 @@ int	main(int argc, char **argv)
 			sort_three(&a);
 		else if (stack_len(a) == 5)
 			sort_five(&a, &b);
-		else
-			push_swap(&a, &b);
-		// while (b)
-		// {
-		// 	printf("-> %d\n", b->value);
-		// 	b = b->next;
-		// }
-		while (a)
-		{
-			printf("-> %d\n", a->value);
-			a = a->next;
-		}
+		// else
+		// 	push_swap(&a, &b); 
 	}
+	print_stack(a);
+	print_stack(b);
 	free_stack(&a, &b);
 	// system("leaks push_swap");
 	return (0);

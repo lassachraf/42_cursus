@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/07 16:05:02 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:29:02 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,25 @@ void	sort_five(t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
-void	push_swap(t_stack **a, t_stack **b)
-{
-	// while ((*a)->next->next->next->next->next)
-	// {
-	// 	pb(b, a);
-	// 	printf("=> %d\n", (*b)->value);
-	// }
-	// while ((*a)->next->next->next->next->next)
-	// {
-	// 	push_min(a, b);
-	// 	printf("=> %d\n", (*b)->value);
-	// }
-	push_min_100(a, b);
-	sort_five(a, b);
-	// while (*b)
-	// {
-	// 	pa(a, b);
-	// }
-}
+// void	push_swap(t_stack **a, t_stack **b)
+// {
+// 	// while ((*a)->next->next->next->next->next)
+// 	// {
+// 	// 	pb(b, a);
+// 	// 	printf("=> %d\n", (*b)->value);
+// 	// }
+// 	// while ((*a)->next->next->next->next->next)
+// 	// {
+// 	// 	push_min(a, b);
+// 	// 	printf("=> %d\n", (*b)->value);
+// 	// }
+// 	push_min_100(a, b);
+// 	sort_five(a, b);
+// 	// while (*b)
+// 	// {
+// 	// 	pa(a, b);
+// 	// }
+// }
 
 void	free_stack(t_stack **a, t_stack **b)
 {

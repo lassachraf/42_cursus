@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/07 16:05:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:31:37 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	push_max(t_stack **a, t_stack **b);
 void	min_util(t_stack **a, int temp);
 void	max_util(t_stack **a, int temp);
 void	free_stack(t_stack **a, t_stack **b);
-void	push_swap(t_stack **a, t_stack **b);
-void	push_min_100(t_stack **a, t_stack **b);
+// void	push_swap(t_stack **a, t_stack **b);
+// void	push_min_100(t_stack **a, t_stack **b);
 // Stack creation :
 
 // Stack utils :
