@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 21:35:31 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:18:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int	main(int argc, char **argv)
 			sort_three(&a);
 		else if (stack_len(a) == 5)
 			sort_five(&a, &b);
-		// else
-		// 	push_swap(&a, &b);
+		else
+			push_swap(&a, &b);
 	}
 	// print_stack(a, 'A');
 	// print_stack(b, 'B');
 	free_stack(&a, &b);
-	print_stack(a, 'A');
-	system("leaks push_swap");
+	// print_stack(a, 'A');
+	// system("leaks push_swap");
 	return (0);
 }

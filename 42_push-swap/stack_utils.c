@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 21:41:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:33:59 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	free_stack(t_stack **a, t_stack **b)
 {
 	t_stack	*c;
 
-	(void)b;
 	while (*a)
 	{
 		c = (*a)->next;

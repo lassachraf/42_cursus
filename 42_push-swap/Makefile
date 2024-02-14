@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/02/11 11:28:53 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/14 15:07:50 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,11 @@ CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address
 LIB		= 42_libft/libft.a
 
 SRCS	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
-SRCS	+= stack_utils.c stack_utils_5.c stack_utils_100.c node_utils.c
+SRCS	+= stack_utils.c stack_utils_5.c node_utils.c algo.c
 SRCS	+= push_swap_utils_0.c push_swap.c
 SRCS	+= error_utils.c
 # SRCS	+= 
-SRCS_B	= 
-SRCS_B	+= 
+SRCS_B	= checker.c checker_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
@@ -41,7 +40,7 @@ $(NAME): $(OBJS) $(LIB)
 bonus: $(BONUS)
 
 $(BONUS): $(OBJS_B)
-	@$(CC) $(CFLAGS) $(OBJS_B) checker.c -o $(BONUS)
+	@$(CC) $(CFLAGS) $(OBJS_B) -o $(BONUS)
 
 clean:
 	@make -C 42_libft/ clean --quiet
@@ -55,11 +54,11 @@ fclean: clean
 	@$(RM) $(NAME)
 
 fclean_bonus: clean_bonus
-	@$(RM) $(NAME)
+	@$(RM) $(BONUS)
 
 re: fclean all
 
 re_bonus: fclean_bonus bonus
 
 .PHONY: all bonus clean clean_b fclean fclean_bonus re re_bonus
-.SECONDARY: $(OBJS)
+.SECONDARY: $(OBJS) $(OBJS_B)

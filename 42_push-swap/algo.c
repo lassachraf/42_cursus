@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils_100.c                                  :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 15:58:01 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 21:40:45 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/02/14 15:20:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_min_100(t_stack **a, t_stack **b)
+void	push_swap(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
-	int temp;
-	int	nb;
-	int	i;
-
-	tmp = *a;
-	i = 1;
-	nb = tmp->value;
-	tmp = tmp->next;
-	temp = 0;
-	while (tmp)
-	{
-		if (nb > tmp->value)
-		{
-			nb = tmp->value;
-			temp = i;
-		}
-		i++;
-		tmp = (tmp)->next;
-	}
-	min_util(a, temp);
-	pb(b, a);
+	while ((*a)->next->next->next)
+		pb(b, a);
+	print_stack(*a, 'A');
+	print_stack(*b, 'B');
+	sort_three(a);
+	
 }
