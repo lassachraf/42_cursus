@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 21:30:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 22:33:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	push_swap(t_stack **a, t_stack **b)
 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
 	nb_chunk = get_chunk(*a);
 	mid = stack_len(*a) / 2 - 1;
-	printf("mid => %d, nb chunk => %d\n", mid, nb_chunk);
+	
 	// while ((*a)->next->next->next)
 	// 	pushing_min(a, b);
 	// sort_three(a);
