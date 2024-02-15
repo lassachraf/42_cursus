@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 21:40:34 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:52:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	min_util(t_stack **a, int temp)
 			}
 		}
 	}
-	
 }
 
 void	max_util(t_stack **a, int temp)

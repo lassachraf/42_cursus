@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:04:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:51:46 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	check_args(int ac, char **av)
 
 void	check_doubles(t_stack *a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		n;
 
 	tmp = a;
