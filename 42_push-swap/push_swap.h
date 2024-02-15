@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/11 14:26:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:28:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ t_stack	*find_last_node(t_stack *head);
 t_stack	*find_smallest(t_stack *stack);
 int		stack_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
+
+int	*sort_int_tab(int *tab, int size);
 
 // Algorithms :
 void	sort_three(t_stack **a);

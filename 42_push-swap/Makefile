@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/02/15 09:51:01 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/15 21:12:13 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIB		= 42_libft/libft.a
 SRCS	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
 SRCS	+= stack_utils.c stack_utils_5.c node_utils.c algo.c
 SRCS	+= push_swap_utils_0.c push_swap.c
-SRCS	+= error_utils.c
+SRCS	+= error_utils.c array_utils.c
 # SRCS	+= 
 SRCS_B	= checker.c checker_utils.c
 

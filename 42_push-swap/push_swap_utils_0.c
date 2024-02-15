@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:04:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:04:28 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,11 @@ void	check_doubles(t_stack *a)
 {
 	t_stack *tmp;
 	int		n;
+	int		nb;
 
 	tmp = a;
 	n = 0;
+	nb = 0;
 	while (a)
 	{
 		n = a->value;
@@ -107,5 +109,6 @@ void	check_doubles(t_stack *a)
 		}
 		tmp = tmp->next;
 		a = tmp;
+		nb++;
 	}
 }
