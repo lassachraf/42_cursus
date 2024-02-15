@@ -6,7 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/15 21:04:28 by alassiqu         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/15 13:51:46 by alassiqu         ###   ########.fr       */
+>>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +94,7 @@ void	check_args(int ac, char **av)
 
 void	check_doubles(t_stack *a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		n;
 	int		nb;
 

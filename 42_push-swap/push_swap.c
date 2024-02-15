@@ -6,7 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/02/15 21:04:18 by alassiqu         ###   ########.fr       */
+=======
+/*   Updated: 2024/02/15 15:38:53 by alassiqu         ###   ########.fr       */
+>>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +19,9 @@
 void	print_stack(t_stack *a, char c)
 {
 	t_stack	*s;
+	int		i;
 
+	i = 0;
 	printf("*------------%c------------*\n", c);
 	if (!a)
 	{
@@ -25,7 +31,7 @@ void	print_stack(t_stack *a, char c)
 	s = a;
 	while (a)
 	{
-		printf("-> %d\n", a->value);
+		printf("%d -> %d\n", i++, a->value);
 		a = a->next;
 	}
 	a = s;
@@ -54,7 +60,10 @@ int	main(int argc, char **argv)
 			push_swap(&a, &b);
 	}
 	// print_stack(a, 'A');
+<<<<<<< HEAD
 	// print_stack(b, 'B');
+=======
+>>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
 	free_stack(&a, &b);
 	return (0);
 }
