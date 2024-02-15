@@ -6,23 +6,37 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/14 23:25:35 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:04:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_splited(char **s)
+long	ft_atol(char *str)
 {
-	int	i;
+	long	res;
+	int		sign;
+	int		i;
 
+	res = 0;
 	i = 0;
-	while (i)
+	sign = 1;
+	while (str[i] && (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (!s[i][0])
-			ft_error_args(s);
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
+	while (ft_isdigit(str[i]))
+	{
+		res *= 10;
+		res += str[i] - '0';
+		i++;
+	}
+	res *= sign;
+	return (res);
 }
 
 void	check_int(char **s)
@@ -32,10 +46,11 @@ void	check_int(char **s)
 
 	i = 0;
 	flag = 0;
-	check_splited(s);
+	if (!s[0] || !s[0][0])
+		ft_error_args(s);
 	while (s[i])
 	{
-		if (atol(s[i]) > 2147483647 || atol(s[i]) < -2147483648)
+		if (ft_atol(s[i]) > 2147483647 || ft_atol(s[i]) < -2147483648)
 			flag = 1;
 		else if ((s[i][0] == '-' || s[i][0] == '+') && !s[i][1])
 			flag = 1;

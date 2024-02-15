@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/02/14 15:07:50 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/15 09:51:01 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,5 +60,5 @@ re: fclean all
 
 re_bonus: fclean_bonus bonus
 
-.PHONY: all bonus clean clean_b fclean fclean_bonus re re_bonus
+.PHONY: all bonus clean clean_bonus fclean fclean_bonus re re_bonus
 .SECONDARY: $(OBJS) $(OBJS_B)

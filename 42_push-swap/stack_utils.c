@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/14 14:33:59 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:13:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	stack_init(t_stack **a, char **av, int ac)
 		free(s);
 		i++;
 	}
+	check_doubles(*a);
 }
 
 void	sort_three(t_stack **a)
@@ -72,23 +73,6 @@ void	sort_five(t_stack **a, t_stack **b)
 	ra(a);
 	pa(a, b);
 }
-
-// void	push_swap(t_stack **a, t_stack **b)
-// {
-// 	while ((*a)->next->next->next->next->next)
-// 		pb(b, a);
-// 	while ((*a)->next->next->next->next->next)
-// 	{
-// 		push_min(a, b);
-// 		printf("=> %d\n", (*b)->value);
-// 	}
-// 	push_min_100(a, b);
-// 	sort_five(a, b);
-// 	// while (*b)
-// 	// {
-// 	// 	pa(a, b);
-// 	// }
-// }
 
 void	free_stack(t_stack **a, t_stack **b)
 {

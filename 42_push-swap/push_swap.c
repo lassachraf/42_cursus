@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/14 15:18:24 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:11:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 		ft_error();
 	check_args(argc, argv);
 	stack_init(&a, argv + 1, argc);
-	check_doubles(a);
 	if (!stack_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -54,10 +53,8 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	// print_stack(a, 'A');
-	// print_stack(b, 'B');
+	print_stack(a, 'A');
+	print_stack(b, 'B');
 	free_stack(&a, &b);
-	// print_stack(a, 'A');
-	// system("leaks push_swap");
 	return (0);
 }
