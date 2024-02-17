@@ -6,11 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/02/15 21:28:32 by alassiqu         ###   ########.fr       */
-=======
-/*   Updated: 2024/02/15 13:50:48 by alassiqu         ###   ########.fr       */
->>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
+/*   Updated: 2024/02/17 14:49:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +21,7 @@
 typedef struct s_stack
 {
 	int				value;
+	int				index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }				t_stack;

@@ -6,11 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/02/15 21:04:18 by alassiqu         ###   ########.fr       */
-=======
-/*   Updated: 2024/02/15 15:38:53 by alassiqu         ###   ########.fr       */
->>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
+/*   Updated: 2024/02/17 15:09:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +18,12 @@ void	print_stack(t_stack *a, char c)
 	int		i;
 
 	i = 0;
-	printf("*------------%c------------*\n", c);
+	write(1, "*------------", 14);
+	write(1, &c, 1);
+	write(1, "------------*\n", 15);
 	if (!a)
 	{
-		printf("NULL\n");
+		write(1, "NULL\n", 6);
 		return ;
 	}
 	s = a;
@@ -54,16 +52,11 @@ int	main(int argc, char **argv)
 			sa(&a);
 		else if (stack_len(a) == 3)
 			sort_three(&a);
-		else if (stack_len(a) == 5)
+		else if (stack_len(a) <= 5)
 			sort_five(&a, &b);
 		else
 			push_swap(&a, &b);
 	}
-	// print_stack(a, 'A');
-<<<<<<< HEAD
-	// print_stack(b, 'B');
-=======
->>>>>>> 7637d5ff7593d0cb0233e516f386b4d74fd5021b
 	free_stack(&a, &b);
 	return (0);
 }

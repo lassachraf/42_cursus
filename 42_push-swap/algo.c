@@ -6,56 +6,11 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 22:44:17 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:12:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	get_number_top(t_stack **a, int index)
-// {
-// 	int	n;
-
-// 	n = stack_len(*a) / 2;
-// 	if (index > n)
-// 	{
-// 		while (index <= stack_len(*a))
-// 		{
-// 			rra(a);
-// 			index++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		while (--index)
-// 			ra(a);
-// 	}
-// }
-
-// void	pushing_min(t_stack **a, t_stack **b)
-// {
-// 	t_stack	*tmp;
-// 	int		index;
-// 	int		nb;
-// 	int		i;
-
-// 	tmp = *a;
-// 	i = 1;
-// 	nb = tmp->value;
-// 	index = 0;
-// 	while (tmp)
-// 	{
-// 		if (nb > tmp->value)
-// 		{
-// 			nb = tmp->value;
-// 			index = i;
-// 		}
-// 		i++;
-// 		tmp = tmp->next;
-// 	}
-// 	get_number_top(a, index);
-// 	pb(b, a);
-// }
 
 int	*copy_arr(t_stack *a)
 {
@@ -118,3 +73,4 @@ void	push_swap(t_stack **a, t_stack **b)
 	// get the cheapest number instructions and push it, than sort it !
 	// should be in a loop to do the same with all elements in stack b !
 }
+		
