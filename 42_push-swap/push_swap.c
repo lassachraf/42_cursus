@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/19 11:35:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:04:16 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	// print_stack(a, 'A');
+	print_stack(a, 'A');
 	// free_stack(&a, &b);
 	return (0);
 }

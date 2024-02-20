@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/16 20:56:54 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:36:22 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ long	ft_atol(char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
+		if (res * 10 > INT_MAX)
+			return (2147483648);
 		res *= 10;
 		res += str[i] - '0';
 		i++;
