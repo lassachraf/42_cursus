@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 14:49:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:25:52 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void	ft_error_args(char **s);
 void	check_args(int ac, char **av);
 void	check_doubles(t_stack *a);
 void	push_min(t_stack **a, t_stack **b);
-void	push_max(t_stack **a, t_stack **b);
 void	min_util(t_stack **a, int temp);
-void	max_util(t_stack **a, int temp);
 void	free_stack(t_stack **a, t_stack **b);
 void	print_stack(t_stack *a, char c);
 void	push_swap(t_stack **a, t_stack **b);
+int		get_nb_index(t_stack *a, int nb);
+int		get_nb_arr_index(int *tab, int nb);
+void	get_it_top(t_stack **a, int nb);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);
@@ -48,8 +49,7 @@ t_stack	*find_last_node(t_stack *head);
 t_stack	*find_smallest(t_stack *stack);
 int		stack_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
-
-int	*sort_int_tab(int *tab, int size);
+int		*sort_int_tab(int *tab, int size);
 
 // Algorithms :
 void	sort_three(t_stack **a);

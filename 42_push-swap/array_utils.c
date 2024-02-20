@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 21:17:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:13:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,36 @@ int	*sort_int_tab(int *tab, int size)
 		i++;
 	}
 	return (tab);
+}
+
+int	get_nb_arr_index(int *tab, int nb)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (tab[i] == nb)
+			break;
+		i++;
+	}
+	return (i);
+}
+
+int	get_nb_index(t_stack *a, int nb)
+{
+	t_stack	*tmp;
+	int		i;
+
+	tmp = a;
+	i = 0;
+	while (a)
+	{
+		if (a->value == nb)
+			break;
+		i++;
+		a = a->next;
+	}
+	a = tmp;
+	return (i);
 }

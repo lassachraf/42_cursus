@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:54 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/06 14:28:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/17 17:06:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_stack	*find_smallest(t_stack *stack)
 
 void	append_node(t_stack **stack, int nbr)
 {
+	static int i;
 	t_stack	*node;
 	t_stack	*last_node;
 
@@ -95,4 +96,6 @@ void	append_node(t_stack **stack, int nbr)
 		last_node->next = node;
 		node->prev = last_node;
 	}
+	node->index = i;
+	i++;
 }
