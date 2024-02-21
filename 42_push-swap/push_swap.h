@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/19 11:25:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:19:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_stack(t_stack *a, char c);
 void	push_swap(t_stack **a, t_stack **b);
 int		get_nb_index(t_stack *a, int nb);
 int		get_nb_arr_index(int *tab, int nb);
-void	get_it_top(t_stack **a, int nb);
+void	get_it_top(t_stack **a, t_stack **b, int nb);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);

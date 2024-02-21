@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/19 11:38:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:09:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_chunk(t_stack *a)
 		return (30);
 }
 
-void	get_it_top(t_stack **a, int nb)
+void	get_it_top(t_stack **a, t_stack **b, int nb)
 {
 	t_stack	*tmp;
 	int		index;
@@ -67,6 +67,7 @@ void	get_it_top(t_stack **a, int nb)
 			index--;
 		}
 	}
+	pb(b, a);
 }
 
 void	push_swap(t_stack **a, t_stack **b)
@@ -77,19 +78,21 @@ void	push_swap(t_stack **a, t_stack **b)
 
 	tmp = *a;
 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
-	while (stack_len(*a) != 3)
-	{
-		mid = stack_len(*a) / 2 - 1;
-		if ((*a)->value <= arr[mid])
-		{
-			print_stack(*a, 'A');
-			get_it_top(a, (*a)->value);
-			pb(b, a);
-		}
-		else
-			(*a) = (*a)->next;
-	}
-	*a = tmp;
+	mid = stack_len(*a) / 2;
+	(void)b;
+	// if (mid > (stack_len(*a) / 2))
+	// {
+	// 	while (mid--)
+	// 		ra(a);
+	// }
+	// else
+	// {
+	// 	while (mid <= stack_len(*a))
+	// 	{
+	// 		ra(a);
+	// 		mid++;
+	// 	}
+	// }
 	// free(tmp);
 	// sort_three(a);
 	// while ((*b)->next)
@@ -97,7 +100,5 @@ void	push_swap(t_stack **a, t_stack **b)
 	// pa(a, b);
 	// pa(a, b);
 	// print_stack(*a, 'A');
-	print_stack(*b, 'B');
-	// get the cheapest number instructions and push it, than sort it !
-	// should be in a loop to do the same with all elements in stack b !
+	// print_stack(*b, 'B');
 }

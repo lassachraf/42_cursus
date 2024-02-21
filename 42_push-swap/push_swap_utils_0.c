@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/20 15:36:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:13:32 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	check_int(char **s)
 		if (ft_atol(s[i]) > 2147483647 || ft_atol(s[i]) < -2147483648)
 			flag = 1;
 		else if ((s[i][0] == '-' || s[i][0] == '+') && !s[i][1])
+			flag = 1;
+		else if (ft_strlen(s[i]) > 10 && s[i][0] != '-' && s[i][0] != '+')
 			flag = 1;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 17:04:39 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:17:43 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	push_min(t_stack **a, t_stack **b)
 
 void	min_util(t_stack **a, int temp)
 {
+	printf("tmp +> %d\n", temp);
 	if (temp != 0)
 	{
 		if (temp <= 2)
@@ -69,6 +70,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	if (nb == 5)
 		push_min(a, b);
 	push_min(a, b);
+	print_stack(*a, 'A');
 	sort_three(a);
 	if (nb == 5)
 		pa(a, b);
