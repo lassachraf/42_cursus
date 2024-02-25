@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:54 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 17:06:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/23 14:26:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ t_stack	*find_smallest(t_stack *stack)
 
 void	append_node(t_stack **stack, int nbr)
 {
-	static int i;
-	t_stack	*node;
-	t_stack	*last_node;
+	static int	i;
+	t_stack		*node;
+	t_stack		*last_node;
 
 	if (!stack)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:48:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/15 10:19:40 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:08:19 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,22 @@ void	ft_error_args(char **s)
 	int	i;
 
 	i = 0;
-	while (s[i])
-	{
-		free(s[i++]);
-	}
-	free(s);
+	(void)s;
+	// while (s[i])
+	// {
+	// 	free(s[i]);
+	// 	i++;
+	// }
+	// free(s);
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
+
+void	ft_error_stack(t_stack **a)
+{
+	if (*a)
+		free(*a);
+	*a = NULL;
 	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }

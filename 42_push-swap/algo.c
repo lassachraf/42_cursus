@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/21 17:09:45 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/25 09:51:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,35 +70,35 @@ void	get_it_top(t_stack **a, t_stack **b, int nb)
 	pb(b, a);
 }
 
-void	push_swap(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-	int		*arr;
-	int		mid;
+// void	push_swap(t_stack **a, t_stack **b)
+// {
+// 	t_stack	*tmp;
+// 	int		*arr;
+// 	int		mid;
 
-	tmp = *a;
-	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
-	mid = stack_len(*a) / 2;
-	(void)b;
-	// if (mid > (stack_len(*a) / 2))
-	// {
-	// 	while (mid--)
-	// 		ra(a);
-	// }
-	// else
-	// {
-	// 	while (mid <= stack_len(*a))
-	// 	{
-	// 		ra(a);
-	// 		mid++;
-	// 	}
-	// }
-	// free(tmp);
-	// sort_three(a);
-	// while ((*b)->next)
-	// 	pa(a, b);
-	// pa(a, b);
-	// pa(a, b);
-	// print_stack(*a, 'A');
-	// print_stack(*b, 'B');
-}
+// 	tmp = *a;
+// 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
+// 	mid = stack_len(*a) / 2;
+// 	(void)b;
+// 	// if (mid > (stack_len(*a) / 2))
+// 	// {
+// 	// 	while (mid--)
+// 	// 		ra(a);
+// 	// }
+// 	// else
+// 	// {
+// 	// 	while (mid <= stack_len(*a))
+// 	// 	{
+// 	// 		ra(a);
+// 	// 		mid++;
+// 	// 	}
+// 	// }
+// 	// free(tmp);
+// 	// sort_three(a);
+// 	// while ((*b)->next)
+// 	// 	pa(a, b);
+// 	// pa(a, b);
+// 	// pa(a, b);
+// 	// print_stack(*a, 'A');
+// 	// print_stack(*b, 'B');
+// }

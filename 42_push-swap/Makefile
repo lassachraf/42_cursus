@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/02/16 21:19:09 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/25 10:03:59 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONUS	= checker
 HEADER	= push_swap.h
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g3
 RM		= rm -f
 
 LIB		= 42_libft/libft.a

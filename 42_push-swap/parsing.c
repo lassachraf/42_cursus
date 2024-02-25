@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_0.c                                :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/25 10:03:25 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/02/24 19:32:30 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/02/25 10:11:22 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ long	ft_atol(char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
-		if (res * 10 > INT_MAX)
+		if (res * 10 > INT_MAX || res * 10 * -1 < INT_MIN)
 			return (2147483648);
 		res *= 10;
 		res += str[i] - '0';
@@ -46,6 +46,7 @@ void	check_int(char **s)
 	int	i;
 	int	flag;
 
+	printf("vfvfv\n\n");
 	i = 0;
 	flag = 0;
 	if (!s[0] || !s[0][0])
@@ -60,12 +61,13 @@ void	check_int(char **s)
 			flag = 1;
 		i++;
 	}
-	if (flag == 1)
-		ft_error_args(s);
+	// if (flag == 1)
+		// ft_error_args(s);
 }
 
 void	check_args(int ac, char **av)
 {
+	printf("vfvfv\n\n");
 	char	**s;
 	int		i;
 	int		j;
@@ -85,8 +87,7 @@ void	check_args(int ac, char **av)
 			while (s[j][k])
 				if (!ft_isdigit(s[j][k++]))
 					ft_error_args(s);
-			free(s[j]);
-			j++;
+			free(s[j++]);
 		}
 		free(s);
 		i++;
@@ -109,7 +110,7 @@ void	check_doubles(t_stack *a)
 		while (a)
 		{
 			if (n == a->value)
-				ft_error();
+				ft_error_stack(a);
 			a = a->next;
 		}
 		tmp = tmp->next;

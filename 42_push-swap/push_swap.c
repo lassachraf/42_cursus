@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/21 17:11:34 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/25 10:02:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,11 @@ int	main(int argc, char **argv)
 		else if (stack_len(a) == 3)
 			sort_three(&a);
 		else if (stack_len(a) <= 5)
-		{
-			printf("in five section !\n");
 			sort_five(&a, &b);
-		}
-		else
-			push_swap(&a, &b);
+		// else
+		// 	push_swap(&a, &b);
 	}
-	print_stack(a, 'A');
-	// free_stack(&a, &b);
+	// print_stack(a, 'A');
+	free_stack(&a, &b);
 	return (0);
 }
