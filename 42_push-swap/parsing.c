@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_0.c                                :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/20 15:36:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:20:01 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ft_atol(char *str)
 	return (res);
 }
 
-void	check_int(char **s)
+void	ft_check_int(char **s)
 {
 	int	i;
 	int	flag;
@@ -56,13 +56,15 @@ void	check_int(char **s)
 			flag = 1;
 		else if ((s[i][0] == '-' || s[i][0] == '+') && !s[i][1])
 			flag = 1;
+		else if (ft_strlen(s[i]) > 10 && s[i][0] != '-' && s[i][0] != '+')
+			flag = 1;
 		i++;
 	}
 	if (flag == 1)
 		ft_error_args(s);
 }
 
-void	check_args(int ac, char **av)
+void	ft_check_args(int ac, char **av)
 {
 	char	**s;
 	int		i;
@@ -74,7 +76,7 @@ void	check_args(int ac, char **av)
 	{
 		j = 0;
 		s = ft_split(av[i], ' ');
-		check_int(s);
+		ft_check_int(s);
 		while (s[j])
 		{
 			k = 0;
@@ -90,7 +92,7 @@ void	check_args(int ac, char **av)
 	}
 }
 
-void	check_doubles(t_stack *a)
+void	ft_check_doubles(t_stack *a)
 {
 	t_stack	*tmp;
 	int		n;
@@ -106,7 +108,10 @@ void	check_doubles(t_stack *a)
 		while (a)
 		{
 			if (n == a->value)
+			{
+				ft_stack_error(a);
 				ft_error();
+			}
 			a = a->next;
 		}
 		tmp = tmp->next;

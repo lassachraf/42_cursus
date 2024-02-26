@@ -6,45 +6,13 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 15:03:19 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/19 11:38:19 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:08:47 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*copy_arr(t_stack *a)
-{
-	t_stack	*tmp;
-	int		*arr;
-	int		i;
-
-	i = 0;
-	arr = malloc(sizeof(int) * stack_len(a));
-	tmp = a;
-	while (tmp)
-	{
-		arr[i] = tmp->value;
-		tmp = tmp->next;
-		i++;
-	}
-	i = 0;
-	return (arr);
-}
-
-int	get_chunk(t_stack *a)
-{
-	int	nb;
-
-	nb = stack_len(a);
-	if (nb < 20)
-		return (5);
-	else if (nb < 100)
-		return (10);
-	else
-		return (30);
-}
-
-void	get_it_top(t_stack **a, int nb)
+void	get_it_top(t_stack **a, t_stack **b, int nb)
 {
 	t_stack	*tmp;
 	int		index;
@@ -67,37 +35,53 @@ void	get_it_top(t_stack **a, int nb)
 			index--;
 		}
 	}
+	pb(b, a);
+}
+
+int	indexing(t_stack *a, int *arr)
+{
+	t_stack	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = a;
+	while (i < stack_len(tmp))
+	{
+		while (tmp)
+		{
+			if (tmp->value == arr[i])
+			{
+                tmp->final_index = i;
+				break;
+			}
+            tmp = tmp->next;
+		}
+		tmp = a;
+		i++;
+	}
+	return (i);
 }
 
 void	push_swap(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 	int		*arr;
-	int		mid;
+	int		mid_index;
 
 	tmp = *a;
 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
-	while (stack_len(*a) != 3)
+	mid_index = indexing(*a, arr);
+	while (stack_len(*a) != (mid_index / 2))
 	{
-		mid = stack_len(*a) / 2 - 1;
-		if ((*a)->value <= arr[mid])
-		{
-			print_stack(*a, 'A');
-			get_it_top(a, (*a)->value);
+		if ((*a)->final_index < (mid_index / 2))
 			pb(b, a);
-		}
 		else
-			(*a) = (*a)->next;
+			ra(a);
+		// should push until the stack length is 3,
+		// i still have to search a good condition to do
+		// that,
 	}
-	*a = tmp;
-	// free(tmp);
-	// sort_three(a);
-	// while ((*b)->next)
-	// 	pa(a, b);
-	// pa(a, b);
-	// pa(a, b);
-	// print_stack(*a, 'A');
+	free(arr);
+	print_stack(*a, 'A');
 	print_stack(*b, 'B');
-	// get the cheapest number instructions and push it, than sort it !
-	// should be in a loop to do the same with all elements in stack b !
 }

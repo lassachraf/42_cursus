@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 17:13:38 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:44:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,21 @@ int	get_nb_arr_index(int *tab, int nb)
 	return (i);
 }
 
-int	get_nb_index(t_stack *a, int nb)
+int	*copy_arr(t_stack *a)
 {
 	t_stack	*tmp;
+	int		*arr;
 	int		i;
 
-	tmp = a;
 	i = 0;
-	while (a)
+	arr = malloc(sizeof(int) * stack_len(a));
+	tmp = a;
+	while (tmp)
 	{
-		if (a->value == nb)
-			break;
+		arr[i] = tmp->value;
+		tmp = tmp->next;
 		i++;
-		a = a->next;
 	}
-	a = tmp;
-	return (i);
+	i = 0;
+	return (arr);
 }

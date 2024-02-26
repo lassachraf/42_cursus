@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/20 17:04:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:25:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_stack(t_stack *a, char c)
 	s = a;
 	while (a)
 	{
-		printf("%d -> %d\n", a->index,a->value);
+		printf("index %d, index (sorted) %d, its value %d\n", a->index, a->final_index, a->value);
 		a = a->next;
 	}
 	a = s;
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (argc < 2)
 		ft_error();
-	check_args(argc, argv);
+	ft_check_args(argc, argv);
 	stack_init(&a, argv + 1, argc);
 	if (!stack_sorted(a))
 	{
@@ -57,7 +57,32 @@ int	main(int argc, char **argv)
 		else
 			push_swap(&a, &b);
 	}
-	print_stack(a, 'A');
-	// free_stack(&a, &b);
+	// print_stack(a, 'A');
+	// print_stack(b, 'B');
+	// system("leaks push_swap");
+	free_stack(&a, &b);
 	return (0);
 }
+
+// int main(int argc, char **argv)
+// {
+// 	t_stack	*a;
+// 	t_stack	*b;
+
+// 	a = NULL;
+// 	b = NULL;
+// 	if (argc < 2)
+// 		ft_error();
+// 	ft_check_args(argc, argv);
+// 	stack_init(&a, argv + 1, argc);
+// 	print_stack(a, 'A');
+// 	ra(&a);
+// 	print_stack(a, 'A');
+// 	pb(&b, &a);
+// 	// pb(&b, &a);
+// 	// pb(&b, &a);
+// 	// pb(&b, &a);
+// 	// pb(&b, &a);
+// 	print_stack(a, 'A');
+// 	print_stack(b, 'B');
+// }

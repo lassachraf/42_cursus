@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/19 11:25:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:39:26 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ typedef struct s_stack
 {
 	int				value;
 	int				index;
+	int				final_index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }				t_stack;
 
-// Handle errors-free :
+// Handle errors-free functions :
 void	ft_error(void);
 void	ft_error_args(char **s);
+void	ft_stack_error(t_stack *a);
 
-// All checks :
-void	check_args(int ac, char **av);
-void	check_doubles(t_stack *a);
+// Parsing functions :
+void	ft_check_args(int ac, char **av);
+void	ft_check_doubles(t_stack *a);
 void	push_min(t_stack **a, t_stack **b);
 void	min_util(t_stack **a, int temp);
 void	free_stack(t_stack **a, t_stack **b);
@@ -40,7 +42,8 @@ void	print_stack(t_stack *a, char c);
 void	push_swap(t_stack **a, t_stack **b);
 int		get_nb_index(t_stack *a, int nb);
 int		get_nb_arr_index(int *tab, int nb);
-void	get_it_top(t_stack **a, int nb);
+void	get_it_top(t_stack **a, t_stack **b, int nb);
+int		*copy_arr(t_stack *a);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);

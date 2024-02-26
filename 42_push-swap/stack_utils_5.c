@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 17:04:39 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:06:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	push_min(t_stack **a, t_stack **b)
 	tmp = *a;
 	i = 1;
 	nb = tmp->value;
-	tmp = tmp->next;
 	temp = 0;
 	while (tmp)
 	{

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/17 16:58:32 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:22:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	stack_init(t_stack **a, char **av, int ac)
 		free(s);
 		i++;
 	}
-	check_doubles(*a);
+	ft_check_doubles(*a);
 }
 
 void	sort_three(t_stack **a)
@@ -74,10 +74,31 @@ void	free_stack(t_stack **a, t_stack **b)
 		free(*a);
 		*a = c;
 	}
-	while (*b)
+	if (*b)
 	{
-		c = (*b)->next;
-		free(*b);
-		*b = c;
+		while (*b)
+        {
+            c = (*b)->next;
+            free(*b);
+            *b = c;
+        }
 	}
+}
+
+int	get_nb_index(t_stack *a, int nb)
+{
+	t_stack	*tmp;
+	int		i;
+
+	tmp = a;
+	i = 0;
+	while (a)
+	{
+		if (a->value == nb)
+			break;
+		i++;
+		a = a->next;
+	}
+	a = tmp;
+	return (i);
 }
