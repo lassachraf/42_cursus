@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:48:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 10:13:09 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/26 21:31:23 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	exit(1);
 }
 
@@ -30,14 +30,14 @@ void	ft_error_args(char **s)
 	}
 	free(s);
 	ft_putstr_fd("Error\n", 2);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	exit(1);
 }
 
 void	ft_stack_error(t_stack *a)
 {
-	t_stack *current;
-	t_stack *next;
+	t_stack	*current;
+	t_stack	*next;
 
 	current = a;
 	while (current != NULL)

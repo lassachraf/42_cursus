@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 10:20:01 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:19:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ long	ft_atol(char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
-		if (res * 10 > INT_MAX)
+		if (res * 10 > INT_MAX || res * 10 * sign < INT_MIN)
 			return (2147483648);
-		res *= 10;
-		res += str[i] - '0';
+		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	res *= sign;
-	return (res);
+	return (res *= sign);
 }
 
 void	ft_check_int(char **s)
@@ -48,7 +46,7 @@ void	ft_check_int(char **s)
 
 	i = 0;
 	flag = 0;
-	if (!s[0] || !s[0][0])
+	if (!s[0])
 		ft_error_args(s);
 	while (s[i])
 	{
@@ -56,12 +54,20 @@ void	ft_check_int(char **s)
 			flag = 1;
 		else if ((s[i][0] == '-' || s[i][0] == '+') && !s[i][1])
 			flag = 1;
-		else if (ft_strlen(s[i]) > 10 && s[i][0] != '-' && s[i][0] != '+')
-			flag = 1;
 		i++;
 	}
 	if (flag == 1)
 		ft_error_args(s);
+}
+
+void	ft_double_free(char **s)
+{
+	int	i;
+
+	i = -1;
+	while (s[++i])
+		free(s[i]);
+	free(s);
 }
 
 void	ft_check_args(int ac, char **av)
@@ -85,9 +91,9 @@ void	ft_check_args(int ac, char **av)
 			while (s[j][k])
 				if (!ft_isdigit(s[j][k++]))
 					ft_error_args(s);
-			free(s[j++]);
+			j++;
 		}
-		free(s);
+		ft_double_free(s);
 		i++;
 	}
 }

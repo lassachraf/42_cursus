@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:11:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 13:25:29 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:54:09 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	print_stack(t_stack *a, char c)
 	s = a;
 	while (a)
 	{
-		printf("index %d, index (sorted) %d, its value %d\n", a->index, a->final_index, a->value);
+		printf("index %d, index (sorted) %d, its value %d\n", a->index,
+			a->final_index, a->value);
 		a = a->next;
 	}
 	a = s;
@@ -58,8 +59,10 @@ int	main(int argc, char **argv)
 			push_swap(&a, &b);
 	}
 	// print_stack(a, 'A');
-	// print_stack(b, 'B');
-	// system("leaks push_swap");
+	// if (!stack_sorted(a))
+	// 	printf("KO\n");
+	// else
+	// 	printf("OK\n");
 	free_stack(&a, &b);
 	return (0);
 }

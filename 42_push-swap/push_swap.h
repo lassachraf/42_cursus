@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 10:39:26 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:08:55 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ typedef struct s_stack
 void	ft_error(void);
 void	ft_error_args(char **s);
 void	ft_stack_error(t_stack *a);
+void	ft_double_free(char **s);
 
 // Parsing functions :
 void	ft_check_args(int ac, char **av);
 void	ft_check_doubles(t_stack *a);
-void	push_min(t_stack **a, t_stack **b);
-void	min_util(t_stack **a, int temp);
+void	push_min(t_stack **a, t_stack **b, int n);
+void	min_util_four(t_stack **a, int temp);
+void	min_util_five(t_stack **a, int temp);
 void	free_stack(t_stack **a, t_stack **b);
 void	print_stack(t_stack *a, char c);
 void	push_swap(t_stack **a, t_stack **b);
@@ -44,6 +46,8 @@ int		get_nb_index(t_stack *a, int nb);
 int		get_nb_arr_index(int *tab, int nb);
 void	get_it_top(t_stack **a, t_stack **b, int nb);
 int		*copy_arr(t_stack *a);
+void	push_max(t_stack **a, t_stack **b, int n);
+void	max_util(t_stack **a, int temp, int n, int nb);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);
