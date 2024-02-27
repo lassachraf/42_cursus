@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:24:00 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 12:46:40 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/27 23:21:25 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **a)
 {
 	rotate(a);
-	write(1, "ra\n", 3);
+	if (stack_len(*a) != 1)
+		write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **b)
 {
 	rotate(b);
-	write(1, "rb\n", 3);
+	if (stack_len(*b) != 1)
+		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack **a, t_stack **b)

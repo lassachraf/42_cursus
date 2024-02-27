@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:06:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/27 13:22:49 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:18:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,8 @@ void	sort_five(t_stack **a, t_stack **b)
 	if (nb == 5)
 	{
 		push_min(a, b, 0);
-		// print_stack(*a, 'A');
-		// print_stack(*b, 'B');
 		push_min(a, b, 0);
-		// print_stack(*a, 'A');
-		// print_stack(*b, 'B');
 		sort_three(a);
-		// print_stack(*a, 'A');
 		pa(a, b);
 		pa(a, b);
 	}

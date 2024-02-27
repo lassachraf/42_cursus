@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/27 10:07:30 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/27 23:09:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,46 +57,4 @@ int	*copy_arr(t_stack *a)
 	}
 	i = 0;
 	return (arr);
-}
-
-void	push_max(t_stack **a, t_stack **b, int n)
-{
-	t_stack	*tmp;
-	int		temp;
-	int		nb;
-	int		i;
-
-	tmp = *b;
-	i = 1;
-	nb = tmp->value;
-	temp = 0;
-	while (tmp)
-	{
-		if (nb < tmp->value)
-		{
-			nb = tmp->value;
-			temp = i;
-		}
-		i++;
-		tmp = tmp->next;
-	}
-	max_util(b, temp, n, nb);
-	pa(a, b);
-}
-
-void	max_util(t_stack **b, int temp, int n, int nb)
-{
-	if (temp != 0)
-	{
-		if (temp <= (n / 2))
-		{
-			while ((*b)->value != nb)
-				rb(b);
-		}
-		else
-		{
-			while ((*b)->value != nb)
-				rrb(b);
-		}
-	}
 }

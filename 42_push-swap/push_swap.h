@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/27 12:08:55 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:20:02 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_error(void);
 void	ft_error_args(char **s);
 void	ft_stack_error(t_stack *a);
 void	ft_double_free(char **s);
+void	sort(t_stack **a, t_stack **b, int num);
 
 // Parsing functions :
 void	ft_check_args(int ac, char **av);
