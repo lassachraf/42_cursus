@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:27:48 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 13:09:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:58:54 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ void	push(t_stack **dest, t_stack **src)
 	}
 }
 
-void	pa(t_stack **a, t_stack **b)
+void	pa(t_stack **a, t_stack **b, int w)
 {
 	push(a, b);
-	write(1, "pa\n", 3);
+	if (w == 1)
+		write(1, "pa\n", 3);
 }
 
-void	pb(t_stack **b, t_stack **a)
+void	pb(t_stack **b, t_stack **a, int w)
 {
 	push(b, a);
-	write(1, "pb\n", 3);
+	if (w == 1)
+		write(1, "pb\n", 3);
 }

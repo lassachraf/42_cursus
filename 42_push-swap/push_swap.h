@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/28 00:20:02 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/28 20:37:38 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,12 @@ void	ft_error(void);
 void	ft_error_args(char **s);
 void	ft_stack_error(t_stack *a);
 void	ft_double_free(char **s);
-void	sort(t_stack **a, t_stack **b, int num);
+void	free_stack(t_stack **a, t_stack **b);
 
 // Parsing functions :
+long	ft_atol(char *str);
 void	ft_check_args(int ac, char **av);
 void	ft_check_doubles(t_stack *a);
-void	push_min(t_stack **a, t_stack **b, int n);
-void	min_util_four(t_stack **a, int temp);
-void	min_util_five(t_stack **a, int temp);
-void	free_stack(t_stack **a, t_stack **b);
-void	print_stack(t_stack *a, char c);
-void	push_swap(t_stack **a, t_stack **b);
-int		get_nb_index(t_stack *a, int nb);
-int		get_nb_arr_index(int *tab, int nb);
-void	get_it_top(t_stack **a, t_stack **b, int nb);
-int		*copy_arr(t_stack *a);
-void	push_max(t_stack **a, t_stack **b, int n);
-void	max_util(t_stack **a, int temp, int n, int nb);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);
@@ -59,22 +48,34 @@ int		stack_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
 int		*sort_int_tab(int *tab, int size);
 
+// Should be deleted
+void	print_stack(t_stack *a, char c);
+
 // Algorithms :
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
-void	push_swap(t_stack **a, t_stack **b);
+void	sort(t_stack **a, t_stack **b, int num);
+
+// Algo utils :
+void	push_min(t_stack **a, t_stack **b, int n);
+void	min_util_four(t_stack **a, int temp);
+void	min_util_five(t_stack **a, int temp, int n, int nb);
+void	print_stack(t_stack *a, char c);
+int		*copy_arr(t_stack *a);
+void	push_max(t_stack **a, t_stack **b);
+void	max_util(t_stack **a, int temp, int n, int nb);
 
 // Actions/Operations functions :
-void	sa(t_stack **a);
-void	sb(t_stack **b);
-void	ss(t_stack **a, t_stack **b);
-void	ra(t_stack **a);
-void	rb(t_stack **b);
+void	sa(t_stack **a, int w);
+void	sb(t_stack **b, int w);
+void	ss(t_stack **a, t_stack **b, int w);
+void	ra(t_stack **a, int w);
+void	rb(t_stack **b, int w);
 void	rr(t_stack **a, t_stack **b);
-void	pa(t_stack **a, t_stack **b);
-void	pb(t_stack **b, t_stack **a);
-void	rra(t_stack **a);
-void	rrb(t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b, int w);
+void	pb(t_stack **b, t_stack **a, int w);
+void	rra(t_stack **a, int w);
+void	rrb(t_stack **b, int w);
+void	rrr(t_stack **a, t_stack **b, int w);
 
 #endif

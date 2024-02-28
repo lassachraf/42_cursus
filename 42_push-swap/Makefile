@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 15:45:06 by alassiqu          #+#    #+#              #
-#    Updated: 2024/02/28 00:13:43 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/02/28 21:04:41 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,19 @@ BONUS	= checker
 HEADER	= push_swap.h
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS	= -Wall -Wextra -Werror #-fsanitize=address -g3
 RM		= rm -f
 
 LIB		= 42_libft/libft.a
 
 SRCS	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
 SRCS	+= stack_utils.c stack_utils_5.c node_utils.c algo.c
-SRCS	+= parsing.c push_swap.c error_utils.c algo_utils.c
+SRCS	+= parsing.c error_utils.c algo_utils.c push_swap.c
 
-SRCS_B	= checker.c checker_utils.c
+SRCS_B	= operations/reverse_rotate_action.c operations/rotate_action.c operations/push_action.c operations/swap_action.c
+SRCS_B	+= stack_utils.c stack_utils_5.c node_utils.c algo.c
+SRCS_B	+= parsing.c error_utils.c algo_utils.c
+SRCS_B	+= bonus/get_next_line.c bonus/get_next_line_utils.c bonus/checker.c
 
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
@@ -39,8 +42,8 @@ $(NAME): $(OBJS) $(LIB)
 
 bonus: $(BONUS)
 
-$(BONUS): $(OBJS_B)
-	@$(CC) $(CFLAGS) $(OBJS_B) -o $(BONUS)
+$(BONUS): $(OBJS_B) $(LIB)
+	@$(CC) $(CFLAGS) $(OBJS_B) $(LIB) -I $(HEADER) -o $(BONUS)
 
 clean:
 	@make -C 42_libft/ clean --quiet

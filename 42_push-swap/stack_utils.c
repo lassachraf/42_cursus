@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:33:36 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/26 21:32:45 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:05:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,29 @@ void	sort_three(t_stack **a)
 {
 	if ((*a)->value > (*a)->next->value
 		&& (*a)->value < (*a)->next->next->value)
-		sa(a);
+		sa(a, 1);
 	else if ((*a)->value > (*a)->next->value
 		&& (*a)->value > (*a)->next->next->value
 		&& (*a)->next->value > (*a)->next->next->value)
 	{
-		sa(a);
-		rra(a);
+		sa(a, 1);
+		rra(a, 1);
 	}
 	else if ((*a)->value > (*a)->next->value
 		&& (*a)->value > (*a)->next->next->value
 		&& (*a)->next->value < (*a)->next->next->value)
-		ra(a);
+		ra(a, 1);
 	else if ((*a)->value < (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
 		&& (*a)->value < (*a)->next->next->value)
 	{
-		sa(a);
-		ra(a);
+		sa(a, 1);
+		ra(a, 1);
 	}
 	else if ((*a)->value < (*a)->next->value
 		&& (*a)->next->value > (*a)->next->next->value
 		&& (*a)->value > (*a)->next->next->value)
-		rra(a);
+		rra(a, 1);
 }
 
 void	free_stack(t_stack **a, t_stack **b)
