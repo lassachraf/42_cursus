@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/29 12:14:12 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:06:19 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,12 @@ int	check_reverse(t_stack **a)
 		if (tmp->value > tmp->next->value)
 			i++;
 		tmp = tmp->next;
+		if (!tmp->next)
+			break ;
 	}
-	nb = get_min(a);
 	if (i == size)
 	{
+		nb = get_min(a);
 		while ((*a)->value != nb)
 			ra(a, 1);
 		return (1);

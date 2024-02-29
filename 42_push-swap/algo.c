@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 22:37:13 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/29 11:29:25 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/29 18:10:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,38 +110,3 @@ void	max_util(t_stack **b, int temp, int n, int nb)
 		}
 	}
 }
-
-// void	sort(t_stack **a, t_stack **b, int num)
-// {
-// 	int	*arr;
-// 	int	nb;
-// 	int	range;
-// 	int	i;
-// 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
-// 	range = get_range(a);
-// 	i = 0;
-// 	while (*a)
-// 	{
-// 		nb = (*a)->value;
-// 		if (range + i >= num)
-// 			range = num - 1 - i;
-// 		else if (nb > arr[i] && nb <= arr[range + i])
-// 		{
-// 			pb(b, a, 1);
-// 			if (stack_len(*b) >= 2 && (*b)->value < (*b)->next->value)
-// 				sb(b, 1);
-// 			i++;
-// 		}
-// 		else if (nb <= arr[i])
-// 		{
-// 			pb(b, a, 1);
-// 			rb(b, 1);
-// 			i++;
-// 		}
-// 		else
-// 			ra(a, 1);
-// 	}
-// 	free(arr);
-// 	while (*b)
-// 		push_max(a, b);
-// }
