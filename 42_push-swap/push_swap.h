@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/28 20:37:38 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/29 11:28:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_stack(t_stack **a, t_stack **b);
 long	ft_atol(char *str);
 void	ft_check_args(int ac, char **av);
 void	ft_check_doubles(t_stack *a);
+int		check_reverse(t_stack **a);
 
 // Stack utils :
 void	stack_init(t_stack **a, char **av, int ac);

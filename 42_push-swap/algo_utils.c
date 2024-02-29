@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/27 23:09:31 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:14:12 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,45 @@ int	*copy_arr(t_stack *a)
 	}
 	i = 0;
 	return (arr);
+}
+
+int	get_min(t_stack **a)
+{
+	t_stack	*tmp;
+	int		nb;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (nb > tmp->value)
+			nb = tmp->value;
+		tmp = tmp->next;
+	}
+	return (nb);
+}
+
+int	check_reverse(t_stack **a)
+{
+	t_stack	*tmp;
+	int        i;
+	int        size;
+	int        nb;
+
+	tmp = *a;
+	i = 1;
+	size = stack_len(*a);
+	while (tmp && i != size)
+	{
+		if (tmp->value > tmp->next->value)
+			i++;
+		tmp = tmp->next;
+	}
+	nb = get_min(a);
+	if (i == size)
+	{
+		while ((*a)->value != nb)
+			ra(a, 1);
+		return (1);
+	}
+	return (0);
 }
