@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:00:04 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/28 14:56:43 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/02/29 19:07:02 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,27 +101,22 @@ void	ft_check_args(int ac, char **av)
 void	ft_check_doubles(t_stack *a)
 {
 	t_stack	*tmp;
-	int		n;
-	int		nb;
+	t_stack	*hold;
 
 	tmp = a;
-	n = 0;
-	nb = 0;
+	hold = a;
 	while (a)
 	{
-		n = a->value;
-		a = a->next;
-		while (a)
+		tmp = a->next;
+		while (tmp)
 		{
-			if (n == a->value)
+			if (a->value == tmp->value)
 			{
-				ft_stack_error(a);
+				ft_stack_error(hold);
 				ft_error();
 			}
-			a = a->next;
+			tmp = tmp->next;
 		}
-		tmp = tmp->next;
-		a = tmp;
-		nb++;
+		a = a->next;
 	}
 }
