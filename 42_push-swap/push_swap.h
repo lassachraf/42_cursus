@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/29 11:28:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/01 09:50:54 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ int		stack_sorted(t_stack *stack);
 int		stack_len(t_stack *stack);
 int		*sort_int_tab(int *tab, int size);
 
-// Should be deleted
-void	print_stack(t_stack *a, char c);
-
 // Algorithms :
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
@@ -61,7 +58,7 @@ void	sort(t_stack **a, t_stack **b, int num);
 void	push_min(t_stack **a, t_stack **b, int n);
 void	min_util_four(t_stack **a, int temp);
 void	min_util_five(t_stack **a, int temp, int n, int nb);
-void	print_stack(t_stack *a, char c);
+void	is_reversed(t_stack **a);
 int		*copy_arr(t_stack *a);
 void	push_max(t_stack **a, t_stack **b);
 void	max_util(t_stack **a, int temp, int n, int nb);

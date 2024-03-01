@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 22:37:13 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/29 18:10:24 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:08:22 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	while_for_norm(t_stack **a, t_stack **b, int *arr, int num)
 			i++;
 		}
 		else
-			ra(a, 1);
+            is_reversed(a);
 	}
 }
 
@@ -61,8 +61,6 @@ void	sort(t_stack **a, t_stack **b, int num)
 	int	*arr;
 
 	arr = sort_int_tab(copy_arr(*a), stack_len(*a));
-	if (check_reverse(a) == 1)
-		return ;
 	while_for_norm(a, b, arr, num);
 	free(arr);
 	while (*b)
