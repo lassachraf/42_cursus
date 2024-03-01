@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 22:37:13 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/01 10:08:22 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:22:53 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	while_for_norm(t_stack **a, t_stack **b, int *arr, int num)
 			i++;
 		}
 		else
-            is_reversed(a);
+			is_reversed(a);
 	}
 }
 
