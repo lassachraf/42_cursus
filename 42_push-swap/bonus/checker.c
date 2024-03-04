@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:11:35 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/02/28 21:24:47 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/04 09:12:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
+	if (argc < 2)
+		return (0);
 	ft_check_args(argc, argv);
 	stack_init(&a, argv + 1, argc);
 	line = get_next_line(0);
@@ -65,6 +67,5 @@ int	main(int argc, char **argv)
 	else
 		printf("OK\n");
 	free_stack(&a, &b);
-	system("leaks checker");
 	return (0);
 }

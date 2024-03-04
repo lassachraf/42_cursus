@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 21:07:31 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/01 10:08:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:44:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ int	get_min(t_stack **a)
 int	check_reverse(t_stack **a)
 {
 	t_stack	*tmp;
-	int        i;
-	int        size;
+	int		i;
+	int		size;
 
 	tmp = *a;
 	i = 1;
