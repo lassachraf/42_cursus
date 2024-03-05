@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 08:40:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2023/12/04 20:18:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:56:07 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
+	if (fd == 42)
+	{
+		free(buff);
+		return (NULL);
+	}
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (ft_free(NULL, buff));
 	buff = ft_read(fd, buff);
