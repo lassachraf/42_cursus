@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:11:35 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/04 18:42:32 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:33:24 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_operation(t_stack **a, t_stack **b, char *line)
 	if (!ft_strncmp(line, "sa\n", 3))
 		sa(a, 0);
 	else if (!ft_strncmp(line, "sb\n", 3))
-		sb(a, 0);
+		sb(b, 0);
 	else if (!ft_strncmp(line, "ra\n", 3))
 		ra(a, 0);
 	else if (!ft_strncmp(line, "rb\n", 3))
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	char	*line;
-	char	size;
+	int		size;
 
 	a = NULL;
 	b = NULL;
@@ -65,9 +65,9 @@ int	main(int argc, char **argv)
 		line = get_next_line(0);
 	}
 	if (!stack_sorted(a) || size != stack_len(a))
-		printf("KO\n");
+		write(1, "KO\n", 3);
 	else
-		printf("OK\n");
+		write(1, "OK\n", 3);
 	free_stack(&a, &b);
 	return (0);
 }
