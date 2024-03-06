@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:11:35 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/05 21:26:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:32:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "../push_swap.h"
 #include "get_next_line.h"
 
-void	ft_free_error(t_stack *a, char *line)
+void	ft_free_error(t_stack *a, t_stack *b, char *line)
 {
 	free(line);
-	ft_stack_error(a);
+	free_stack(&a, &b);
 	get_next_line(42);
 	ft_error();
 }	
@@ -47,7 +47,7 @@ int	ft_check_operation(t_stack **a, t_stack **b, char *line)
 	else if (!ft_strncmp(line, "rrr\n", 4))
 		rrr(a, b, 0);
 	else
-		return (ft_free_error(&a, line), 0);
+		return (ft_free_error(*a, *b, line), 0);
 	return (0);
 }
 

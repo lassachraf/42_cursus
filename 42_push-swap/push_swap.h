@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:21:41 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/05 10:48:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:57:15 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }				t_stack;
-
-void	print_stack(t_stack **a, char k);
 
 // Handle errors-free functions :
 void	ft_error(void);
