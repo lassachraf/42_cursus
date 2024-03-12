@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 18:43:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/10 18:56:26 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/03/10 18:03:03 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/03/12 00:05:53 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_isdigit(int c)
-{
-	return ((c >= '0' && c <= '9'));
-}
+// ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep
 
-long	ft_atol(char *str)
+int	main(int ac, char **av)
 {
-	long	res;
-	int		sign;
-	int		i;
+	t_info	info;
 
-	res = 0;
-	i = 0;
-	sign = 1;
-	while (str[i] && (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (ac == 5 || ac == 6)
 	{
-		if (str[i] == '-')
-			ft_error();
-		i++;
+		parsing_input(&info, av);
+		printf("parsing done !\n");
+		init_data(&info);
+		// start_simulation(&info);
+		// free_and_cleanup(&info);
 	}
-	while (ft_isdigit(str[i]))
-	{
-		res = res * 10 + (str[i] - '0');
-		i++;
-	}
-	if (res > INT_MAX)
-		ft_error();
-	return (res *= sign);
+	else
+		ft_args_error();
+	return (0);
 }

@@ -1,35 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 18:03:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/10 20:48:46 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/03/10 18:43:22 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/03/11 16:33:46 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep
-
-int	main(int ac, char **av)
+int	ft_isdigit(int c)
 {
-	t_info	info;
+	return ((c >= '0' && c <= '9'));
+}
 
-	if (ac == 5 || ac == 6)
+long	ft_atol(char *str)
+{
+	long	res;
+	int		sign;
+	int		i;
+
+	res = 0;
+	i = 0;
+	sign = 1;
+	if (!str)
+		return (-1);
+	while (str[i] && (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		parsing_input(&info, av);
-		init_data(&info);
-		// start main things ;
-		// similution_start(&info);
-		// free memory ;
-		// free_and_cleanup(&info);
+		if (str[i] == '-')
+			ft_error();
+		i++;
 	}
-	else
+	while (ft_isdigit(str[i]))
 	{
-		write(1, "Input error:\n", 13);
-		exit(1);
+		res = res * 10 + (str[i] - '0');
+		i++;
 	}
+	if (res > INT_MAX)
+		ft_error();
+	return (res *= sign);
 }

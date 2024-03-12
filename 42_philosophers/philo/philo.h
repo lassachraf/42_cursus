@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/10 20:50:58 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/12 00:02:49 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_fork
 
 typedef struct s_philo
 {
-	int				id;
-	int				meal_counter;
-	int				full;
-	int				meal_time;
+	long			id;
+	long			meal_counter;
+	long			full;
+	long			meal_time;
 	t_fork			*right_fork;
 	t_fork			*left_fork;
 	pthread_t		*thread_id;
@@ -57,6 +57,7 @@ typedef struct s_info
 
 // Errors functions :
 void	ft_error(void);
+void	ft_args_error(void);
 
 // Parsing functions :
 long	ft_atol(char *str);
