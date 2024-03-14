@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/12 00:02:49 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:58:26 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ typedef struct s_info
 }				t_info;
 
 // Errors functions :
-void	ft_error(void);
+void	ft_error(char *s);
 void	ft_args_error(void);
 
 // Parsing functions :
 long	ft_atol(char *str);
 void	parsing_input(t_info *info, char **av);
+int		ft_strlen(char *s);
 
 // Initializing data :
 void	init_data(t_info *info);

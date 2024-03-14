@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:43:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/11 16:33:46 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/14 00:58:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 int	ft_isdigit(int c)
 {
 	return ((c >= '0' && c <= '9'));
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 long	ft_atol(char *str)
@@ -33,7 +43,7 @@ long	ft_atol(char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			ft_error();
+			ft_error("Negative number !\n");
 		i++;
 	}
 	while (ft_isdigit(str[i]))
@@ -42,6 +52,6 @@ long	ft_atol(char *str)
 		i++;
 	}
 	if (res > INT_MAX)
-		ft_error();
+		ft_error("Not an integer !\n");
 	return (res *= sign);
 }

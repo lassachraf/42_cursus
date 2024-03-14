@@ -6,22 +6,25 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:46:13 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/12 00:03:44 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/14 01:07:21 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_error(void)
+void	ft_error(char *s)
 {
-	write(2, "Error\n", 5);
-	exit(1);
+	if (s)
+		write(1, s, ft_strlen(s));
+	else
+		write(1, "Error\n", 5);
+	exit(0);
 }
 
 void	ft_args_error(void)
 {
-	printf("Input error:\nExpected : ./philo [number_of_philosophers] ");
+	printf("Input error !\nExpected : ./philo [number_of_philosophers] ");
 	printf("[time_to_die] [time_to_eat] [time_to_sleep] ");
-	printf("[optional: max_meals]");
+	printf("[optional: max_meals]\n");
 	exit(1);
 }
