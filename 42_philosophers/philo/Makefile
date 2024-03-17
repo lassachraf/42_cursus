@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
+#    By: achraf <achraf@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/09 23:27:50 by alassiqu          #+#    #+#              #
-#    Updated: 2024/03/12 00:12:40 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/03/16 17:00:23 by achraf           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
-SRCS	= error_utils.c parsing.c utils.c
+SRCS	= error_utils.c parsing.c utils.c safe_functions.c
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)

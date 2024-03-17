@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:43:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/14 00:58:06 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/03/17 00:05:01 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ long	ft_atol(char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			ft_error("Negative number !\n");
+			ft_error("Feed me positive number !\n");
 		i++;
 	}
 	while (ft_isdigit(str[i]))
@@ -52,6 +52,23 @@ long	ft_atol(char *str)
 		i++;
 	}
 	if (res > INT_MAX)
-		ft_error("Not an integer !\n");
+		ft_error("You depassed the INT_MAX !\n");
 	return (res *= sign);
+}
+
+void	free_and_cleanup(t_info *info)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = -1;
+	while (++i < info->philo_num)
+	{
+		philo = info->philos + i;
+		safe_mutex(&philo->philo_mutex, 3);
+	}
+	safe_mutex(&info->write_mutex, 3);
+	safe_mutex(&info->info_mutex, 3);
+	free(info->forks);
+	free(info->philos);
 }

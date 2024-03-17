@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 18:03:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/17 01:14:54 by achraf           ###   ########.fr       */
+/*   Created: 2024/03/17 00:02:32 by achraf            #+#    #+#             */
+/*   Updated: 2024/03/17 01:58:25 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep
+// void	start_simulation(t_info *info)
+// {
+//     int			i;
 
-int	main(int ac, char **av)
-{
-	t_info	info;
-
-	if (ac == 5 || ac == 6)
-	{
-		parsing_input(&info, av);
-		init_data(&info);
-		// start_simulation(&info);
-		free_and_cleanup(&info);
-	}
-	else
-		ft_args_error();
-	return (0);
-}
+// 	i = -1;
+// 	if (info->max_meal == 0)
+// 		return ;
+//     else if (info->philo_num == 1)
+//         safe_mutex();
+//     else
+//     {
+//         while (++i < info->philo_num)
+//             safe_mutex();
+//     }
+// }
