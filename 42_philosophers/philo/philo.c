@@ -6,7 +6,7 @@
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:03:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/17 01:14:54 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/23 03:30:08 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int ac, char **av)
 	{
 		parsing_input(&info, av);
 		init_data(&info);
-		// start_simulation(&info);
+		start_simulation(&info);
+		printf("Start simulation !\n");
 		free_and_cleanup(&info);
 	}
 	else

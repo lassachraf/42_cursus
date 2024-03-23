@@ -6,7 +6,7 @@
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:43:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/17 00:05:01 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/18 02:27:08 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,22 @@ void	free_and_cleanup(t_info *info)
 	free(info->forks);
 	free(info->philos);
 }
+
+// void	write_status(int status, t_philo *philo,
+// 		long elapsed)
+// {
+// 	if (TAKE_FIRST_FORK == status && !simulation_finished(philo->info))
+// 		printf("%6ld %d has taken the 1° fork 🍽\t\t\tn°[🍴 %d 🍴]\n", elapsed, philo->id,
+// 			philo->fork_1->fork_id);
+// 	else if (TAKE_SECOND_FORK == status && !simulation_finished(philo->info))
+// 		printf("%6ld %d has taken the 2° fork 🍽\t\t\tn°[🍴 %d 🍴]\n", elapsed, philo->id,
+// 			philo->fork_2->fork_id);
+// 	else if (EATING == status && !simulation_finished(philo->info))
+// 		printf("%6ld %d is eating 🍝\t\t\t[🍝 %ld 🍝]\n", elapsed, philo->id, philo->meal_counter);
+// 	else if (SLEEPING == status && !simulation_finished(philo->info))
+// 		printf("%6ld %d is sleeping 😴\n", elapsed, philo->id);
+// 	else if (THINKING == status && !simulation_finished(philo->info))
+// 		printf("%6ld %d is thinking 🤔\n", elapsed, philo->id);
+// 	else if (DIED == status)
+// 		printf("\t\t💀💀💀 %6ld %d died   💀💀💀\n", elapsed, philo->id);
+// }

@@ -6,7 +6,7 @@
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/17 01:43:22 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/18 02:34:34 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
+# include <errno.h>
 
 typedef struct s_info	t_info;
 
@@ -78,8 +79,14 @@ int						ft_strlen(char *s);
 // Safe functions :
 void					*safe_malloc(size_t bytes);
 void					safe_mutex(pthread_mutex_t *mutex, int flag);
+void					safe_thread(pthread_t *thread, void *(*func)(void *),
+							void *arg, int flag);
 
 // Initializing data :
 void					init_data(t_info *info);
+
+// Simulation :
+void					start_simulation(t_info *info);
+
 
 #endif
