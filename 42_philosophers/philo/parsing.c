@@ -6,7 +6,7 @@
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:39:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/17 00:08:25 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/23 04:59:14 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	init_data(t_info *info)
 
 	i = -1;
 	info->end_simulation = false;
+	info->ready = false;
 	info->philos = safe_malloc(info->philo_num * sizeof(t_philo));
 	info->forks = safe_malloc(info->philo_num * sizeof(t_fork));
 	safe_mutex(&info->write_mutex, 0);

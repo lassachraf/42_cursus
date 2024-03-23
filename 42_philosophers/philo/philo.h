@@ -6,7 +6,7 @@
 /*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/18 02:34:34 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/23 06:38:44 by achraf           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_info
 	long				max_meal;
 	bool				start_simulation;
 	bool				end_simulation;
+	bool				ready;
 	t_fork				*forks;
 	t_philo				*philos;
 	pthread_mutex_t		write_mutex;
@@ -85,8 +86,10 @@ void					safe_thread(pthread_t *thread, void *(*func)(void *),
 // Initializing data :
 void					init_data(t_info *info);
 
-// Simulation :
+// Simulation functions :
 void					start_simulation(t_info *info);
 
+// Synchronisation functions :
+void					wait_all_threads(void);
 
 #endif
