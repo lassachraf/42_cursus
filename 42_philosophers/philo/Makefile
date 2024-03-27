@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: achraf <achraf@student.42.fr>              +#+  +:+       +#+         #
+#    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/09 23:27:50 by alassiqu          #+#    #+#              #
-#    Updated: 2024/03/23 04:55:29 by achraf           ###   ########.fr        #
+#    Updated: 2024/03/27 00:57:16 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= philo
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -pthread
+CFLAGS	= -Wall -Wextra -Werror #-pthread
 RM		= rm -f
 
-SRCS	= error_utils.c parsing.c utils.c safe_functions.c simulation.c synchronisation.c
+SRCS	= error_utils.c parsing.c utils.c safe_functions.c simulation.c synchronisation.c sets_gets.c
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)

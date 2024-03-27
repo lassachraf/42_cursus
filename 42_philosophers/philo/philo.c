@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/10 18:03:03 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/23 03:30:08 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/26 17:28:44 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int ac, char **av)
 	{
 		parsing_input(&info, av);
 		init_data(&info);
-		start_simulation(&info);
 		printf("Start simulation !\n");
+		start_simulation(&info);
 		free_and_cleanup(&info);
 	}
 	else

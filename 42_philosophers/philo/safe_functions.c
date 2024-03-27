@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 21:19:24 by achraf            #+#    #+#             */
-/*   Updated: 2024/03/23 06:37:12 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/26 23:12:09 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void	safe_thread(pthread_t *thread, void *(*func)(void *), void *arg,
 		thread_error(pthread_join(*thread, NULL), flag);
 	else if (flag == 2)
 		thread_error(pthread_detach(*thread), flag);
+	pthread_join(*thread, NULL);
 }

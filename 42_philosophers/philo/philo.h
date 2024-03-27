@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achraf <achraf@student.42.fr>              +#+  +:+       +#+        */
+/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/23 06:38:44 by achraf           ###   ########.fr       */
+/*   Updated: 2024/03/27 00:57:52 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 // pthread create return :
 # define EPERM 1
+# define ESRCH 3
+# define EDEADLK 11
 # define EINVAL 22
-# define EDEADLK 35
-# define ENOMEM 12
-# define EBUSY 16
+# define EAGAIN 35
 
+# include <errno.h>
 # include <limits.h>
 # include <pthread.h>
 # include <stdbool.h>
@@ -28,7 +29,6 @@
 # include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include <errno.h>
 
 typedef struct s_info	t_info;
 
@@ -46,7 +46,7 @@ typedef struct s_philo
 	long				meal_time;
 	t_fork				*fork_1;
 	t_fork				*fork_2;
-	pthread_t			*thread_id;
+	pthread_t			thread_id;
 	pthread_mutex_t		philo_mutex;
 	t_info				*info;
 }						t_philo;
@@ -90,6 +90,14 @@ void					init_data(t_info *info);
 void					start_simulation(t_info *info);
 
 // Synchronisation functions :
-void					wait_all_threads(void);
+void					wait_all_threads(t_info *info);
 
+// Setters and getters functions :
+void					set_bool(pthread_mutex_t *mutex, bool *dest,
+							bool value);
+bool					get_bool(pthread_mutex_t *mutex, bool *value);
+void					set_long(pthread_mutex_t *mutex, long *dest,
+							long value);
+long					get_long(pthread_mutex_t *mutex, long *value);
+bool					simulation_finished(t_info *info);
 #endif
