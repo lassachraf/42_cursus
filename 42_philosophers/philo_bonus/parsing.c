@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 23:04:14 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/09 20:58:42 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/04/09 20:19:17 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/04/12 08:56:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
 long	ft_atol(char *s)
 {
@@ -40,27 +40,36 @@ int	ft_check_input(int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
 	{
-		arg_error();
+		arg_error(1);
 		return (-1);
 	}
 	if (ft_atol(av[1]) <= 0 || (ac == 6 && ft_atol(av[5]) <= 0))
+	{
+		arg_error(0);
 		return (-1);
+	}
 	return (0);
 }
 
-void	arg_error(void)
+void	arg_error(int flag)
 {
-	printf("Error !\nExpected : ./philo (nb_philos > 0) time_to_die ");
-	printf("time_to_eat time_to_sleep (optional arg: max_meals > 0)\n");
+	if (flag == 1)
+	{
+		printf("Error !\nExpected : ./philo (nb_philos > 0) time_to_die ");
+		printf("time_to_eat time_to_sleep (optional arg: max_meals > 0)\n");
+	}
 }
 
-void	print_state(t_data *data, int id, char *msg)
+int	print_state(t_data *data, char *msg)
 {
-	long unsigned int	time;
-
-	time = get_time() - get_start_time(data);
-	pthread_mutex_lock(&data->print_mutex);
-	if (get_keep_iter(data))
-		printf("%lu %d %s\n", time, id, msg);
-	pthread_mutex_unlock(&data->print_mutex);
+	sem_wait(data->sem_print);
+	if (someone_died())
+	{
+		sem_post(data->sem_print);
+		return (1);
+	}
+	printf("%lu %d %s\n", get_time() - get_start_time(data),
+		data->philo.id, msg);
+	sem_post(data->sem_print);
+	return (0);
 }

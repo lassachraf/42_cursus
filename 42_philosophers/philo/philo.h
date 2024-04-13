@@ -5,99 +5,140 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 23:16:17 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/03/27 00:57:52 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/04/08 22:41:56 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/04/09 21:59:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-// pthread create return :
-# define EPERM 1
-# define ESRCH 3
-# define EDEADLK 11
-# define EINVAL 22
-# define EAGAIN 35
-
-# include <errno.h>
-# include <limits.h>
+# include <sys/time.h>
 # include <pthread.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <sys/time.h>
 # include <unistd.h>
+# include <stdio.h>
 
-typedef struct s_info	t_info;
+# define TAKE_FORKS "has taken a fork"
+# define THINK "is thinking"
+# define SLEEP "is sleeping"
+# define EAT "is eating"
+# define DIED "died"
 
-typedef struct s_fork
+typedef enum e_state
 {
-	pthread_mutex_t		fork;
-	int					fork_id;
-}						t_fork;
+	EATING = 0,
+	SLEEPING = 1,
+	THINKING = 2,
+	DEAD = 3,
+	FULL = 4,
+	START = 5
+}					t_state;
+
+struct	s_data;
 
 typedef struct s_philo
 {
-	long				id;
-	long				meal_counter;
-	bool				full;
-	long				meal_time;
-	t_fork				*fork_1;
-	t_fork				*fork_2;
-	pthread_t			thread_id;
-	pthread_mutex_t		philo_mutex;
-	t_info				*info;
-}						t_philo;
+	int				id;
+	int				meal_counter;
+	long			last_meal_time;
+	struct s_data	*data;
+	t_state			state;
+	pthread_mutex_t	*left_f;
+	pthread_mutex_t	*right_f;
+	pthread_mutex_t	state_mutex;
+	pthread_mutex_t	meals_had_mutex;
+	pthread_mutex_t	last_meal_time_mutex;
+}					t_philo;
 
-typedef struct s_info
+typedef struct s_data
 {
-	long				philo_num;
-	long				time_to_eat;
-	long				time_to_die;
-	long				time_to_sleep;
-	long				max_meal;
-	bool				start_simulation;
-	bool				end_simulation;
-	bool				ready;
-	t_fork				*forks;
-	t_philo				*philos;
-	pthread_mutex_t		write_mutex;
-	pthread_mutex_t		info_mutex;
-}						t_info;
+	int				nb_philos;
+	int				max_meals;
+	int				meals_eaten;
+	int				full_philo;
+	bool			still_iter;
+	long			eat_time;
+	long			die_time;
+	long			sleep_time;
+	long			start_time;
+	pthread_t		*thread;
+	pthread_t		all_alive;
+	pthread_t		all_full;
+	pthread_mutex_t	die_mutex;
+	pthread_mutex_t	eat_mutex;
+	pthread_mutex_t	sleep_mutex;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	nb_philos_mutex;
+	pthread_mutex_t	keep_iter_mutex;
+	pthread_mutex_t	start_time_mutex;
+	pthread_mutex_t	*forks;
+	t_philo			*philos;
+}					t_data;
 
-// Errors functions :
-void					ft_error(char *s);
-void					ft_args_error(void);
-void					free_and_cleanup(t_info *info);
+// parsing.c
+long				ft_atol(char *s);
+int					ft_check_input(int ac, char **av);
+void				arg_error(void);
+void				print_state(t_data *data, int id, char *msg);
 
-// Parsing functions :
-long					ft_atol(char *str);
-void					parsing_input(t_info *info, char **av);
-int						ft_strlen(char *s);
+// init.c
+int					init_forks(t_data *data);
+int					init_philos(t_data *data);
+int					allocate(t_data *data);
+int					init_data(t_data *data, char **av);
 
-// Safe functions :
-void					*safe_malloc(size_t bytes);
-void					safe_mutex(pthread_mutex_t *mutex, int flag);
-void					safe_thread(pthread_t *thread, void *(*func)(void *),
-							void *arg, int flag);
+// simulation.c
+int					lessgo(t_data *data);
+int					simulation(char **av);
 
-// Initializing data :
-void					init_data(t_info *info);
+// routine.c
+bool				is_philo_full(t_data *data, t_philo *philo);
+void				notify_all_philos(t_data *data);
+void				*routine(void *data);
+void				*all_alive(void *info);
+void				*all_full(void *info);
 
-// Simulation functions :
-void					start_simulation(t_info *info);
+// time.c
+void				ft_usleep(long sleep_time);
+long				get_time(void);
 
-// Synchronisation functions :
-void					wait_all_threads(t_info *info);
+// meal_utils.c
+int					take_forks(t_philo *philo);
+void				drop_forks(t_philo *philo);
+void				update_last_meal_time(t_philo *philo);
+void				update_nb_meals_had(t_philo *philo);
+bool				philo_died(t_philo *philo);
 
-// Setters and getters functions :
-void					set_bool(pthread_mutex_t *mutex, bool *dest,
-							bool value);
-bool					get_bool(pthread_mutex_t *mutex, bool *value);
-void					set_long(pthread_mutex_t *mutex, long *dest,
-							long value);
-long					get_long(pthread_mutex_t *mutex, long *value);
-bool					simulation_finished(t_info *info);
+// actions.c
+int					dine(t_philo *philo);
+int					rest(t_philo *philo);
+int					ponder(t_philo *philo);
+
+// meal_utils_1.c
+int					one_philo(t_philo *philo);
+int					take_left_fork(t_philo *philo);
+int					take_right_fork(t_philo *philo);
+void				drop_left_fork(t_philo *philo);
+void				drop_right_fork(t_philo *philo);
+
+// getters.c
+int					get_nb_philos(t_data *data);
+t_state				get_philo_state(t_philo *philo);
+int					get_nb_meals_philo_had(t_philo *philo);
+long				get_start_time(t_data *data);
+bool				get_keep_iter(t_data *data);
+
+// getters_1.c
+long				get_die_time(t_data *data);
+long				get_sleep_time(t_data *data);
+long				get_eat_time(t_data *data);
+long				get_last_meal_time(t_philo *philo);
+
+// setters.c
+void				set_keep_iterating(t_data *data, bool set_to);
+void				set_philo_state(t_philo *philo, t_state state);
+
 #endif

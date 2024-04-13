@@ -5,34 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/12 00:11:35 by alassiqu          #+#    #+#              #
-#    Updated: 2024/03/12 00:14:02 by alassiqu         ###   ########.fr        #
+#    Created: 2024/04/09 07:09:02 by alassiqu          #+#    #+#              #
+#    Updated: 2024/04/12 08:58:37 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= philo_bonus
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
-RM		= rm -f
+CFLAGS	= -Wall -Wextra -Werror -pthread #-g -fsanitize=address
+RM		= rm -rf
 
-SRCS	= 
+SRCS	= actions.c death_utils.c getters.c init.c meal_utils.c parsing.c
+SRCS	+= routine.c setters.c simulation.c time.c utils.c
+
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):	$(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-
-bonus: re
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) philo_bonus.c -o $(NAME)
 
 clean:
-	@$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:	clean
-	@$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME) 
 
-re:	fclean all
+bouns: all
 
-.PHONY:	clean all fclean bonus
-.SECONDARY:	$(OBJS)
+re: fclean all
+
+.PHONY: all clean fclean re

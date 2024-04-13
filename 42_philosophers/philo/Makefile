@@ -1,36 +1,29 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/09 23:27:50 by alassiqu          #+#    #+#              #
-#    Updated: 2024/03/27 00:57:16 by alassiqu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	= philo
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror #-pthread
-RM		= rm -f
+CFLAGS	= -Wall -Wextra -Werror -pthread #-g -fsanitize=address
+RM		= rm -rf
 
-SRCS	= error_utils.c parsing.c utils.c safe_functions.c simulation.c synchronisation.c sets_gets.c
+HEADER	= include/philo.h
+
+SRCS	= actions.c getters_1.c getters.c init.c meal_utils_1.c meal_utils.c
+SRCS	+= parsing.c routine.c setters.c simulation.c time.c
+# SRCS	+= getters.c getters_1.c setters.c
+#routine.c time.c utils.c monitor.c eat_1.c eat_2.c sleep.c think.c getters_1.c getters_2.c setters.c
+
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) philo.c -o $(NAME)
 
 clean:
-	@$(RM) $(OBJS)
+	$(RM) $(OBJS)
 
-fclean:	clean
-	@$(RM) $(NAME)
+fclean: clean
+	$(RM) $(NAME) 
 
-re:	fclean all
+re: fclean all
 
-.PHONY:	clean all fclean
-.SECONDARY:	$(OBJS)
+.PHONY: all clean fclean re
