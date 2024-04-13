@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 05:38:38 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/09 06:25:03 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/04/13 21:15:19 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/04/13 21:26:21 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_nb_meals_philo_had(t_philo *philo)
 	int	nb_meals_had;
 
 	pthread_mutex_lock(&philo->meals_had_mutex);
-	nb_meals_had = philo->meal_counter;
+	nb_meals_had = philo->meals_eaten;
 	pthread_mutex_unlock(&philo->meals_had_mutex);
 	return (nb_meals_had);
 }

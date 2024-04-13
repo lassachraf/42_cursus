@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 23:14:34 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/09 06:11:42 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/04/13 21:15:25 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/04/13 21:26:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	init_philos(t_data *data)
 	{
 		philos[i].data = data;
 		philos[i].id = i + 1;
-		philos[i].meal_counter = 0;
+		philos[i].meals_eaten = 0;
 		philos[i].state = START;
 		pthread_mutex_init(&philos[i].state_mutex, NULL);
 		pthread_mutex_init(&philos[i].meals_had_mutex, NULL);
@@ -74,8 +74,6 @@ int	init_data(t_data *data, char **av)
 	data->eat_time = ft_atol(av[3]);
 	data->sleep_time = ft_atol(av[4]);
 	data->max_meals = ft_atol(av[5]);
-	data->meals_eaten = 0;
-	data->full_philo = 0;
 	data->still_iter = true;
 	pthread_mutex_init(&data->die_mutex, NULL);
 	pthread_mutex_init(&data->eat_mutex, NULL);

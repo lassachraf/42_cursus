@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 22:41:56 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/09 21:59:36 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/04/13 21:16:02 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/04/13 21:26:43 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ struct	s_data;
 typedef struct s_philo
 {
 	int				id;
-	int				meal_counter;
+	int				meals_eaten;
 	long			last_meal_time;
 	struct s_data	*data;
 	t_state			state;
@@ -57,8 +57,6 @@ typedef struct s_data
 {
 	int				nb_philos;
 	int				max_meals;
-	int				meals_eaten;
-	int				full_philo;
 	bool			still_iter;
 	long			eat_time;
 	long			die_time;
