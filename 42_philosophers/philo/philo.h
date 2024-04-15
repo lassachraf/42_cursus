@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:16:02 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/13 21:26:43 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:01:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void				*all_alive(void *info);
 void				*all_full(void *info);
 
 // time.c
-void				ft_usleep(long sleep_time);
+void				ft_usleep(long time);
 long				get_time(void);
 
 // meal_utils.c

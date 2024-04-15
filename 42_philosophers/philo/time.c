@@ -6,18 +6,18 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 21:16:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/13 21:16:26 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:00:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(long sleep_time)
+void	ft_usleep(long time)
 {
 	long	start;
 
 	start = get_time();
-	while ((get_time() - start) < sleep_time)
+	while ((get_time() - start) < time)
 		usleep(500);
 }
 
