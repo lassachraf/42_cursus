@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 16:50:25 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/12 08:42:12 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:59:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	*monitor_death(void *data_p)
 	return (NULL);
 }
 
-int routine(t_data *data, int id)
+int	routine(t_data *data, int id)
 {
-    if (set_philo(data, id))
+	if (set_philo(data, id))
 		exit(1);
 	if (data->philo.id % 2 == 0)
 		ft_usleep(data->eat_time - 10);
@@ -62,4 +62,3 @@ int routine(t_data *data, int id)
 	sem_close(data->philo.sem_philo);
 	exit(0);
 }
-

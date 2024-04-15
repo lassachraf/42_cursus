@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 07:12:18 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/12 08:57:15 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:58:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef enum e_state
 	FINISH
 }					t_state;
 
-struct s_data;
+struct	s_data;
 
 typedef struct s_philo
 {
@@ -85,7 +85,6 @@ int					init_data(t_data *data, char **av);
 // meal_utils.c
 int					take_forks(t_data *data);
 int					drop_forks(t_data *data);
-bool				nb_meals_option_given(t_data *data);
 bool				philo_is_full(t_data *data);
 
 // getters.c

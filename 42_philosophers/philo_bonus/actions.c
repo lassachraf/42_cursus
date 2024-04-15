@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 17:13:12 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/12 08:57:49 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:18:54 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	dine(t_data *data)
 {
-    if (take_forks(data))
+	if (take_forks(data))
 		return (1);
 	update_last_meal_time(data);
 	set_philo_state(data, EATING);

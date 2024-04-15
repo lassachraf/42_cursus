@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 08:39:44 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/12 08:58:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:28:05 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,9 @@ int	drop_forks(t_data *data)
 	return (0);
 }
 
-bool	nb_meals_option_given(t_data *data)
-{
-	if (data->max_meals > 0)
-		return (true);
-	return (false);
-}
-
 bool	philo_is_full(t_data *data)
 {
-	if (nb_meals_option_given(data) == false)
+	if (data->max_meals <= 0)
 		return (false);
 	if (data->max_meals <= data->philo.meals_had)
 	{
@@ -61,4 +54,3 @@ bool	philo_is_full(t_data *data)
 	}
 	return (false);
 }
-

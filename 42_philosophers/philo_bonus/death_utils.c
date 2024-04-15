@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 08:23:14 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/12 08:37:21 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:27:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	someone_died(void)
 {
 	sem_t	*death;
 
-	death = sem_open("/death", AT_EACCESS, 0);
+	death = sem_open("/death", 0);
 	if (death == SEM_FAILED)
 		return (false);
 	sem_close(death);

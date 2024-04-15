@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 03:37:37 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/04/11 16:59:32 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:40:25 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ int	processes(t_data *data)
 	return (0);
 }
 
-int clean_up(t_data *data)
+int	clean_up(t_data *data)
 {
-    sem_close(data->sem_forks);
+	sem_close(data->sem_forks);
 	sem_close(data->sem_print);
 	return (0);
 }
 
-int simulation(char **av)
+int	simulation(char **av)
 {
-    t_data	data;
+	t_data	data;
 
 	if (init_data(&data, av) != 0)
 		return (-1);
