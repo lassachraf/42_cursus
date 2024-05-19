@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/05/17 20:55:42 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/05/19 19:48:02 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,13 @@ RM				:= rm -f
 ENVIRONMENT		:=	environment/env_utils.c				\
 					environment/free.c
 
-PARSING			:=	parsing/parser.c					\
-					parsing/syntax.c					\
-					parsing/syntax_1.c
+PARSING			:=	parsing/parser.c
+
+SYNTAXING		:=	syntax//syntax.c					\
+					syntax/pipe_or_and.c				\
+					syntax/redirection.c				\
+					syntax/parenthesis_utils.c			\
+					syntax/parenthesis.c
 
 SIGNALS			:=	signals/handle_signals.c
 
@@ -49,6 +53,7 @@ SRCS			:=	$(BUILTINS)							\
 					$(TOKENIZATION)						\
 					$(ENVIRONMENT)						\
 					$(SIGNALS)							\
+					$(SYNTAXING)						\
 					$(PARSING)							\
 					$(CLEAN)							\
 					minishell.c

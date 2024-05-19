@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/17 20:57:02 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/19 15:28:16 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 t_minishell	*g_minishell;
 
-void	print_tokens()
+void	print_tokens(t_token *tokens)
 {
-	t_token	*tokens;
+	t_token	*token;
 
-	tokens = g_minishell->tokens;
-	while (tokens)
+	token = tokens;
+	while (token)
 	{
-		printf("value => '%s'\n", tokens->value);
-		printf("type ==> '%u'\n", tokens->type);
-		tokens = tokens->next;
+		printf("value => '%s'\n", token->value);
+		printf("type ==> '%u'\n", token->type);
+		token = token->next;
 	}
 }
 
@@ -42,11 +42,12 @@ int	main(int ac, char **av, char **env)
 			add_history(g_minishell->line);
 		g_minishell->tokens = tokenizer();
 		if (!g_minishell->tokens)
-			exit(13);
-		// print_tokens();
+			exit(180);
+		// print_tokens(g_minishell->tokens);
 		g_minishell->ast = parser();
+		// clear_token(&g_minishell->tokens);
 		free(g_minishell->line);
-		system("leaks minishell");
+		// system("leaks minishell");
 	}
 	return (0);
 }

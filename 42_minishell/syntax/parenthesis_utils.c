@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parenthesis_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 09:42:47 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 18:35:16 by alassiqu         ###   ########.fr       */
+/*   Created: 2024/05/19 19:40:46 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/05/19 19:48:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "../includes/minishell.h"
 
-typedef struct s_ast
+int	is_left_valid3(t_type type)
 {
-	char			*value;
-	struct s_ast	*left;
-	struct s_ast	*right;
-}					t_ast;
+	return (type == S_QUOTE || type == D_QUOTE || type == ASTERISK
+		|| type == DOLLAR || type == WORD || type == R_PAREN);
+}
 
-// Function that checks the syntax.
-int					syntax(void);
-
-#endif /* PARSER_H */
+int	is_right_valid3(t_type type)
+{
+	return (is_pipe_or_and(type) || type == R_PAREN);
+}

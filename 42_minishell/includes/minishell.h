@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/17 20:30:08 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/19 19:54:58 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,26 +96,27 @@ void				clear_env(void);
 // The main function for parsing the input and return our AST structure.
 t_ast				*parser(void);
 
-// The function is the first phase of the detection of syntax error.
-int					phase_1();
-
-// Function that checks the redirections syntax.
-int					check_redirections(t_type curr, t_type next);
-
-// Functions that checks the pipes syntax.
-int					check_pipes(t_type prev, t_type curr, t_type next);
-
+// Function that specifie the the type of the token.
 t_token				*choose_token(char *value, char c);
 
+// The function is the second phase of the detection of syntax error.
+int					syntax_second_phase(t_token *token);
+
+// The function is the third phase of the detection of syntax error.
+int					syntax_third_phase(t_token *token);
+
 // Function that check if the left expression is valid or not.
-int					is_left_valid(t_type type);
-int					checker_left(t_token *token);
+int					first_checker_left(t_token *token);
 
 // Function that check if the right expression is valid or not.
-int					is_right_valid(t_type type);
-int					checker_right(t_token *token);
+int					first_checker_right(t_token *token);
 
 // Function that checks if the current expression is a (PIPE || OR || AND).
 int					is_pipe_or_and(t_type type);
+
+void				print_tokens(t_token *token);
+
+int					is_left_valid3(t_type type);
+int					is_right_valid3(t_type type);
 
 #endif /* MINISHELL_H */
