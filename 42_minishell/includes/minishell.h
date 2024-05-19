@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 19:54:58 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:26:58 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ void				print_tokens(t_token *token);
 
 int					is_left_valid3(t_type type);
 int					is_right_valid3(t_type type);
+
+int					check_right_parenthesis(t_token *token);
 
 #endif /* MINISHELL_H */

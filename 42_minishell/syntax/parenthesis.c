@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 21:27:44 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 20:09:00 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:35:25 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,16 @@ int	check_left_parenthesis(t_token *token)
 
 int	syntax_third_phase(t_token *token)
 {
-
 	if (token->type == L_PAREN)
 	{
 		if (check_left_parenthesis(token) == -1)
 			return (-1);
 	}
-	// else if (token->type == R_PAREN)
-	// {
-	// 	if (check_right_parenthesis(token) == -1)
-	// 		return (-1);
-	// }
+	else if (token->type == R_PAREN)
+	{
+		if (check_right_parenthesis(token) == -1)
+			return (-1);
+	}
 	return (0);
 }
 
