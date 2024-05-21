@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 21:26:58 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:59:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define RED "\033[1;31m"
 # define ORANGE "\033[1;33m"
 # define RESET "\033[0m"
-# define PROMPT "✨✨ > badashell$ "
+# define PROMPT "✨ > badashell$ "
 
 # include "../libft/libft.h"
 # include "/Users/alassiqu/readline/include/readline/history.h"
@@ -120,5 +120,8 @@ int					is_left_valid3(t_type type);
 int					is_right_valid3(t_type type);
 
 int					check_right_parenthesis(t_token *token);
+
+int					nb_paren(void);
+int					nb_quotes(void);
 
 #endif /* MINISHELL_H */

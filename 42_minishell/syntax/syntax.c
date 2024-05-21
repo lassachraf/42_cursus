@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:13:52 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 19:54:05 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:35:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ int	syntax_first_phase(t_token *token)
 	return (0);
 }
 
+int	general_check()
+{
+	int	count;
+
+	count = nb_paren();
+	if (count == -1)
+        return (-1);
+	count = nb_quotes();
+	if (count == -1)
+		return (-1);
+	return (0);
+}
+
 int	syntax(void)
 {
 	t_token	*token;
@@ -55,10 +68,10 @@ int	syntax(void)
 			return (clear_token(&token), -1);
 		if (syntax_third_phase(token) == -1)  // PARENTHESIS.
 			return (clear_token(&token), -1);
-		// if (syntax_fourth_phase(token) == -1)
-		// 	return (clear_token(&token), -1);
 		token = token->next;
 	}
+	if (general_check() == -1)
+		return (clear_token(&token), -1);
 	clear_token(&token);
 	return (0);
 }

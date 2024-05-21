@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 15:28:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:16:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int ac, char **av, char **env)
 		if (g_minishell->line[0])
 			add_history(g_minishell->line);
 		g_minishell->tokens = tokenizer();
-		if (!g_minishell->tokens)
-			exit(180);
-		// print_tokens(g_minishell->tokens);
 		g_minishell->ast = parser();
+		if (!g_minishell->ast)
+			continue ;
+		// execution();
 		// clear_token(&g_minishell->tokens);
 		free(g_minishell->line);
 		// system("leaks minishell");

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:38:34 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/19 19:07:25 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:42:27 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_right_valid1(t_type type)
 {
-	return (type == S_QUOTE || type == D_QUOTE || type == ASTERISK
+	return (type == S_QUOTE || type == D_QUOTE
 		|| type == DOLLAR || type == WORD);
 }
 
@@ -32,9 +32,12 @@ int	syntax_second_phase(t_token *token)
 			printf(RED "minishell: syntax error near unexpected token `newline`\n" RESET);
             return (-1);
 		}
-		else
+		else if (!is_right_valid1(token->next->type))
 		{
-            printf(RED "minishell: syntax error near unexpected token `%s`\n" RESET,
+			if (token->next->type == ASTERISK)
+				printf(RED "minishell: *: ambiguous redirect\n" RESET);
+			else
+				printf(RED "minishell: syntax error near unexpected token `%s`\n" RESET,
 			token->next->value);
             return (-1);
         }
