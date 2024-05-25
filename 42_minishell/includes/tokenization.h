@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:04:32 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/16 11:30:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:40:50 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef enum e_type
 
 typedef struct s_token
 {
-	char			*value;
+	char			*value; //free
 	t_type			type;
 	struct s_token	*prev;
 	struct s_token	*next;

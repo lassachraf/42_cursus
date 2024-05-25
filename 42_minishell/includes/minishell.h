@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/20 09:59:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:51:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define RED "\033[1;31m"
 # define ORANGE "\033[1;33m"
 # define RESET "\033[0m"
-# define PROMPT "✨ > badashell$ "
+# define PROMPT "✨ badashell$ "
 
 # include "../libft/libft.h"
 # include "/Users/alassiqu/readline/include/readline/history.h"
@@ -41,7 +41,7 @@ typedef struct s_minishell
 	char			*line;
 	t_token			*tokens;
 	t_env			**our_env;
-	t_ast			*ast;
+	t_node			*ast;
 	int				exit_status;
 	int				nb_tokens;
 }					t_minishell;
@@ -94,7 +94,7 @@ void				clear_env(void);
 // Until here !
 
 // The main function for parsing the input and return our AST structure.
-t_ast				*parser(void);
+t_node				*parsing(void);
 
 // Function that specifie the the type of the token.
 t_token				*choose_token(char *value, char c);
