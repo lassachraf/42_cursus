@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/06/04 16:38:10 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/04 22:20:55 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,20 +42,23 @@ SYNTAXING		:=	syntax/syntax.c						\
 
 SIGNALS			:=	signals/handle_signals.c
 
-CLEAN			:=	clean/clean.c
+CLEAN			:=	cleaning/clean.c
 
 TOKENIZATION	:=	tokenization/tokenizer.c			\
 					tokenization/tokenizer_utils.c		\
 					tokenization/tokenizer_helpers.c	\
 					tokenization/tokenizer_free.c
 
-EXPANDING		:=	expanding/expander.c
+EXPANDING		:=	expanding/expander.c				\
+					expanding/word_helper.c				\
+					expanding/dollar_helper.c
 
 SRCS			:=	$(BUILTINS)							\
 					$(TOKENIZATION)						\
 					$(ENVIRONMENT)						\
 					$(SIGNALS)							\
 					$(SYNTAXING)						\
+					$(EXPANDING)						\
 					$(PARSING)							\
 					$(CLEAN)							\
 					minishell.c

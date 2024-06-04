@@ -6,13 +6,13 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:46:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 09:59:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/04 18:46:44 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	add_env_var(t_env **env, char *key, char *value, bool visible)
+void	add_env_var(t_env *env, char *key, char *value, bool visible)
 {
     t_env *new_node;
     t_env *current;
@@ -24,11 +24,11 @@ void	add_env_var(t_env **env, char *key, char *value, bool visible)
     new_node->value = strdup(value);
     new_node->visible = visible;
     new_node->next = NULL;
-    if (!*env)
-        *env = new_node;
+    if (!env)
+        env = new_node;
     else
     {
-        current = *env;
+        current = env;
         while (current->next)
             current = current->next;
         current->next = new_node;

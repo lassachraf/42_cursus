@@ -14,7 +14,7 @@ int	skip_quote(char *s, int *i)
 	while (*str && *str != '\'')
 	{
 		*i += 1;
-        str++;
+		str++;
 	}
 	*i += 1;
 	return (*i - j);
@@ -41,88 +41,85 @@ char	*get_var(char *s, int *i)
 	return (get_env_var(g_minishell->our_env, var));
 }
 
-// void	process_special_cases(char *s, char *value, int *i, int *j)
-// {
-//     char	*var;
-//     int		k;
+void	process_special_cases(char *s, char *value, int *i, int *j)
+{
+    char	*var;
+    int		k;
 
-//     if (s[*i] == '\'')
-//     {
-//         value[(*j)++] = s[*i];
-//         while (s[++(*i)] && s[*i] != '\'')
-//             value[(*j)++] = s[*i];
-//     }
-//     else if (s[*i] == '$' && s[1 + (*i)] && (ft_isalnum(s[*i + 1]) || s[*i + 1] == '?'))
-//     {
-//         var = get_var(s, i);
-//         k = -1;
-//         if (var)
-//         {
-//             while (var[++k])
-//                 value[(*j)++] = var[k];
-//         }
-//     }
-//     else
-//     {
-//         value[(*j)++] = s[*i];
-//     }
-// }
-
-// char	*fill_value(char *s, int size)
-// {
-//     char	*value;
-//     int		i;
-//     int		j;
-
-//     i = -1;
-//     j = 0;
-//     value = malloc(size * sizeof(char));
-//     if (!value)
-//         return (NULL);
-//     while (s[++i])
-//     {
-//         process_special_cases(s, value, &i, &j);
-//     }
-//     value[j] = '\0';
-//     return (value);
-// }
+    if (s[*i] == '\'')
+    {
+        value[(*j)++] = s[*i];
+        while (s[++(*i)] && s[*i] != '\'')
+            value[(*j)++] = s[*i];
+        value[(*j)++] = s[*i];
+    }
+    else if (s[*i] == '$' && s[1 + (*i)] && (ft_isalnum(s[*i + 1]) || s[*i
+		+ 1] == '?'))
+    {
+        var = get_var(s, i);
+        k = -1;
+        if (var)
+            while (var[++k])
+                value[(*j)++] = var[k];
+    }
+    else
+        value[(*j)++] = s[*i];
+}
 
 char	*fill_value(char *s, int size)
 {
-	char	*value;
-	char	*var;
-	int		i;
-	int		j;
-	int		k;
+    char	*value;
+    int		i;
+    int		j;
 
-	i = -1;
-	j = 0;
-	value = malloc(size * sizeof(char));
-	if (!value)
-		return (NULL);
-	while (s[++i])
-	{
-		if (s[i] == '\'')
-		{
-			value[j++] = s[i];
-			while (s[++i] && s[i] != '\'')
-				value[j++] = s[i];
-		}
-		if (s[i] == '$' && s[1 + i] && (ft_isalnum(s[i + 1]) || s[i
-				+ 1] == '?'))
-		{
-			var = get_var(s, &i);
-			k = -1;
-			if (var)
-				while (var && var[++k])
-					value[j++] = var[k];
-		}
-		else
-			value[j++] = s[i];
-	}
-	value[j] = '\0';
-	return (value);
+    i = -1;
+    j = 0;
+    value = malloc(size * sizeof(char));
+    if (!value)
+        return (NULL);
+    while (s[++i])
+        process_special_cases(s, value, &i, &j);
+    value[j] = '\0';
+    return (value);
 }
+
+// char	*fill_value(char *s, int size)
+// {
+// 	char	*value;
+// 	char	*var;
+// 	int		i;
+// 	int		j;
+// 	int		k;
+
+// 	i = -1;
+// 	j = 0;
+// 	value = malloc(size * sizeof(char));
+// 	if (!value)
+// 		return (NULL);
+// 	while (s[++i])
+// 	{
+// 		if (s[i] == '\'')
+// 		{
+// 			value[j++] = s[i];
+// 			while (s[++i] && s[i] != '\'')
+// 				value[j++] = s[i];
+// 			value[j++] = s[i];
+// 		}
+// 		else if (s[i] == '$' && s[1 + i] && (ft_isalnum(s[i + 1]) || s[i
+// 				+ 1] == '?'))
+// 		{
+// 			var = get_var(s, &i);
+// 			k = -1;
+// 			if (var)
+// 				while (var && var[++k])
+// 					value[j++] = var[k];
+// 		}
+// 		else
+// 			value[j++] = s[i];
+// 	}
+// 	value[j] = '\0';
+// 	return (value);
+// }
 
 int	check_env(char *var)
 {
@@ -159,7 +156,6 @@ int	handle_dollar(char *s, int *i)
 		return (check_env(var));
 }
 
-
 char	*helper_expander(char *s)
 {
 	char	*value;
@@ -169,8 +165,6 @@ char	*helper_expander(char *s)
 	value = NULL;
 	i = -1;
 	len = 0;
-	if (s[0] == '\'')
-		return (s);
 	while (s[++i])
 	{
 		if (s[i] == '\'')
@@ -192,16 +186,51 @@ int	main(int ac, char **av, char **env)
 	g_minishell = malloc(sizeof(t_minishell));
 	g_minishell->our_env = dup_env(env);
 	g_minishell->exit_status = 0;
-	add_env_var(&g_minishell->our_env, "?", ft_itoa(g_minishell->exit_status),
+	add_env_var(g_minishell->our_env, "?", ft_itoa(g_minishell->exit_status),
 		false);
-	printf("**************** Start of expanding ****************\n");
-	s = ft_strdup("$USER | $ | $PWD | $USER+$USER | $HHHHHH | '$USER+' | $= | $HOME$?$HOME ");
-	// // s = ft_strdup("$HOME++$USER///-$PWD'$OLDPWD--->'");
-	// s = ft_strdup("'$USER' | '$?' | '$USER+' ");
-	// // char *s = ft_strdup("$ttttt");
+	printf("**************** Start of expanding ****************\n\n\n");
+	printf("**************** TEST 1 ****************\n");
+	s = ft_strdup("$USER | $ | $PWD | $USER+$USER | $HHHHHH | '$USER+' | $USER+ | $= | $HOME$?$HOME ");
 	printf("The value of s before expanding : '%s'\n", s);
 	expand = helper_expander(s);
 	printf("The value of s after expanding : '%s'\n", expand);
+	printf("****************** END ******************\n");
+	// free(expand);
+	// expand = NULL;
+	// free(s);
+	// s = NULL;
+	printf("**************** TEST 2 ****************\n\n");
+	s = ft_strdup("$HOME++$USER///-$PWD'$OLDPWD--->'");
+	printf("The value of s before expanding : '%s'\n", s);
+	expand = helper_expander(s);
+	printf("The value of s after expanding : '%s'\n", expand);
+	printf("****************** END ******************\n\n");
+	// free(expand);
+	// expand = NULL;
+	// free(s);
+	// s = NULL;
+	printf("**************** TEST 3 ****************\n\n");
+	s = ft_strdup("'$USER' | '$USER+'| \"$USER\" | \"$USER+\"  ");
+	printf("The value of s before expanding : '%s'\n", s);
+	expand = helper_expander(s);
+	printf("The value of s after expanding : '%s'\n", expand);
+	printf("****************** END ******************\n\n");
+	// free(expand);
+	// expand = NULL;
+	// free(s);
+	// s = NULL;
+	printf("**************** TEST 4 ****************\n\n");
+	s = ft_strdup("$ttttt");
+	printf("The value of s before expanding : '%s'\n", s);
+	expand = helper_expander(s);
+	printf("The value of s after expanding : '%s'\n", expand);
+	printf("****************** END ******************\n\n");
+	printf("**************** TEST 5 ****************\n\n");
+	s = ft_strdup("$ '$?' \"$?\" $?");
+	printf("The value of s before expanding : '%s'\n", s);
+	expand = helper_expander(s);
+	printf("The value of s after expanding : '%s'\n", expand);
+	printf("****************** END ******************\n\n");
 	printf("****************** End of expanding ******************\n");
 	return (0);
 }
