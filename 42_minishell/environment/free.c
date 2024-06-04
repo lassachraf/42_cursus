@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 15:37:10 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/01 19:14:29 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:32:05 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void delete_env_var(t_env **env, char *key)
         return;
     current = *env;
     previous = NULL;
-    while (current && strcmp(current->key, key) != 0)
+    while (current && ft_strcmp(current->key, key) != 0)
     {
         previous = current;
         current = current->next;
@@ -32,7 +32,6 @@ void delete_env_var(t_env **env, char *key)
         *env = current->next;
     else
         previous->next = current->next;
-
     free(current->key);
     free(current->value);
     free(current);

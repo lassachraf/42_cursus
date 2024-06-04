@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 11:32:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:30:17 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # define PROMPT "✨ badashell$ "
 
 # include "../libft/libft.h"
-# include "/Users/alassiqu/readline/include/readline/history.h"
-# include "/Users/alassiqu/readline/include/readline/readline.h"
+# include <readline/history.h>
+# include <readline/readline.h>
+# include "tokenization.h"
 # include "builtins.h"
 # include "parsing.h"
-# include "tokenization.h"
 # include <signal.h>
 # include <stdio.h>
 # include <string.h>
@@ -50,40 +50,63 @@ typedef struct s_minishell
 
 extern t_minishell	*g_minishell;
 
+/* Builtins */
+
+// Function that change current working directory "cd".
+void				ft_cd(t_minishell *mini, char *path);
+// Function that prints the input with/without newline "echo".
+void				ft_echo(char **args);
+// Function that prints the env "env".
+void				ft_env(t_env *env);
+// Function that exit shell "exit".
+void				ft_exit(void);
+// Function that export variable to the environment "export".
+void				ft_export(void);
+// Function that prints current working directory "pwd".
+void				ft_pwd(t_env *env);
+// Function that unset environment variable "unset".
+void				ft_unset(void);
+
+/* Builtins utils */
+
+// Function that execute the builtins.
+int					execute_builtins(t_minishell *mini, char **args);
+// Function that checks if the command is a builtin or not.
+bool				ft_is_builtin(char *arg);
+
+/* Cleaning */
+
 /* Environments */
-// Function that allocate in a safe way.
-void				*safe_malloc(size_t size, void **data, int i);
+
 // Function that set environment variable.
 void				set_env_var(t_env *env, char *var, char *new);
 // Function that get the value of an environment variable.
 char				*get_env_var(t_env *env, char *var);
 // Function that duplicate env variable.
 t_env				*dup_env(char **env);
+// Function that add a new env variable.
+void				add_env_var(t_env **env, char *key, char *value,
+						bool visible);
+// Function that clean the environment.
+void				clear_env(void);
+// Function that remove a 
+void				delete_env_var(t_env **env, char *key)
+
+/* Expanding */
+
+// Main function to do expand.
+void				expander(void);
+
+/* Parsing */
+
+
+
+/* Tokenization */
 
 // The main function that tokenizes the input string.
 t_token				*tokenizer(void);
 
-/* Builtins */
-// Function that prints the input with/without newline.
-void				ft_echo(char **args);
-// Function that change current working directory.
-void				ft_cd(t_minishell *mini, char *path);
-// Function that prints current working directory.
-void				ft_pwd(t_env **env);
-// Function that export variable to the environment.
-void				ft_export(void);
-// Function that unset environment variable.
-void				ft_unset(void);
-// Function that prints the env.
-void				ft_env(t_env *env);
-// Function that exit shell.
-void				ft_exit(void);
 
-/* Builtins utils */
-// Function that execute the builtins.
-int					execute_builtins(t_minishell *mini, char **args);
-// Function that checks if the command is a builtin or not.
-bool				ft_is_builtin(char *arg);
 
 int					is_quote(char c);
 
@@ -94,8 +117,6 @@ void				signals(void);
 
 // Function that cleanup minishell.
 void				cleanup_minishell(void);
-// Function that clean the environment.
-void				clear_env(void);
 
 // Until here !
 
@@ -130,7 +151,6 @@ int					check_right_parenthesis(t_token *token);
 int					nb_paren(void);
 int					nb_quotes(void);
 
-void				add_env_var(t_env **env, char *key, char *value,
-						bool visible);
+
 
 #endif /* MINISHELL_H */

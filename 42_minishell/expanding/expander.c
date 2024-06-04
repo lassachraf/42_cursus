@@ -1,6 +1,16 @@
-#include "includes/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expander.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
+/*   Updated: 2024/06/04 16:36:30 by alassiqu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_minishell	*g_minishell;
+#include "../includes/minishell.h"
 
 int	skip_quote(char *s, int *i)
 {
@@ -159,7 +169,6 @@ int	handle_dollar(char *s, int *i)
 		return (check_env(var));
 }
 
-
 char	*helper_expander(char *s)
 {
 	char	*value;
@@ -184,44 +193,15 @@ char	*helper_expander(char *s)
 	return (value);
 }
 
-int	main(int ac, char **av, char **env)
+void	expander(void)
 {
-	char	*expand;
-	char	*s;
+	t_token	*tokens;
 
-	g_minishell = malloc(sizeof(t_minishell));
-	g_minishell->our_env = dup_env(env);
-	g_minishell->exit_status = 0;
-	add_env_var(&g_minishell->our_env, "?", ft_itoa(g_minishell->exit_status),
-		false);
-	printf("**************** Start of expanding ****************\n");
-	s = ft_strdup("$USER | $ | $PWD | $USER+$USER | $HHHHHH | '$USER+' | $= | $HOME$?$HOME ");
-	// // s = ft_strdup("$HOME++$USER///-$PWD'$OLDPWD--->'");
-	// s = ft_strdup("'$USER' | '$?' | '$USER+' ");
-	// // char *s = ft_strdup("$ttttt");
-	printf("The value of s before expanding : '%s'\n", s);
-	expand = helper_expander(s);
-	printf("The value of s after expanding : '%s'\n", expand);
-	printf("****************** End of expanding ******************\n");
-	return (0);
+	tokens = g_minishell->tokens;
+	while (tokens)
+	{
+		if (tokens->type == WORD && ft_strchr(tokens->value, '$'))
+			tokens->value = helper_expander(tokens->value);
+		tokens = tokens->next;
+	}
 }
-
-// int main(int ac, char **av, char **env)
-// {
-// 	g_minishell = malloc(sizeof(t_minishell));
-// 	g_minishell->our_env = dup_env(env);
-
-// 	int i = 0;
-// 	// printf("* env ****************\n");
-// 	// t_env *s = g_minishell->our_env;
-// 	// while (s)
-// 	// {
-// 	// 	printf("%s\n", s->key);
-// 	// 	s = s->next;
-// 	// }
-// 	// printf("* env ****************\n");
-// 	// ft_env(g_minishell->our_env);
-
-// 	printf("%s\n", get_env_var(g_minishell->our_env, "="));
-// 	return (0);
-// }
