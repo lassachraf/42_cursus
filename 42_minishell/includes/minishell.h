@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/25 17:51:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:32:42 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
+	bool			visible;
+	struct s_env	*next;
 }					t_env;
 
 typedef struct s_minishell
 {
 	char			*line;
 	t_token			*tokens;
-	t_env			**our_env;
+	t_env			*our_env;
 	t_node			*ast;
 	int				exit_status;
 	int				nb_tokens;
@@ -52,11 +54,11 @@ extern t_minishell	*g_minishell;
 // Function that allocate in a safe way.
 void				*safe_malloc(size_t size, void **data, int i);
 // Function that set environment variable.
-void				set_env_var(t_env **env, char *var, char *new);
+void				set_env_var(t_env *env, char *var, char *new);
 // Function that get the value of an environment variable.
-char				*get_env_var(t_env **env, char *var);
+char				*get_env_var(t_env *env, char *var);
 // Function that duplicate env variable.
-t_env				**dup_env(char **env);
+t_env				*dup_env(char **env);
 
 // The main function that tokenizes the input string.
 t_token				*tokenizer(void);
@@ -73,7 +75,7 @@ void				ft_export(void);
 // Function that unset environment variable.
 void				ft_unset(void);
 // Function that prints the env.
-void				ft_env(t_env **env);
+void				ft_env(t_env *env);
 // Function that exit shell.
 void				ft_exit(void);
 
@@ -82,6 +84,10 @@ void				ft_exit(void);
 int					execute_builtins(t_minishell *mini, char **args);
 // Function that checks if the command is a builtin or not.
 bool				ft_is_builtin(char *arg);
+
+int					is_quote(char c);
+
+int					append_quotes(t_token **tokens, char **line);
 
 // Function that handle signals.
 void				signals(void);
@@ -94,7 +100,7 @@ void				clear_env(void);
 // Until here !
 
 // The main function for parsing the input and return our AST structure.
-t_node				*parsing(void);
+// t_node				*parsing(void);
 
 // Function that specifie the the type of the token.
 t_token				*choose_token(char *value, char c);
@@ -123,5 +129,8 @@ int					check_right_parenthesis(t_token *token);
 
 int					nb_paren(void);
 int					nb_quotes(void);
+
+void				add_env_var(t_env **env, char *key, char *value,
+						bool visible);
 
 #endif /* MINISHELL_H */

@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/05/19 19:48:02 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/01 17:43:43 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ CC				:= cc
 CFLAGS			:= -Wall -Werror -Wextra #-fsanitize=address -g3
 RM				:= rm -f
 
-# BUILTINS		:=	builtins/ft_cd.c					\
+BUILTINS		:=	builtins/ft_env.c 					\
+# 					builtins/ft_cd.c 					\
 # 					builtins/ft_echo.c 					\
 # 					builtins/ft_env_utils.c 			\
-# 					builtins/ft_env.c 					\
 # 					builtins/ft_exit.c 					\
 # 					builtins/ft_export.c 				\
 # 					builtins/ft_pwd.c 					\
@@ -34,7 +34,7 @@ ENVIRONMENT		:=	environment/env_utils.c				\
 
 PARSING			:=	parsing/parser.c
 
-SYNTAXING		:=	syntax//syntax.c					\
+SYNTAXING		:=	syntax/syntax.c						\
 					syntax/pipe_or_and.c				\
 					syntax/redirection.c				\
 					syntax/parenthesis_utils.c			\

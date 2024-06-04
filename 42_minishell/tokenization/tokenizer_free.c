@@ -6,11 +6,59 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:58:45 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/16 11:45:55 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:05:03 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int is_quote(char c)
+{
+	if (c == '"')
+		return (1);
+	else if (c == '\'')
+		return (2);
+	return (0);
+}
+
+int	add_quote(t_token **tokens, char **line)
+{
+	t_token	*new;
+	char	*value;
+	int		c;
+
+	value = ft_substr(*line, 0, 1);
+	new = choose_token(value, **line);
+	c = is_quote(**line);
+	*line += 1;
+	add_token_back(tokens, new);
+	return (c);
+}
+
+int	append_quotes(t_token **tokens, char **line)
+{
+	t_token	*new;
+	char	*value;
+	char	*tmp;
+	int		type;
+	int		i;
+
+	i = 0;
+	type = add_quote(tokens, line);
+	tmp = *line;
+	while (tmp[i] && is_quote(tmp[i]) != type)
+		i++;
+	value = ft_substr(tmp, 0, i);
+	if (!value)
+		return (0);
+	new = new_token(value, WORD);
+	if (!new)
+		return (free(value), 0);
+	*line += i;
+	add_token_back(tokens, new);
+	add_quote(tokens, line);
+	return (1);
+}
 
 t_token	*choose_token(char *value, char c)
 {

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:41:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/17 16:27:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/01 16:22:50 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_token	*tokenizer_handler(char *line)
 			|| !ft_strncmp(line, "|", 1) || !ft_strncmp(line, "&&", 2)
 			|| !ft_strncmp(line, "(", 1) || !ft_strncmp(line, ")", 1))
 			error = (!handle_separator(&tokens, &line) && 1);
+		else if (is_quote(*line))
+			error = (!append_quotes(&tokens, &line) && 1);
 		else
 			error = (!append_identifier(&tokens, &line) && 1);
 	}
