@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 17:47:57 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 21:09:07 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	expander(void)
 		{
 			tokens = tokens->next;
 			tokens->value = dollar_helper(tokens->value);
-			// remove_dollar(tokens);
+			// Dollar token should be removed !
 		}
 		tokens = tokens->next;
 	}

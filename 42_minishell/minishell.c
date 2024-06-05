@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 18:13:54 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:38:47 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ int	main(int ac, char **av, char **env)
 			clear_token(&g_minishell->tokens);
 			continue ;
 		}
-		printf("** Before Expanding: **\n");
-		print_tokens(g_minishell->tokens);
 		expander();
-		printf("** After Expanding: **\n");
 		print_tokens(g_minishell->tokens);
 		clear_token(&g_minishell->tokens);
 		// free(g_minishell->ast);

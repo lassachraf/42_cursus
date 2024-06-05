@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:41:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 18:29:31 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:37:17 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,7 @@ t_token	*tokenizer(void)
 	add_env_var(g_minishell->our_env, "?", ft_itoa(g_minishell->exit_status),
 		false);
 	line = ft_strtrim(g_minishell->line, " \t\n\v\f\r");
-	printf("Tokening now\n");
 	tokens = tokenizer_handler(line);
-	printf("Tokening done\n");
 	free(line);
 	return (tokens);
 }
