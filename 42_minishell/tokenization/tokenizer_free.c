@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:58:45 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 20:47:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:26:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,34 @@ int	add_quote(t_token **tokens, char **line)
 	return (c);
 }
 
-int	append_quotes(t_token **tokens, char **line)
+void	append_string(t_token **tokens, char **line, t_type flag)
 {
 	t_token	*new;
 	char	*value;
 	char	*tmp;
-	int		type;
+	char	c;
 	int		i;
 
-	i = 0;
-	type = add_quote(tokens, line);
+	i = -1;
 	tmp = *line;
-	while (tmp[i] && is_quote(tmp[i]) != type)
+	c = '"';
+	if (flag == S_QUOTE)
+		c = '\'';
+	while (tmp[i] && tmp[i] != c)
 		i++;
-	value = ft_substr(tmp, 0, i);
-	if (!value)
-		return (0);
+	value = ft_substr(*line, 0, i);
 	new = new_token(value, WORD);
-	if (!new)
-		return (free(value), 0);
-	*line += i;
 	add_token_back(tokens, new);
-	add_quote(tokens, line);
+}
+
+int handle_quotes(t_token **tokens, char **line)
+{
+	t_type	c;
+	
+	c = add_quote(tokens, line);
+	append_string(tokens, line, c);
+	if (*line && is_quote(**line))
+		add_quote(tokens, line);
 	return (1);
 }
 

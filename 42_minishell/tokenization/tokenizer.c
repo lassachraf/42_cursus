@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:41:22 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 20:47:23 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:29:31 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_token	*tokenizer_handler(char *line)
 			|| !ft_strncmp(line, "(", 1) || !ft_strncmp(line, ")", 1))
 			error = (!handle_separator(&tokens, &line) && 1);
 		else if (is_quote(*line))
-			error = (!append_quotes(&tokens, &line) && 1);
+			error = (!handle_quotes(&tokens, &line) && 1);
 		else
 			error = (!append_identifier(&tokens, &line) && 1);
 	}
@@ -66,8 +66,12 @@ t_token	*tokenizer(void)
 	char	*line;
 
 	g_minishell->nb_tokens = 0;
+	add_env_var(g_minishell->our_env, "?", ft_itoa(g_minishell->exit_status),
+		false);
 	line = ft_strtrim(g_minishell->line, " \t\n\v\f\r");
+	printf("Tokening now\n");
 	tokens = tokenizer_handler(line);
+	printf("Tokening done\n");
 	free(line);
 	return (tokens);
 }

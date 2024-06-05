@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:13:52 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 20:47:15 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:11:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	syntax(void)
 	t_token	*token;
 	t_token	*temp;
 
+	printf("Syntaxing: \n");
 	token = custome_tokens();
 	temp = token;
 	while (token)
@@ -65,8 +66,10 @@ int	syntax(void)
 			return (clear_token(&temp), -1);
 		token = token->next;
 	}
+	printf("general check\n");
 	if (general_check() == -1)
 		return (clear_token(&temp), -1);
+	printf("general check\n");
 	clear_token(&temp);
 	return (0);
 }

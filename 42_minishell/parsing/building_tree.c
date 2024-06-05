@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 20:53:21 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/25 17:28:17 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:41:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_node	*parsing(t_token *tokens)
 
 	x = 0;
 	if (syntax() == -1)
-		return (g_minishell->exit_status = 258,
+		return (set_env_var(g_minishell->our_env, "?", ft_itoa(130)),
 			clear_token(&g_minishell->tokens), NULL);
 	while (tokens)
 	{
@@ -87,7 +87,5 @@ t_node	*parsing(t_token *tokens)
 		if (tokens->next)
 			tokens = tokens->next;
 	}
-	// res = parse_pair(&tokens); // (a b)
-	// printf("type is %s\n",tokens->value);
 	return (res);
 }

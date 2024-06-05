@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 22:49:31 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:47:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	handle_dollar(char *s, int *i)
 		*i += 2;
 		return (2);
 	}
-	if (!ft_strncmp(&expand[j], "?", 1))
+	if (!ft_strncmp(&expand[j], "?", 1) || !ft_strncmp(&expand[j], "_", 1))
 		j++;
 	else
-		while (expand[j] && ft_isalnum(expand[j]))
+		while (expand[j] && (ft_isalnum(expand[j])))
 			j++;
 	*i += j;
 	var = ft_substr(expand, 0, j);
@@ -45,7 +45,6 @@ char	*helper_expander(char *s)
 	int		len;
 	int		i;
 
-	value = NULL;
 	i = -1;
 	len = 0;
 	while (s[++i])
@@ -70,7 +69,6 @@ char	*dollar_helper(char *s)
 
 	i = 0;
 	len = 0;
-	value = NULL;
 	while (s[i] && (ft_isalnum(s[i]) || !ft_strncmp(&s[i], "_", 1)))
 		i++;
 	var = ft_substr(s, 0, i);
@@ -79,8 +77,12 @@ char	*dollar_helper(char *s)
 	if (check_env(var))
 		len = ft_strlen(get_env_var(g_minishell->our_env, var));
 	else
-		len = 0;
-	// value = fill_dollar_value(s, (len + 1));
+	{
+		value = malloc(sizeof(char) * 1);
+		value[0] = '\0';
+		return (value);
+	}
+	value = fill_dollar(s, var, (len + 1));
 	return (value);
 }
 
@@ -91,14 +93,14 @@ void	expander(void)
 	tokens = g_minishell->tokens;
 	while (tokens)
 	{
-		// printf("Curr token: %s\n", tokens->value);
 		if (tokens->type == WORD && ft_strchr(tokens->value, '$'))
 			tokens->value = helper_expander(tokens->value);
-		// else if (tokens->type == DOLLAR)
-		// {
-		// 	tokens = tokens->next;
-		// 	tokens->value = dollar_helper(tokens->value);
-		// }
+		else if (tokens->type == DOLLAR && tokens->next->next)
+		{
+			tokens = tokens->next;
+			tokens->value = dollar_helper(tokens->value);
+			// remove_dollar(tokens);
+		}
 		tokens = tokens->next;
 	}
 }

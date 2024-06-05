@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 22:19:54 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:28:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,16 +116,19 @@ void				expander(void);
 int					skip_quote(char *s, int *i);
 
 // Function that get the variable and search for it in the environment.
-char *get_var(char *s, int *i);
+char				*get_var(char *s, int *i);
 
 // Function that return the length of the variable after expanding.
-int check_env(char *var);
+int					check_env(char *var);
 
 // Function that process special cases while filling the new value.
-void process_special_cases(char *s, char *value, int *i, int *j);
+void				process_special_cases(char *s, char *value, int *i, int *j);
 
 // Function that allocate and fill the new value.
-char *fill_value(char *s, int size);
+char				*fill_value(char *s, int size);
+
+// Function that set the value after DOLLAR.
+char				*fill_dollar(char *s, char *var, int size);
 
 /* Parsing */
 
@@ -169,6 +172,9 @@ int					is_right_valid3(t_type type);
 // Function that checks if the right of parenthesis is valid or not.
 int					check_right_parenthesis(t_token *token);
 
+// Function that prints errors.
+void				print_errors(char *message);
+
 /* Tokenization */
 
 // The main function that tokenizes the input string.
@@ -179,6 +185,9 @@ t_token				*choose_token(char *value, char c);
 
 // Function that append quote token to the list of token.
 int					append_quotes(t_token **tokens, char **line);
+
+// Function that append quotes and the string between them.
+int handle_quotes(t_token **tokens, char **line);
 
 // Function that return if the character is a quote or not.
 int					is_quote(char c);

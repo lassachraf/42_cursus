@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/06/04 22:20:55 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/05 18:09:03 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			:= minishell
 
 LIBFT_PATH		:= libft/
 LIBFT			:= libft/libft.a
-READLINE		:= /Users/alassiqu/readline/lib
+# READLINE		:= /Users/alassiqu/readline/lib
 
 CC				:= cc
 CFLAGS			:= -Wall -Werror -Wextra #-fsanitize=address -g3
@@ -35,6 +35,7 @@ ENVIRONMENT		:=	environment/env_utils.c				\
 PARSING			:=	parsing/parser.c
 
 SYNTAXING		:=	syntax/syntax.c						\
+					syntax/syntax_utils.c				\
 					syntax/pipe_or_and.c				\
 					syntax/redirection.c				\
 					syntax/parenthesis_utils.c			\
@@ -71,7 +72,7 @@ $(LIBFT):
 	make -C $(LIBFT_PATH)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -lreadline -L $(READLINE) -o $(NAME) 
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_PATH) -lft -lreadline -o $(NAME) 
 
 clean:
 	@make clean -C $(LIBFT_PATH)
