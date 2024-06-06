@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 18:38:47 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:28:52 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	init_minishell(char **env)
 	if (!g_minishell)
 		return (0);
 	g_minishell->our_env = dup_env(env);
-	g_minishell->exit_status = 0;
+	add_env_var(g_minishell->our_env, "?", "0", false);
 	signals();
 	return (1);
 }
@@ -54,11 +54,16 @@ int	main(int ac, char **av, char **env)
 			clear_token(&g_minishell->tokens);
 			continue ;
 		}
+		printf("*** Before Expanding ***\n\n");
+		print_tokens(g_minishell->tokens);
+		printf("\n\n\n\n");
 		expander();
+		printf("*** After Expanding ***\n\n");
 		print_tokens(g_minishell->tokens);
 		clear_token(&g_minishell->tokens);
 		// free(g_minishell->ast);
 		free(g_minishell->line);
 	}
+	clear_env();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 21:09:07 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:07:51 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,32 +60,6 @@ char	*helper_expander(char *s)
 	return (value);
 }
 
-char	*dollar_helper(char *s)
-{
-	char	*value;
-	char	*var;
-	int		i;
-	int		len;
-
-	i = 0;
-	len = 0;
-	while (s[i] && (ft_isalnum(s[i]) || !ft_strncmp(&s[i], "_", 1)))
-		i++;
-	var = ft_substr(s, 0, i);
-	if (!ft_strncmp(var, "\0", 1))
-		len = 0;
-	if (check_env(var))
-		len = ft_strlen(get_env_var(g_minishell->our_env, var));
-	else
-	{
-		value = malloc(sizeof(char) * 1);
-		value[0] = '\0';
-		return (value);
-	}
-	value = fill_dollar(s, var, (len + 1));
-	return (value);
-}
-
 void	expander(void)
 {
 	t_token	*tokens;
@@ -93,14 +67,14 @@ void	expander(void)
 	tokens = g_minishell->tokens;
 	while (tokens)
 	{
-		if (tokens->type == WORD && ft_strchr(tokens->value, '$'))
-			tokens->value = helper_expander(tokens->value);
-		else if (tokens->type == DOLLAR && tokens->next->next)
+		if (tokens->type == S_QUOTE)
 		{
 			tokens = tokens->next;
-			tokens->value = dollar_helper(tokens->value);
-			// Dollar token should be removed !
+			while (tokens && tokens->type != S_QUOTE)
+				tokens = tokens->next;
 		}
+		else if (tokens->type == WORD && ft_strchr(tokens->value, '$'))
+			tokens->value = helper_expander(tokens->value);
 		tokens = tokens->next;
 	}
 }

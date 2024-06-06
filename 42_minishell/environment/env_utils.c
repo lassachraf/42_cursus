@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:46:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/04 18:46:44 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:12:08 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	add_env_var(t_env *env, char *key, char *value, bool visible)
     new_node = (t_env *)malloc(sizeof(t_env));
     if (!new_node)
         return;
-    new_node->key = strdup(key);
-    new_node->value = strdup(value);
+    new_node->key = ft_strdup(key);
+    new_node->value = ft_strdup(value);
     new_node->visible = visible;
     new_node->next = NULL;
     if (!env)
@@ -59,11 +59,12 @@ char	*get_env_var(t_env *env, char *var)
 {
 	if (!ft_strncmp(var, "\0", 1))
 		return (NULL);
-	while (env && ft_strncmp(env->key, var, ft_strlen(var)))
+	while (env && ft_strncmp(env->key, var, ft_strlen(env->key)))
 		env = env->next;
-	if (!env)
+	if (env && ft_strlen(env->key) == ft_strlen(var))
+		return (env->value);
+	else
 		return (NULL);
-	return (env->value);
 }
 
 t_env	*dup_env(char **env)
