@@ -16,5 +16,5 @@ void	cleanup_minishell(void)
 {
 	clear_token(&g_minishell->tokens);
 	clear_env();
-     free(g_minishell->line);
+	free(g_minishell->line);
 }

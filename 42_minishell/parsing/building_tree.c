@@ -80,7 +80,8 @@ t_node	*parsing(t_token *tokens)
 	x = 0;
 	if (syntax() == -1)
 		return (set_env_var(g_minishell->our_env, "?", ft_itoa(130)),
-			clear_token(&g_minishell->tokens), NULL);
+				clear_token(&g_minishell->tokens),
+				NULL);
 	while (tokens)
 	{
 		tmp = parse_seq(&tokens);

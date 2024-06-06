@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:01:30 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/01 16:32:11 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:09:58 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ t_token	*new_token(char *value, t_type type)
 {
 	t_token	*new_token;
 
-	new_token = (t_token *)ft_calloc(1, sizeof(t_token));
+	new_token = malloc(sizeof(t_token));
 	if (!new_token)
 		return (NULL);
 	new_token->value = value;
 	new_token->type = type;
+	new_token->prev = NULL;
+	new_token->next = NULL;
 	return (new_token);
 }
 
@@ -45,7 +47,7 @@ void	add_token_back(t_token **tokens, t_token *new_token)
 int	append_separator(t_token **tokens, char **line, t_type type)
 {
 	t_token	*token;
-	char    *value;
+	char	*value;
 
 	if (type == RR_REDIR || type == LL_REDIR || type == AND || type == OR)
 		value = ft_substr(*line, 0, 2);

@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/06/05 18:09:03 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/06 18:13:06 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT			:= libft/libft.a
 # READLINE		:= /Users/alassiqu/readline/lib
 
 CC				:= cc
-CFLAGS			:= -Wall -Werror -Wextra #-fsanitize=address -g3
+CFLAGS			:= -Wall -Werror -Wextra -fsanitize=address -g3
 RM				:= rm -f
 
 BUILTINS		:=	builtins/ft_env.c 					\
@@ -51,8 +51,7 @@ TOKENIZATION	:=	tokenization/tokenizer.c			\
 					tokenization/tokenizer_free.c
 
 EXPANDING		:=	expanding/expander.c				\
-					expanding/word_helper.c				\
-					expanding/dollar_helper.c
+					expanding/word_helper.c
 
 SRCS			:=	$(BUILTINS)							\
 					$(TOKENIZATION)						\

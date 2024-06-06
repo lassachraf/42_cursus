@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 11:28:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:43:56 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,22 @@ int	main(int ac, char **av, char **env)
 		if (g_minishell->line[0])
 			add_history(g_minishell->line);
 		g_minishell->tokens = tokenizer();
-		if (syntax() == -1)
-		{
-			set_env_var(g_minishell->our_env, "?", ft_itoa(130));
-			clear_token(&g_minishell->tokens);
+		if (!g_minishell->tokens)
 			continue ;
-		}
+		if (syntax() == -1)
+			continue ;
 		printf("*** Before Expanding ***\n\n");
 		print_tokens(g_minishell->tokens);
-		printf("\n\n\n\n");
+		printf("\n\n");
 		expander();
 		printf("*** After Expanding ***\n\n");
 		print_tokens(g_minishell->tokens);
+		g_minishell->ast = parsing(g_minishell->tokens);
+		if (!g_minishell->ast)
+			continue ;
+		// post_execution();
+		// execution part;
 		clear_token(&g_minishell->tokens);
-		// free(g_minishell->ast);
 		free(g_minishell->line);
 	}
 	clear_env();

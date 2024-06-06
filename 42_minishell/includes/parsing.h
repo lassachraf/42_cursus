@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 09:42:47 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/25 18:06:39 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:39:16 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef enum e_node
 	STRING_NODE
 }						e_node_type;
 
-typedef struct t_node	t_node;
+typedef struct s_node	t_node;
 
 typedef struct s_tree
 {
@@ -39,17 +39,18 @@ typedef union u_node_value
 {
 	t_tree				pair;
 	t_list				*list;
-	char char_value;   // unused yet
-	const char *error; // unused yet
+	char				char_value;// unused yet
+	const char			*error;// unused yet
 }						u_node_value;
 
-struct					t_node
+struct					s_node
 {
 	e_node_type			type;
 	u_node_value		data;
 };
 
 t_node					*new_char_node(char c);
+
 // t_node *new_pair_node(t_node *left, t_node *right);
 t_node					*new_pair_node(t_node *left, t_node *right,
 							t_type type);

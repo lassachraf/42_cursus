@@ -14,25 +14,25 @@
 
 void	add_env_var(t_env *env, char *key, char *value, bool visible)
 {
-    t_env *new_node;
-    t_env *current;
+	t_env	*new_node;
+	t_env	*current;
 
-    new_node = (t_env *)malloc(sizeof(t_env));
-    if (!new_node)
-        return;
-    new_node->key = ft_strdup(key);
-    new_node->value = ft_strdup(value);
-    new_node->visible = visible;
-    new_node->next = NULL;
-    if (!env)
-        env = new_node;
-    else
-    {
-        current = env;
-        while (current->next)
-            current = current->next;
-        current->next = new_node;
-    }
+	new_node = (t_env *)malloc(sizeof(t_env));
+	if (!new_node)
+		return ;
+	new_node->key = ft_strdup(key);
+	new_node->value = ft_strdup(value);
+	new_node->visible = visible;
+	new_node->next = NULL;
+	if (!env)
+		env = new_node;
+	else
+	{
+		current = env;
+		while (current->next)
+			current = current->next;
+		current->next = new_node;
+	}
 }
 
 int	ft_key_length(char *str)

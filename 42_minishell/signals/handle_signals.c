@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 21:05:29 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/05/11 21:21:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:36:14 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_sigint_handler(int num)
 void	ft_sigquit_handler(int num)
 {
 	(void)num;
-	// Idk what should I done here? =_=
+	// Idk what should I done here? -_-
 }
 
 void	signals(void)

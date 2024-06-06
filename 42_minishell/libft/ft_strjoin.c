@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:20:37 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/03 12:44:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:36:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (*s2)
 		*start++ = *s2++;
 	*start = '\0';
-	// free((void *)s1);
 	return (str);
 }

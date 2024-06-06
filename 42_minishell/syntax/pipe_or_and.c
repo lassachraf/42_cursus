@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 20:12:50 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/05 18:06:34 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:30:06 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	first_checker_left(t_token *token)
 	if (is_pipe_or_and(token->type) && (!token->prev
 			|| !is_left_valid(token->prev->type)))
 	{
-		ft_putstr_fd(RED "badashell$ : syntax error near unexpected token `", 2);
+		ft_putstr_fd(RED "badashell$ : syntax error near unexpected token `",
+			2);
 		ft_putstr_fd(token->value, 2);
 		ft_putstr_fd("`\n" RESET, 2);
 		return (-1);
@@ -49,7 +50,8 @@ int	first_checker_right(t_token *token)
 	if (is_pipe_or_and(token->type) && (!token->next
 			|| !is_right_valid(token->next->type)))
 	{
-		ft_putstr_fd(RED "badashell$ : syntax error near unexpected token `", 2);
+		ft_putstr_fd(RED "badashell$ : syntax error near unexpected token `",
+			2);
 		ft_putstr_fd(token->next->value, 2);
 		ft_putstr_fd("`\n" RESET, 2);
 		return (-1);
