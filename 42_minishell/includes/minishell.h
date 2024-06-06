@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 15:18:14 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/06 20:44:15 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ char				*fill_dollar(char *s, char *var, int size);
 /* Parsing */
 
 // The main function for parsing the input and return our AST structure.
-// t_node				*parsing(void);
+t_node				*parsing(t_token *tokens);
 
 /* Signals */
 
