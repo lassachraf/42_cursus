@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 20:44:15 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:04:13 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_minishell
 	t_env			*our_env;
 	t_node			*ast;
 	int				nb_tokens;
+	int				dq_flag;
 }					t_minishell;
 
 extern t_minishell	*g_minishell;

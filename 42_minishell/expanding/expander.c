@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 11:07:51 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/10 01:23:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int	handle_dollar(char *s, int *i)
 		*i += 2;
 		return (2);
 	}
-	if (!ft_strncmp(&expand[j], "?", 1) || !ft_strncmp(&expand[j], "_", 1))
+	if (!ft_strncmp(&expand[j], "?", 1) || !ft_strncmp(&expand[j], "$", 1))
 		j++;
 	else
-		while (expand[j] && (ft_isalnum(expand[j])))
-			j++;
-	*i += j;
+		while (expand[j] && !is_quote(expand[j]) && (ft_isalnum(expand[j])
+				|| !ft_strncmp(&expand[j], "_", 1)))
+			*i += j++;
 	var = ft_substr(expand, 0, j);
-	if (!check_env(var))
+	if (!check_env(var) && !expand[j])
+		return (1);
+	else if (!check_env(var))
 		return (0);
 	else
 		return (check_env(var));
@@ -49,9 +51,7 @@ char	*helper_expander(char *s)
 	len = 0;
 	while (s[++i])
 	{
-		if (s[i] == '\'')
-			len += skip_quote(s, &i);
-		else if (s[i] == '$')
+		if (s[i] == '$')
 			len += handle_dollar(s, &i);
 		else
 			len++;
@@ -74,7 +74,16 @@ void	expander(void)
 				tokens = tokens->next;
 		}
 		else if (tokens->type == WORD && ft_strchr(tokens->value, '$'))
-			tokens->value = helper_expander(tokens->value);
+		{
+			if (tokens->prev && tokens->prev->type == D_QUOTE)
+			{
+				g_minishell->dq_flag = 1;
+				tokens->value = helper_expander(tokens->value);
+			}
+			else
+				tokens->value = helper_expander(tokens->value);
+			g_minishell->dq_flag = 0;
+		}
 		tokens = tokens->next;
 	}
 }

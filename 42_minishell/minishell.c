@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 22:07:34 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/09 15:04:36 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ void	print_tokens(t_token *tokens)
 
 int	init_minishell(char **env)
 {
+	char	*pid;
+	
+	pid = ft_itoa(getpid());
 	g_minishell = malloc(sizeof(t_minishell));
 	if (!g_minishell)
 		return (0);
 	g_minishell->our_env = dup_env(env);
+	g_minishell->dq_flag = 0;
 	add_env_var(g_minishell->our_env, "?", "0", false);
+	add_env_var(g_minishell->our_env, "$", pid, false);
 	signals();
 	return (1);
 }
