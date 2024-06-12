@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/10 01:23:40 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/11 16:41:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,22 @@ int	handle_dollar(char *s, int *i)
 
 	j = 0;
 	expand = s + *i;
-	expand++;
+	if (!ft_strncmp(expand, "$$", 2))
+		return (*i += 1, 2);
+	if (!ft_strncmp(++expand, "\0", 1))
+		return (1);
+	printf("Handle_dollar: still expand\n");
 	if (ft_isspace(expand[j]))
-	{
-		*i += 2;
-		return (2);
-	}
-	if (!ft_strncmp(&expand[j], "?", 1) || !ft_strncmp(&expand[j], "$", 1))
+		return (*i += 2, 2);
+	if (!ft_strncmp(&expand[j], "?", 1) || !ft_strncmp(&expand[j], "_", 1))
 		j++;
 	else
 		while (expand[j] && !is_quote(expand[j]) && (ft_isalnum(expand[j])
 				|| !ft_strncmp(&expand[j], "_", 1)))
 			*i += j++;
 	var = ft_substr(expand, 0, j);
-	if (!check_env(var) && !expand[j])
-		return (1);
-	else if (!check_env(var))
-		return (0);
+	if (!check_env(var))
+		return (j);
 	else
 		return (check_env(var));
 }
@@ -56,7 +55,8 @@ char	*helper_expander(char *s)
 		else
 			len++;
 	}
-	value = fill_value(s, (len + 1));
+	printf("helper_expander: len: %d\n", len);
+	value = fill_value(s, len + 1);
 	return (value);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 19:40:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 16:33:16 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/10 14:48:41 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	is_left_valid3(t_type type)
 
 int	is_right_valid3(t_type type)
 {
-	return (is_pipe_or_and(type) || type == R_PAREN || type == L_PAREN
-		|| type == END);
+	return (is_pipe_or_and(type) || type == R_PAREN || type == END);
 }
 
 int	check_right_parenthesis(t_token *token)

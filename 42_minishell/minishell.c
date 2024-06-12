@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/09 15:04:36 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:44:50 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,12 @@ void	print_tokens(t_token *tokens)
 
 int	init_minishell(char **env)
 {
-	char	*pid;
-	
-	pid = ft_itoa(getpid());
 	g_minishell = malloc(sizeof(t_minishell));
 	if (!g_minishell)
 		return (0);
 	g_minishell->our_env = dup_env(env);
 	g_minishell->dq_flag = 0;
 	add_env_var(g_minishell->our_env, "?", "0", false);
-	add_env_var(g_minishell->our_env, "$", pid, false);
 	signals();
 	return (1);
 }
@@ -53,9 +49,7 @@ int	main(int ac, char **av, char **env)
 		if (g_minishell->line[0])
 			add_history(g_minishell->line);
 		g_minishell->tokens = tokenizer();
-		if (!g_minishell->tokens)
-			continue ;
-		if (syntax() == -1)
+		if (!g_minishell->tokens || syntax() == -1)
 			continue ;
 		printf("*** Before Expanding ***\n\n");
 		print_tokens(g_minishell->tokens);
