@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 12:54:48 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:04:10 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,34 @@ void				post_expander(void);
 // Function that count the length of the whole command after expanding.
 int					handle_dollar(char *s, int *i);
 
+/* Nodes */
+
+/* Nodes functions */
+
+// Function that create a new character node.
+t_node				*char_node_new(char c);
+
+// Function that create a pair of nodes.
+t_node				*pair_node_new(t_node *left, t_node *right, t_type type);
+
+// Function that create a new string node.
+t_node				*string_node_new(t_list *list);
+
+// Function that create a new error node.
+t_node				*error_node_new(const char *msg);
+
+// Function that create a new redirection node.
+t_node				*redir_node_new(t_list *red_list);
+
+// Function that parse a block or a sequence.
+t_node				*parse_block(t_token **tokens);
+
+// Function that parse a command.
+t_node				*parse_cmd(t_token **tokens);
+
+// Main function that parse and return an **ABSTRACT SYNTAX TREE**.
+t_node				*parsing(t_token *tokens);
+
 /* Parsing */
 
 // The main function for parsing the input and return our AST structure.
@@ -148,6 +176,9 @@ t_node				*parsing(t_token *tokens);
 void				signals(void);
 
 /* Syntax */
+
+// The main  function that checks syntax errors.
+int					syntax(void);
 
 // The function is the second phase of the detection of syntax error.
 int					syntax_second_phase(t_token *token);
