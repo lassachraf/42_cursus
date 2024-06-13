@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/06/06 18:13:06 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/13 09:56:27 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,10 @@ TOKENIZATION	:=	tokenization/tokenizer.c			\
 					tokenization/tokenizer_free.c
 
 EXPANDING		:=	expanding/expander.c				\
-					expanding/word_helper.c
+					expanding/word_helper.c				\
+					expanding/post_expand.c			\
+					expanding/dollar_expand.c		\
+					expanding/quotes_expand.c
 
 SRCS			:=	$(BUILTINS)							\
 					$(TOKENIZATION)						\

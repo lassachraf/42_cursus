@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/09 15:04:13 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:54:48 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
-# include <stdio.h>
 # include <string.h>
 # include <unistd.h>
+# include <dirent.h>
+# include <stdio.h>
 
 typedef struct s_env
 {
@@ -127,8 +128,14 @@ void				process_special_cases(char *s, char *value, int *i, int *j);
 // Function that allocate and fill the new value.
 char				*fill_value(char *s, int size);
 
-// Function that set the value after DOLLAR.
-char				*fill_dollar(char *s, char *var, int size);
+// FUnction that prepare tokens to be expanded.
+void				pre_expander(void);
+
+// Funtion that prepare the commands "tokens" to be executed.
+void				post_expander(void);
+
+// Function that count the length of the whole command after expanding.
+int					handle_dollar(char *s, int *i);
 
 /* Parsing */
 

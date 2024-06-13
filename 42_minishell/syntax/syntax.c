@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:13:52 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 21:05:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 12:19:40 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,33 @@ int	syntax_first_phase(t_token *token)
 	return (0);
 }
 
+int	count_nb_here_doc(t_token *tokens)
+{
+	int count;
+
+	count = 0;
+	while (tokens)
+	{
+		if (tokens->type == LL_REDIR)
+			count++;
+		tokens = tokens->next;
+	}
+	if (count > 16)
+	{
+		print_errors("maximum here-document count exceeded");
+		return (-1);
+	}
+	else
+		return (0);
+}
+
 int	general_check(void)
 {
 	if (nb_paren())
 		return (-1);
 	if (nb_quotes())
+		return (-1);
+	if (count_nb_here_doc(g_minishell->tokens))
 		return (-1);
 	return (0);
 }
@@ -63,15 +85,14 @@ int	syntax(void)
 		if (syntax_first_phase(token) || syntax_second_phase(token)
 			|| syntax_third_phase(token))
 		{
-			set_env_var(g_minishell->our_env, "?", ft_itoa(2));
-			clear_token(&temp);
-			return (-1);
+			set_env_var(g_minishell->our_env, "?", "2");
+			return (clear_token(&temp), -1);
 		}
 		token = token->next;
 	}
 	if (general_check() == -1)
 	{
-		set_env_var(g_minishell->our_env, "?", ft_itoa(2));
+		set_env_var(g_minishell->our_env, "?", "2");
 		return (clear_token(&temp), -1);
 	}
 	return (0);
