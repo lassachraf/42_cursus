@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/14 09:26:45 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 10:54:28 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void				pre_expander(void);
 void				post_expander(void);
 
 // Function that count the length of the whole command after expanding.
-int					handle_dollar(char *s, int *i);
+void				handle_dollar(char *s, int *i, int *len);
 
 /* Nodes */
 

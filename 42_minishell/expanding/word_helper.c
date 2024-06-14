@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:12:44 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 23:19:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 11:36:37 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,56 +52,58 @@ int	check_env(char *var)
 		return (ft_strlen(get_env_var(g_minishell->our_env, var)));
 }
 
-void	process_special_cases(char *s, char *value, int *i, int *j)
-{
-	char	*var;
-	int		k;
+// void	process_special_cases(char *s, char *value, int *i, int *j)
+// {
+// 	char	*var;
+// 	int		k;
 
-	printf("** process_special_cases :analyser: **\n");
-	printf("** :i: => :%d:\n", *i);
-	printf("** :j: => :%d:\n", *j);
-	if (!g_minishell->dq_flag && !ft_strncmp(&s[*i], "'", 1))
-	{
-		value[(*j)++] = s[(*i)++];
-		while (s[(*i)] && s[*i] != '\'')
-			value[(*j)++] = s[*i++];
-		value[(*j)++] = s[(*i)++];
-	}
-	else if (s[*i] == '$' && s[*i + 1] && (ft_isalnum(s[*i + 1]) || s[*i
-			+ 1] == '_' || s[*i + 1] == '?'))
-	{
-		printf(":i: `%d`\n", *i);
-		var = get_var(s, i);
-		printf(":i: `%d`\n", *i);
-		printf(":var: `%s`\n", var);
-		k = 0;
-		if (var)
-			while (var[k])
-				value[(*j)++] = var[k++];
-		else
-			value[(*j)++] = s[*i];
-	}
-	else
-		value[(*j)++] = s[*i];
-	printf("** process_special_cases :conclusion: **\n");
-	printf("** :i: => :%d:\n", *i);
-	printf("** :j: => :%d:\n", *j);
-}
+// 	printf("** process_special_cases :analyser: **\n");
+// 	printf("** :i: => :%d:\n", *i);
+// 	printf("** :j: => :%d:\n", *j);
+// 	if (!g_minishell->dq_flag && !ft_strncmp(&s[*i], "'", 1))
+// 	{
+// 		value[(*j)++] = s[(*i)++];
+// 		while (s[(*i)] && s[*i] != '\'')
+// 			value[(*j)++] = s[*i++];
+// 		value[(*j)++] = s[(*i)++];
+// 	}
+// 	else if (s[*i] == '$' && s[*i + 1] && (ft_isalnum(s[*i + 1]) || s[*i
+// 			+ 1] == '_' || s[*i + 1] == '?'))
+// 	{
+// 		printf(":i: `%d`\n", *i);
+// 		var = get_var(s, i);
+// 		printf(":i: `%d`\n", *i);
+// 		printf(":var: `%s`\n", var);
+// 		k = 0;
+// 		if (var)
+// 			while (var[k])
+// 				value[(*j)++] = var[k++];
+// 		else
+// 			value[(*j)++] = s[*i];
+// 	}
+// 	else
+// 		value[(*j)++] = s[*i];
+// 	printf("** process_special_cases :conclusion: **\n");
+// 	printf("** :i: => :%d:\n", *i);
+// 	printf("** :j: => :%d:\n", *j);
+// }
 
-char	*fill_value(char *s, int size)
-{
-	char	*value;
-	int		i;
-	int		j;
+// char	*fill_value(char *s, int size)
+// {
+// 	char	*value;
+// 	int		i;
+// 	int		j;
 
-	i = -1;
-	j = 0;
-	printf("** fill_value **\n");
-	value = malloc(size * sizeof(char));
-	if (!value)
-		return (NULL);
-	while (s[++i])
-		process_special_cases(s, value, &i, &j);
-	value[j] = '\0';
-	return (value);
-}
+// 	i = -1;
+// 	j = 0;
+// 	printf("** fill_value **\n");
+// 	value = malloc(size * sizeof(char));
+// 	if (!value)
+// 		return (NULL);
+// 	while (s[++i])
+// 		process_special_cases(s, value, &i, &j);
+// 	value[j] = '\0';
+// 	return (value);
+// }
+
+
