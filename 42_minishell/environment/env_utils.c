@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:46:08 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/06 11:12:08 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:03:57 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_env	*dup_env(char **env)
 	{
 		new_node = (t_env *)malloc(sizeof(t_env));
 		if (!new_node)
-			return (clear_env(), NULL);
+			return (NULL);
 		new_node->key = ft_substr(env[i], 0, ft_key_length(env[i]));
 		new_node->value = ft_strdup(getenv(new_node->key));
 		new_node->visible = true;

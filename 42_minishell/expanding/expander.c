@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/14 12:10:52 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:54:22 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	fill_dollar(char *s, int *i, char *new, int *j)
 	char	*expanded;
     char    *var;
 	int		k;
-	int		a = 0;
-
+	int		a;
 
 	k = 0;
+	a = 0;
     if (!ft_strncmp(&expand[1], "\0", 1))
     {
 		(*i) += 1;
@@ -74,18 +74,15 @@ char	*new_value(char *s, int size)
 
 	i = 0;
 	j = 0;
-	new = malloc(sizeof(char) * size);
+	new = ft_malloc(g_minishell, size);
 	if (!new)
 		exit(1);
-	printf("** new_value :: filling finally **\n");
 	while (s[i])
 	{
-		printf("** start char :: `%c` **\n", s[i]);
 		if (s[i] == '$')
 			fill_dollar(s, &i, new, &j);
 		else
 			new[j++] = s[i++];
-		printf("** end char :: `%c` **\n", s[i]);
 	}
 	new[j] = '\0';
 	printf("** new => `%s`\n\n", new);

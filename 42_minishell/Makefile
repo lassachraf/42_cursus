@@ -6,7 +6,7 @@
 #    By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 14:32:39 by alassiqu          #+#    #+#              #
-#    Updated: 2024/06/13 17:00:27 by alassiqu         ###   ########.fr        #
+#    Updated: 2024/06/14 13:04:59 by alassiqu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ EXPANDING		:=	expanding/expander.c				\
 					expanding/dollar_expand.c			\
 					expanding/quotes_expand.c
 
+MEMORY			:=	memory/memory.c						\
+					memory/garbage_collector.c
+
 NODES			:=	nodes/node.c
 
 PARSING			:=	parsing/parse.c
@@ -63,6 +66,7 @@ SRCS			:=	$(BUILTINS)							\
 					$(CLEANING)							\
 					$(ENVIRONMENT)						\
 					$(EXPANDING)						\
+					$(MEMORY)							\
 					$(NODES)							\
 					$(PARSING)							\
 					$(SIGNALS)							\

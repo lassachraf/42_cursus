@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 20:58:27 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 16:06:42 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 13:18:30 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,12 @@ int	init_minishell(char **env)
 	g_minishell = malloc(sizeof(t_minishell));
 	if (!g_minishell)
 		return (0);
-	g_minishell->our_env = dup_env(env);
 	g_minishell->dq_flag = 0;
+	g_minishell->our_env = dup_env(env);
+	if (!g_minishell->our_env)
+	{
+		return (print_errors("dup_env failed !"), 0);
+	}
 	add_env_var(g_minishell->our_env, "?", "0", false);
 	signals();
 	return (1);
@@ -151,6 +155,12 @@ int	main(int ac, char **av, char **env)
 	while (1)
 	{
 		g_minishell->line = readline(ORANGE PROMPT RESET);
+		if (!g_minishell->line)
+		{
+			ft_putstr_fd("exit\n", 1);
+            // cleanup();
+			exit(0);
+		}
 		if (g_minishell->line[0])
 			add_history(g_minishell->line);
 		g_minishell->tokens = tokenizer();
@@ -165,5 +175,7 @@ int	main(int ac, char **av, char **env)
 		free(g_minishell->line);
 	}
 	clear_env();
+    // free the g_mininshell :
+    // clear_minishell();
 	return (0);
 }

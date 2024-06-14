@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/14 10:54:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 12:59:46 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,17 @@ void				post_expander(void);
 
 // Function that count the length of the whole command after expanding.
 void				handle_dollar(char *s, int *i, int *len);
+
+/* Memory */
+
+// Function to allocate and put the address on a garbage collector.
+char				*ft_malloc(t_minishell *mini, size_t size);
+
+// Function that add an adress to the garbage collector.
+void				gc_add(t_minishell *mini, void *ptr);
+
+// Function that free all addresses in the garbage collector.
+void				gc_free_all(t_minishell *mini);
 
 /* Nodes */
 
