@@ -6,19 +6,21 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 12:54:58 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 13:15:28 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 23:21:29 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*expand_wildcard()
+char	*expand_wildcard(void)
 {
 	DIR				*dir;
 	struct dirent	*entry;
 	char			*expanded;
 	size_t			len;
 	size_t			allocated;
+	size_t			name_len;
+	char			*new_expanded;
 
 	len = 0;
 	allocated = 256;
@@ -26,7 +28,7 @@ char	*expand_wildcard()
 	if (!dir)
 		return (perror("opendir failed!"), NULL);
 	expanded = malloc(allocated);
-	if (!expanded) 
+	if (!expanded)
 		return (perror("malloc failed!"), closedir(dir), NULL);
 	expanded[0] = '\0';
 	entry = readdir(dir);
@@ -34,12 +36,14 @@ char	*expand_wildcard()
 	{
 		if (entry->d_name[0] != '.')
 		{
-			size_t name_len = ft_strlen(entry->d_name);
-			if (len + name_len + 2 > allocated) {
+			name_len = ft_strlen(entry->d_name);
+			if (len + name_len + 2 > allocated)
+			{
 				allocated *= 2;
-				char *new_expanded = realloc(expanded, allocated);
+				new_expanded = realloc(expanded, allocated);
 				if (!new_expanded)
-					return (perror("realloc"), free(expanded), closedir(dir), NULL);
+					return (perror("realloc"), free(expanded), closedir(dir),
+						NULL);
 				expanded = new_expanded;
 			}
 			if (len > 0)
@@ -78,10 +82,10 @@ bool	match(char *pattern, char *candidate, int p, int c)
 
 char	*expand_wildcard(char *wd)
 {
-	DIR				*dir;
-	struct dirent	*entry;
-	char			**all_dirs;
-	int				i;
+	DIR *dir;
+	struct dirent *entry;
+	char **all_dirs;
+	int i;
 
 	dir = opendir(".");
 	if (!dir)

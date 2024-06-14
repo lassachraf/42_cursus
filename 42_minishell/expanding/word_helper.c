@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:12:44 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 17:39:41 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 23:19:28 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ void	process_special_cases(char *s, char *value, int *i, int *j)
 			value[(*j)++] = s[*i++];
 		value[(*j)++] = s[(*i)++];
 	}
-	else if (s[*i] == '$' && s[*i + 1] && (ft_isalnum(s[*i + 1])
-		|| s[*i + 1] == '_' || s[*i + 1] == '?'))
+	else if (s[*i] == '$' && s[*i + 1] && (ft_isalnum(s[*i + 1]) || s[*i
+			+ 1] == '_' || s[*i + 1] == '?'))
 	{
 		printf(":i: `%d`\n", *i);
 		var = get_var(s, i);

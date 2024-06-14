@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 11:11:46 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 19:19:15 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/13 23:25:19 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*helper_expander(char *s)
 {
 	char	*value;
 	int		len;
+	int		tmp;
 	int		i;
 
 	value = NULL;
@@ -24,14 +25,14 @@ char	*helper_expander(char *s)
 	while (s[i])
 	{
 		if (s[i] == '$')
-			len += handle_dollar(s, &i);
+			handle_dollar(s, &i, &len);
 		else
 			len++;
 		i++;
 	}
 	printf("*--* len: %d *--*\n", len);
 	printf("** filling finally **\n");
-	// value = fill_value(s, len + 1);
+	value = fill_value(s, len + 1);
 	return (value);
 }
 
@@ -83,9 +84,6 @@ void	expanding(void)
 
 void	expander(void)
 {
-	printf("** before expanding: **\n");
-	print_tokens(g_minishell->tokens);
-	printf("\n\n");
 	pre_expander();
 	expanding();
 	post_expander();
