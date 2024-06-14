@@ -6,7 +6,7 @@
 /*   By: alassiqu <alassiqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 14:09:59 by alassiqu          #+#    #+#             */
-/*   Updated: 2024/06/13 16:04:10 by alassiqu         ###   ########.fr       */
+/*   Updated: 2024/06/14 09:26:45 by alassiqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "builtins.h"
 # include "parsing.h"
 # include "tokenization.h"
+# include "memory.h"
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -47,6 +48,7 @@ typedef struct s_minishell
 	t_node			*ast;
 	int				nb_tokens;
 	int				dq_flag;
+	t_gc			*gc;
 }					t_minishell;
 
 extern t_minishell	*g_minishell;
